@@ -122,11 +122,16 @@ nav button.on{color:var(--iron)}
 /* grupy: superseria i myo */
 .grp{border:1px solid var(--iron);border-radius:16px;padding:8px;margin-bottom:14px;background:rgba(255,176,32,.04)}
 .grp.myo{border-color:var(--myo);background:rgba(71,180,198,.05)}
+.grp.plain{border-color:var(--line);background:transparent}
+.grphead .mode{font-size:11.5px;font-weight:700;color:var(--iron);letter-spacing:.02em;text-transform:lowercase;margin-top:2px}
+.grp.myo .grphead .mode{color:var(--myo)}
+.grp.plain .grphead .mode{color:var(--mut)}
 .grp .card{margin-bottom:8px}
 .grp .card:last-child{margin-bottom:0}
 .grphead{padding:7px 8px 10px}
 .grphead b{font-size:13px;color:var(--iron);letter-spacing:.02em}
 .grp.myo .grphead b{color:var(--myo)}
+.grp.plain .grphead b{color:var(--txt)}
 .grphead span{display:block;font-size:12.5px;color:var(--mut);margin-top:3px;line-height:1.5}
 /* zegar sesji */
 .clock{display:flex;align-items:baseline;gap:8px;justify-content:center;padding:10px;margin-bottom:14px;border:1px solid var(--line);border-radius:14px}
@@ -183,110 +188,148 @@ svg.spark{width:100%;height:130px;display:block}
 <div id="sheet"></div>
 <script>
 /* =========================================================================
-   PLAN — góra/dół, 4 × w tygodniu, ~40 minut na sesję.
-   Założenia przebudowy względem starej wersji (4 × 75 min):
-   - serie robocze idą blisko upadku (RIR 0-2), bo to one budują mięsień,
-   - dwa ćwiczenia w parze naprzemiennie: przerwa dla mięśnia zostaje pełna,
-     a zegar chodzi o połowę krócej,
-   - izolacje jadą w myo-reps zamiast czterech osobnych serii (15 s to odstęp
-     wewnątrz serii, nie przerwa między seriami),
-   - wyleciało to, co kosztowało najwięcej czasu przy najmniejszym zysku:
-     martwy ciąg klasyczny, serie z RIR 3, trzecie ćwiczenie na tę samą partię.
+   PLAN — góra/dół, 4 × w tygodniu, ~35-40 minut na sesję.
+   Zasada organizująca: BLOK = JEDNO STANOWISKO. Nie ma supersetów przez pół
+   siłowni; na zmianę chodzi tylko to, co stoi w tym samym miejscu (jeden
+   drążek, jedna para hantli, jedna brama, jedna suwnica, jeden stojak).
+   Dzięki temu przerwa dla mięśnia zostaje pełna, zegar chodzi krócej,
+   a stanowiska nikt nie zajmuje, bo się z niego nie schodzi.
+   Czas ścięty przez: bloki na jednym stanowisku, myo-reps na izolacjach
+   (15 s to odstęp WEWNĄTRZ serii, nie przerwa między seriami), serie na
+   RIR 0-2 zamiast objętości z zapasem, RDL zamiast klasycznego martwego.
    Ciężary startowe (pole w) to Twoje wyniki z poprzedniej apki.
    ========================================================================= */
 var PLAN = {
-  upperA:{name:"Góra A", short:"Góra", tag:"A", day:"poniedziałek", kind:"upper", focus:"klatka skos · plecy · bark · triceps", ex:[
-    {id:"inc_bench", n:"Wyciskanie skos (sztanga)", g:"A", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:60, w:50, m:["klatka"], sec:["triceps","bark przód"],
-      why:"Twój wynik z logu: 60 kg × 3. Na 6-8 powtórzeń z RIR 1 wychodzi ~50 kg. Główny bój dnia, idzie pierwszy, na świeżo.",
+  upperA:{name:"Góra A", short:"Góra", tag:"A", day:"poniedziałek", kind:"upper", focus:"klatka skos · plecy · bark · brzuch",
+    st:[
+      {k:"S1", n:"Ławka skośna ze sztangą", place:"ławka skośna", mode:"solo",
+        d:"Zajmujesz ławkę i nie oddajesz jej do końca bloku. Rozbiegówki i serie robocze z jednego gryfu."},
+      {k:"S2", n:"Drążek", place:"drążek", mode:"alt",
+        d:"Oba ćwiczenia na TYM SAMYM drążku, na zmianę: seria podciągania, 45 s, seria wznosów, 45 s. Nie schodzisz ze stanowiska, a brzuch masz z głowy."},
+      {k:"S3", n:"Hantle i ławka — para", place:"hantle", mode:"alt",
+        d:"Jedna para hantli 18 kg i jedna ławka. Wyciskasz nad głowę, odkładasz, wiosłujesz tymi samymi hantlami, wracasz. Zero chodzenia, zero zmiany ciężaru."},
+      {k:"S4", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
+        d:"Zostajesz przy tym samym stojaku z hantlami. Każde ćwiczenie: seria do upadku, 15 s, trzy dobitki po 3-5 powtórzeń. Te 15 s to odstęp w środku serii, nie przerwa między seriami."}
+    ], ex:[
+    {id:"inc_bench", n:"Wyciskanie skos (sztanga)", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:90, w:50, m:["klatka"], sec:["triceps","bark przód"],
+      why:"Twój wynik z logu: 60 kg × 3. Na 6-8 powtórzeń z RIR 1 wychodzi ~50 kg. Jedyne ćwiczenie dnia z pełną przerwą, bo tu powstaje największy kawałek bodźca.",
       cue:"Łopatki ściągnięte, sztanga schodzi do dołu klatki, łokcie ~45° od tułowia."},
-    {id:"pullup", n:"Podciąganie nachwytem (+ ciężar)", g:"A", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:60, w:12, plus:1, m:["plecy"], sec:["biceps"],
-      why:"Z logu: +15 kg × 7. Przy trzech seriach utrzymasz +12 kg. W parze z wyciskaniem, bo plecy odpoczywają, gdy pracuje klatka.",
+    {id:"pullup", n:"Podciąganie nachwytem (+ ciężar)", g:"S2", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:45, w:12, plus:1, m:["plecy"], sec:["biceps"],
+      why:"Z logu: +15 kg × 7. Przy trzech seriach utrzymasz +12 kg. Na zmianę ze wznosami nóg, bo to ten sam drążek — plecy odpoczywają, gdy pracuje brzuch.",
       cue:"Bez bujania, klatka do drążka, na dole pełny zwis."},
-    {id:"ohp_db", n:"Wyciskanie hantli nad głowę", g:"B", s:3, inc:2, r:"8-12", rir:"0-1", rest:45, w:18, m:["bark przód"], sec:["triceps"],
-      why:"Brak twardych danych, 18 kg to szacunek. Pierwszy tydzień dobierasz tak, żeby 12. powtórzenie było na styk.",
+    {id:"leg_raise", n:"Wznosy nóg w zwisie", g:"S2", q:1, s:3, r:"8-15", rir:"1", rest:45, w:0, bw:1, m:["brzuch"],
+      why:"Brzuch wpleciony w przerwy między podciąganiem, więc nie kosztuje ani jednej dodatkowej minuty. Progresja wariantem: ugięte nogi → proste → z hantlem między stopami.",
+      cue:"Miednica podwija się do żeber, nie bujasz się w zwisie."},
+    {id:"ohp_db", n:"Wyciskanie hantli nad głowę", g:"S3", s:3, inc:2, r:"8-12", rir:"0-1", rest:45, w:18, m:["bark przód"], sec:["triceps"],
+      why:"Brak twardych danych, 18 kg to szacunek. Dobierz tak, żeby 12. powtórzenie było na styk — i tak, żeby tym samym ciężarem dało się zaraz wiosłować.",
       cue:"Żeber nie wypychasz, pośladki napięte, hantle schodzą do linii brody."},
-    {id:"row_db", n:"Wiosłowanie hantlem", g:"B", s:3, inc:2, r:"10-12", rir:"1", rest:45, w:18, m:["plecy"], sec:["biceps"],
-      why:"Z logu: 21 kg × 10 jako ostatnia seria piramidy. Tutaj 18 kg, bo wszystkie serie mają wyglądać tak samo.",
+    {id:"row_db", n:"Wiosłowanie hantlem", g:"S3", s:3, inc:2, r:"10-12", rir:"1", rest:45, w:18, m:["plecy"], sec:["biceps"],
+      why:"Z logu: 21 kg × 10 jako ostatnia seria piramidy. Tu 18 kg, ten sam ciężar co wyciskanie nad głowę — dlatego te dwa siedzą w parze: nic nie wymieniasz między seriami.",
       cue:"Hantel ciągniesz do biodra, łopatka pracuje, tułów nie rotuje."},
-    {id:"lat_raise", n:"Wznosy bokiem", g:"C", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
-      why:"Z logu: 9 kg × 8. Sześć kilo na wyższy zakres. Myo-reps: jedna seria do upadku plus trzy dobitki, w dwie minuty robisz to, co wcześniej w pięć.",
+    {id:"lat_raise", n:"Wznosy bokiem", g:"S4", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
+      why:"Z logu: 9 kg × 8. Sześć kilo na wyższy zakres. Myo-reps: w dwie minuty dostajesz tyle, co wcześniej z czterech osobnych serii.",
       cue:"Prowadzisz łokciem, nie dłonią. Bez zamachu z bioder."},
-    {id:"tri_cable", n:"Prostowanie tricepsu na wyciągu", g:"C", q:1, myo:1, s:4, inc:2.5, r:"10-15", rir:"0", rest:15, w:20, m:["triceps"],
-      why:"Z logu: 25 kg × 8 → 20 kg na 10-15. Triceps dostał już swoje w wyciskaniu, tu dokładasz bodziec, nie zmęczenie.",
-      cue:"Łokcie przy tułowiu, w górze nie zwalniasz, kontrolujesz powrót."},
-    {id:"hammer", n:"Uginanie młotkowe", g:"C", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
+    {id:"tri_oh", n:"Wyciskanie francuskie hantlem zza głowy", g:"S4", q:1, myo:1, s:4, inc:2, r:"10-15", rir:"0", rest:15, w:12, m:["triceps"],
+      why:"Wersja z hantlem zamiast wyciągu, bo wyciąg jest po drugiej stronie siłowni, a hantel leży przy Tobie. Zza głowy, czyli triceps w rozciągnięciu — tam rośnie najlepiej. Z logu: wyciąg 25 kg × 8 ≈ hantel 12 kg.",
+      cue:"Łokcie blisko głowy i nieruchome, schodzisz głęboko za kark."},
+    {id:"hammer", n:"Uginanie młotkowe", g:"S4", myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
       why:"Chwyt młotkowy bierze ramienno-promieniowy, czyli górę przedramienia. Wariant przyjazny dla łokcia, po EZ bolało.",
-      cue:"Bez odchylania tułowia. Jak łokieć zaczyna boleć, kończysz serię."},
-    {id:"wrist_curl", n:"Uginanie nadgarstków (sztanga)", g:"C", q:1, myo:1, s:4, inc:2.5, r:"12-20", rir:"0", rest:15, w:20, m:["przedramię"],
-      why:"Zginacze przedramienia, czyli ta część, która faktycznie robi obwód. Przedtem nie było ich wcale. Myo-reps, bo to mały mięsień o krótkim czasie regeneracji — całość zajmuje dwie minuty.",
-      cue:"Przedramiona oparte o ławkę albo uda, sztanga zjeżdża do palców, potem pełne zwinięcie nadgarstka."}
+      cue:"Bez odchylania tułowia. Jak łokieć zaczyna boleć, kończysz serię."}
   ]},
-  lowerA:{name:"Dół A", short:"Dół", tag:"A", day:"wtorek", kind:"lower", focus:"czworogłowe · dwugłowe · łydki · brzuch", ex:[
-    {id:"squat", n:"Przysiad ze sztangą", g:"A", q:1, s:3, inc:5, r:"5-8", rir:"1-2", rest:75, w:60, test:1, m:["czworogłowe"], sec:["pośladek"],
+  lowerA:{name:"Dół A", short:"Dół", tag:"A", day:"wtorek", kind:"lower", focus:"przysiad · RDL · łydki · brzuch",
+    st:[
+      {k:"S1", n:"Stojak ze sztangą", place:"stojak", mode:"seq",
+        d:"Trzy ćwiczenia z jednego gryfu, bez schodzenia ze stanowiska: przysiad, potem RDL (zdejmujesz tyle, ile trzeba), potem łydki ze sztangą na plecach. Cały ciężki kawałek dnia w jednym miejscu."},
+      {k:"S2", n:"Maszyny: prostowanie i uginanie", place:"maszyny na nogi", mode:"alt",
+        d:"Dwie maszyny stojące obok siebie, na zmianę. Przód i tył uda to antagoniści, więc przerwa jednego jest pracą drugiego."},
+      {k:"S3", n:"Wyciąg — brzuch", place:"wyciąg", mode:"solo",
+        d:"Ostatnie cztery minuty dnia, jedno stanowisko po drodze do wyjścia."}
+    ], ex:[
+    {id:"squat", n:"Przysiad ze sztangą", g:"S1", q:1, s:3, inc:5, r:"5-8", rir:"1-2", rest:105, w:60, test:1, m:["czworogłowe"], sec:["pośladek"],
       why:"Brak danych o nogach, 60 kg to punkt wyjścia. Tydzień 1 jest testem: dobierz ciężar i zapisz go w zakładce Ciężary.",
       cue:"Pełny zakres, kolana wychodzą za palce, tempo w dół kontrolowane."},
-    {id:"calf_stand", n:"Łydki stojąc", g:"A", q:1, s:3, inc:5, r:"8-12", rir:"0-1", rest:75, w:40, test:1, m:["łydki"],
-      why:"Partner przysiadu. Łydki nie konkurują z czworogłowym o oddech, więc wypełniają przerwę i nic nie psują.",
+    {id:"rdl", n:"RDL (martwy ciąg na prostych)", g:"S1", q:1, s:3, inc:5, r:"6-10", rir:"2", rest:90, w:60, test:1, m:["dwugłowe","pośladek"], sec:["plecy"],
+      why:"Twój hinge zamiast klasycznego martwego ciągu: ten sam bodziec na tył uda i pośladek, kilka razy mniej zmęczenia i bez osobnego rozbiegania. Robisz go tym samym gryfem, w tym samym stojaku, zaraz po przysiadzie.",
+      cue:"Biodra w tył, sztanga sunie po udzie, plecy płaskie. Schodzisz tak nisko, jak pozwala rozciągnięcie."},
+    {id:"calf_stand", n:"Łydki ze sztangą (w stojaku)", g:"S1", s:3, inc:5, r:"8-12", rir:"0-1", rest:60, w:60, test:1, m:["łydki"],
+      why:"Zostajesz w stojaku z tą samą sztangą na plecach, wchodzisz palcami na talerz albo próg. Maszyna do łydek bywa zajęta i zwykle stoi gdzie indziej — to jest wersja, która nie kosztuje przejścia.",
       cue:"Pełne rozciągnięcie na dole, sekunda zatrzymania w górze."},
-    {id:"leg_press", n:"Wypychanie na suwnicy", g:"B", s:3, inc:5, r:"10-15", rir:"0-1", rest:60, w:80, test:1, m:["czworogłowe"], sec:["pośladek"],
-      why:"Druga porcja czworogłowego, tym razem bez podpierania się plecami. Tu można bezpiecznie iść do upadku.",
-      cue:"Kolana nie uciekają do środka, nie odrywasz krzyża od oparcia."},
-    {id:"leg_curl_lie", n:"Uginanie nóg leżąc", g:"B", s:3, inc:5, r:"8-12", rir:"0-1", rest:60, w:30, test:1, m:["dwugłowe"],
-      why:"Dwugłowe w parze z wypychaniem: antagoniści, więc żadne nie przeszkadza drugiemu.",
+    {id:"leg_ext", n:"Prostowanie nóg", g:"S2", s:3, inc:5, r:"12-20", rir:"0-1", rest:45, w:30, test:1, m:["czworogłowe"],
+      why:"Czworogłowy dobity w bezpiecznej pozycji, tu można iść do upadku bez ryzyka.",
+      cue:"Sekunda zatrzymania w górze, powrót kontrolowany."},
+    {id:"leg_curl_lie", n:"Uginanie nóg leżąc", g:"S2", s:3, inc:5, r:"8-12", rir:"0-1", rest:45, w:30, test:1, m:["dwugłowe"],
+      why:"Dwugłowe przy wyprostowanym biodrze, czyli w innej długości mięśnia niż RDL. Na zmianę z prostowaniem, bo maszyny stoją obok siebie.",
       cue:"Biodra dociśnięte do ławki, powrót wolniejszy niż ciąg."},
-    {id:"leg_raise", n:"Wznosy nóg w zwisie", g:"C", q:1, s:3, r:"8-15", rir:"1", rest:60, w:0, bw:1, m:["brzuch"],
-      why:"Dolna część brzucha i zginacze bioder, przy okazji chwyt. Progresja wariantem: ugięte nogi → proste → z hantlem między stopami.",
-      cue:"Miednica podwija się do żeber, nie bujasz się w zwisie."},
-    {id:"pallof", n:"Pallof press (antyrotacja)", g:"C", q:1, s:2, inc:2.5, r:"10-12", rir:"1", rest:45, w:15, each:1, m:["brzuch"],
-      why:"Skośne i głęboka warstwa brzucha, w robocie, jaką faktycznie wykonują: trzymanie tułowia, gdy siła ciągnie w bok. Tanie czasowo, dwie serie na stronę.",
-      cue:"Wyciąg z boku, wypychasz linkę przed siebie i nie pozwalasz tułowiowi obrócić się ani o centymetr."}
+    {id:"cable_crunch", n:"Spięcia brzucha na wyciągu", g:"S3", q:1, s:3, inc:2.5, r:"10-15", rir:"0-1", rest:60, w:25, m:["brzuch"],
+      why:"Jedyne ćwiczenie brzucha, w którym dokładasz kilogramy. Brzuch rośnie od obciążenia tak samo jak reszta.",
+      cue:"Zwijasz kręgosłup, biodra stoją w miejscu."}
   ]},
-  upperB:{name:"Góra B", short:"Góra", tag:"B", day:"czwartek", kind:"upper", focus:"klatka · plecy · bark · biceps", ex:[
-    {id:"dips", n:"Dipy z ciężarem", g:"A", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:60, w:15, plus:1, m:["klatka","triceps"],
+  upperB:{name:"Góra B", short:"Góra", tag:"B", day:"czwartek", kind:"upper", focus:"klatka · plecy · bark · ramiona",
+    st:[
+      {k:"S1", n:"Poręcze", place:"poręcze", mode:"solo",
+        d:"Jedno miejsce, ciężar w pasie, pełna przerwa. Najcięższy ruch dnia idzie pierwszy."},
+      {k:"S2", n:"Wyciąg górny i dolny", place:"wyciąg", mode:"alt",
+        d:"Ściąganie i rozpiętki na tej samej bramie, na zmianę — zmieniasz uchwyt i wysokość bloczka, nie stanowisko. Plecy i klatka sobie nie przeszkadzają."},
+      {k:"S3", n:"Wyciąg — dalej", place:"wyciąg", mode:"seq",
+        d:"Nie schodzisz z bramy. Dwa ćwiczenia po kolei, krótkie przerwy."},
+      {k:"S4", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
+        d:"Jedno przejście na koniec treningu, do stojaka z hantlami. Cztery bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki."}
+    ], ex:[
+    {id:"dips", n:"Dipy z ciężarem", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:90, w:15, plus:1, m:["klatka","triceps"],
       why:"Z logu: +20 kg × 6. Przy trzech seriach zostaje +15 kg. Klatka dolna i triceps w jednym ruchu, dlatego nie ma tu osobnego wyciskania płaskiego.",
       cue:"Lekki skłon tułowia do przodu, zejście do kąta prostego w łokciu."},
-    {id:"row_bb", n:"Wiosłowanie sztangą", g:"A", q:1, s:3, inc:2.5, r:"8-10", rir:"1", rest:60, w:50, m:["plecy"], sec:["biceps"],
-      why:"Szacunek z wiosłowania hantlem 18 kg. Para z dipami: plecy ciągną, gdy klatka odpoczywa.",
-      cue:"Tułów ~45°, sztanga do pępka, krzyż w jednej linii."},
-    {id:"pulldown", n:"Ściąganie drążka szeroko", g:"B", s:3, inc:2.5, r:"10-12", rir:"1", rest:45, w:55, m:["plecy"], sec:["biceps"],
-      why:"Szacunek z podciągania +12 kg. Tu chodzi o zakres i czucie, nie o kolejny bój na ciężar.",
+    {id:"pulldown", n:"Ściąganie drążka szeroko", g:"S2", q:1, s:3, inc:2.5, r:"10-12", rir:"1", rest:45, w:55, m:["plecy"], sec:["biceps"],
+      why:"Szacunek z podciągania +12 kg. Druga dawka pleców w tygodniu, tym razem w kontrolowanym zakresie zamiast na ciężar.",
       cue:"Drążek do góry klatki, łokcie w dół, bez odchylania się całym ciałem."},
-    {id:"fly_cable", n:"Rozpiętki na wyciągu", g:"B", s:3, inc:2.5, r:"12-15", rir:"0-1", rest:45, w:10, m:["klatka"],
-      why:"Klatka w rozciągnięciu, którego nie daje żadne wyciskanie. Para ze ściąganiem, więc nie kosztuje osobnych przerw.",
+    {id:"fly_cable", n:"Rozpiętki na wyciągu", g:"S2", q:1, s:3, inc:2.5, r:"12-15", rir:"0-1", rest:45, w:10, m:["klatka"],
+      why:"Klatka w rozciągnięciu, którego nie daje żadne wyciskanie. Na zmianę ze ściąganiem, bo to ta sama brama.",
       cue:"Łokcie lekko ugięte i stałe. Szukasz rozciągnięcia, nie ciężaru."},
-    {id:"lat_raise_b", n:"Wznosy bokiem", g:"C", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
+    {id:"row_cable", n:"Wiosłowanie na wyciągu siedząc", g:"S3", s:2, inc:2.5, r:"10-12", rir:"1", rest:60, w:55, m:["plecy"],
+      why:"Zastąpiło wiosłowanie sztangą: ten sam ruch dla środka pleców, ale z bramy, przy której już stoisz. Z logu wiosłowania hantlem 18 kg wychodzi ~55 kg na stosie.",
+      cue:"Klatka wypchnięta, ciągniesz do pępka, łopatki schodzą w dół i do siebie."},
+    {id:"face_pull", n:"Face pull", g:"S3", s:2, inc:2.5, r:"15-20", rir:"1", rest:45, w:12.5, m:["bark tył"],
+      why:"Z logu: 15 kg × 12 → 12,5 kg na wyższy zakres. Tył barku i zdrowie stawu przy takiej liczbie wyciskań. Ta sama brama, tylko bloczek w górę.",
+      cue:"Linka do czoła, na końcu ruchu rotacja zewnętrzna, łokcie wysoko."},
+    {id:"lat_raise_b", n:"Wznosy bokiem", g:"S4", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Bok barku dostaje bodziec dwa razy w tygodniu, bo to mała partia, która znosi dużo objętości i szybko się regeneruje.",
       cue:"Ten sam ruch co w Górze A. Jak wchodzi 15 powtórzeń w serii aktywacyjnej, dokładasz kilo."},
-    {id:"face_pull", n:"Face pull", g:"C", q:1, s:2, inc:2.5, r:"15-20", rir:"1", rest:45, w:12.5, m:["bark tył"],
-      why:"Z logu: 15 kg × 12 → 12,5 kg na wyższy zakres. Tył barku i zdrowie stawu przy takiej liczbie wyciskań.",
-      cue:"Linka do czoła, na końcu ruchu rotacja zewnętrzna, łokcie wysoko."},
-    {id:"curl_incline", n:"Uginanie bicepsa na skosie", g:"C", q:1, myo:1, s:4, inc:2, r:"8-12", rir:"0-1", rest:15, w:8, m:["biceps"],
-      why:"Biceps w rozciągnięciu, wariant przyjazny dla łokcia. Myo-reps, bo to izolacja, a nie bój.",
+    {id:"curl_incline", n:"Uginanie bicepsa na skosie", g:"S4", q:1, myo:1, s:4, inc:2, r:"8-12", rir:"0-1", rest:15, w:8, m:["biceps"],
+      why:"Biceps w rozciągnięciu, wariant przyjazny dla łokcia. Ławkę masz przy hantlach, więc to dalej to samo stanowisko.",
       cue:"Ramiona zostają za tułowiem, nie kołyszesz hantlami."},
-    {id:"rev_curl", n:"Uginanie podchwytem odwrotnym (reverse curl)", g:"C", q:1, myo:1, s:4, inc:2, r:"10-15", rir:"0", rest:15, w:15, m:["przedramię"], sec:["biceps"],
-      why:"Druga strona przedramienia: prostowniki i ramienno-promieniowy. Razem z uginaniem nadgarstków w Górze A daje przedramionom pełne pokrycie, czego wcześniej nie było w ogóle.",
-      cue:"Chwyt nachwytem, nadgarstki sztywne i lekko w górę. Ciężar dużo mniejszy niż w zwykłym uginaniu, to normalne."}
+    {id:"rev_curl", n:"Uginanie podchwytem odwrotnym (reverse curl)", g:"S4", myo:1, s:4, inc:2, r:"10-15", rir:"0", rest:15, w:15, m:["przedramię"], sec:["biceps"],
+      why:"Prostowniki i ramienno-promieniowy. Razem z młotkowymi i uginaniem nadgarstków daje przedramionom pełne pokrycie — wcześniej nie było ich w planie w ogóle.",
+      cue:"Chwyt nachwytem, nadgarstki sztywne i lekko w górę. Ciężar dużo mniejszy niż w zwykłym uginaniu, to normalne."},
+    {id:"wrist_curl", n:"Uginanie nadgarstków", g:"S4", myo:1, s:4, inc:2.5, r:"12-20", rir:"0", rest:15, w:20, m:["przedramię"],
+      why:"Zginacze przedramienia, czyli ta część, która robi obwód. Sztanga albo dwa hantle, przedramiona oparte o ławkę — wszystko w tym samym kącie z hantlami.",
+      cue:"Ciężar zjeżdża do palców, potem pełne zwinięcie nadgarstka."}
   ]},
-  lowerB:{name:"Dół B", short:"Dół", tag:"B", day:"piątek", kind:"lower", focus:"pośladki · dwugłowe · łydki · brzuch", ex:[
-    {id:"rdl", n:"RDL (martwy ciąg na prostych)", g:"A", q:1, s:3, inc:5, r:"6-10", rir:"2", rest:75, w:60, test:1, m:["dwugłowe","pośladek"], sec:["plecy"],
-      why:"To jest Twój hinge zamiast klasycznego martwego ciągu: ten sam bodziec na tył uda i pośladek, kilka razy mniej zmęczenia i zero kwadransa na rozbieganie.",
-      cue:"Biodra w tył, sztanga sunie po udzie, plecy płaskie. Schodzisz tak nisko, jak pozwala rozciągnięcie."},
-    {id:"calf_sit", n:"Łydki siedząc", g:"A", q:1, s:3, inc:5, r:"10-15", rir:"0-1", rest:75, w:30, test:1, m:["łydki"],
-      why:"Wariant z ugiętym kolanem, czyli płaszczkowaty. Partner RDL-a, wypełnia przerwę.",
-      cue:"Pełny zakres, bez sprężynowania na dole."},
-    {id:"bulgarian", n:"Przysiady bułgarskie", g:"B", s:2, inc:2, r:"8-12", rir:"1", rest:70, w:10, each:1, test:1, m:["pośladek","czworogłowe"],
+  lowerB:{name:"Dół B", short:"Dół", tag:"B", day:"piątek", kind:"lower", focus:"suwnica · pośladki · dwugłowe · brzuch",
+    st:[
+      {k:"S1", n:"Suwnica", place:"suwnica", mode:"alt",
+        d:"Wypychanie i łydki na TEJ SAMEJ maszynie: po serii wypychania przesuwasz stopy na dół platformy i robisz łydki. Nie wstajesz, nie zmieniasz ciężaru więcej niż raz."},
+      {k:"S2", n:"Hantle i ławka", place:"hantle", mode:"seq",
+        d:"Jedna ławka i para hantli. Bułgarskie, potem hip thrust o tę samą ławkę."},
+      {k:"S3", n:"Maszyna: uginanie siedząc", place:"maszyny na nogi", mode:"solo",
+        d:"Jedno stanowisko, trzy serie, krótka przerwa."},
+      {k:"S4", n:"Mata: rollout", place:"mata", mode:"solo",
+        d:"Kółko albo sztanga na podłodze. Ostatnie trzy minuty."}
+    ], ex:[
+    {id:"leg_press", n:"Wypychanie na suwnicy", g:"S1", q:1, s:3, inc:5, r:"10-15", rir:"0-1", rest:45, w:80, test:1, m:["czworogłowe"], sec:["pośladek"],
+      why:"Główna dawka czworogłowego w tym dniu. Bez obciążania kręgosłupa, więc można iść blisko upadku.",
+      cue:"Kolana nie uciekają do środka, nie odrywasz krzyża od oparcia."},
+    {id:"calf_press", n:"Łydki na suwnicy", g:"S1", q:1, s:3, inc:5, r:"10-15", rir:"0-1", rest:45, w:60, test:1, m:["łydki"],
+      why:"Ta sama maszyna, tylko stopy na krawędzi platformy. Łydki nie konkurują z czworogłowym o oddech, więc wypełniają przerwy i nie kosztują ani jednego przejścia.",
+      cue:"Pełne rozciągnięcie na dole, bez sprężynowania. Zabezpieczenie suwnicy ZAŁOŻONE."},
+    {id:"bulgarian", n:"Przysiady bułgarskie", g:"S2", s:2, inc:2, r:"8-12", rir:"1", rest:75, w:10, each:1, test:1, m:["pośladek","czworogłowe"],
       why:"Jedna noga naraz: mniej ciężaru na kręgosłupie, więcej roboty dla pośladka. Dwie serie wystarczą, bo każda to dwa podejścia.",
       cue:"Ciężar na przedniej nodze, tułów lekko do przodu, tylna noga tylko podpiera."},
-    {id:"leg_ext", n:"Prostowanie nóg", g:"B", s:2, inc:5, r:"12-20", rir:"0-1", rest:70, w:30, test:1, m:["czworogłowe"],
-      why:"Czworogłowy dobity w bezpiecznej pozycji, para z bułgarskimi.",
-      cue:"Sekunda zatrzymania w górze, powrót kontrolowany."},
-    {id:"leg_curl_sit", n:"Uginanie nóg siedząc", g:"C", q:1, s:2, inc:5, r:"10-15", rir:"0-1", rest:60, w:30, test:1, m:["dwugłowe"],
-      why:"Dwugłowe w zgięciu biodra, czyli w innej długości mięśnia niż RDL. Dwa różne kąty, dlatego oba zostają.",
+    {id:"hip_thrust", n:"Hip thrust (sztanga albo hantel)", g:"S2", s:3, inc:5, r:"8-12", rir:"1", rest:75, w:60, test:1, m:["pośladek"], sec:["dwugłowe"],
+      why:"Pośladek w skurczu, czyli w pozycji, której nie daje ani RDL, ani przysiad. O tę samą ławkę, przy której robisz bułgarskie.",
+      cue:"Plecy o ławkę pod łopatkami, w górze pełne wypchnięcie bioder i sekunda zatrzymania, żebra nie uciekają."},
+    {id:"leg_curl_sit", n:"Uginanie nóg siedząc", g:"S3", q:1, s:3, inc:5, r:"10-15", rir:"0-1", rest:60, w:30, test:1, m:["dwugłowe"],
+      why:"Dwugłowe w zgięciu biodra, czyli w innej długości mięśnia niż RDL i niż uginanie leżąc. Dlatego oba warianty zostają, tylko w różne dni.",
       cue:"Nie odrywasz pleców od oparcia, tempo równe."},
-    {id:"cable_crunch", n:"Spięcia brzucha na wyciągu", g:"C", q:1, s:3, inc:2.5, r:"10-15", rir:"0-1", rest:60, w:25, m:["brzuch"],
-      why:"Jedyne ćwiczenie brzucha, w którym dokładasz kilogramy. Brzuch rośnie od obciążenia tak samo jak reszta, więc to on jest tu głównym ruchem, nie dobitką.",
-      cue:"Zwijasz kręgosłup, biodra stoją w miejscu."},
-    {id:"ab_roll", n:"Rollout kółkiem (albo ze sztangą)", g:"C", q:1, s:2, r:"8-12", rir:"1", rest:60, w:0, bw:1, m:["brzuch"],
+    {id:"ab_roll", n:"Rollout kółkiem (albo ze sztangą)", g:"S4", q:1, s:3, r:"8-12", rir:"1", rest:60, w:0, bw:1, m:["brzuch"],
       why:"Brzuch w pracy antywyprostnej, czyli w rozciągnięciu — tego nie daje żadne spięcie. Progresja wariantem: z kolan → z kolan dalej → ze stóp.",
       cue:"Miednica podwinięta przez cały ruch, krzyż nie opada. Wracasz brzuchem, nie rękami."}
   ]}
@@ -295,19 +338,24 @@ var DAYKEYS = ["upperA","lowerA","upperB","lowerB"];
 var EXBYID = {};
 DAYKEYS.forEach(function(k){ PLAN[k].ex.forEach(function(e){ e.day = k; EXBYID[e.id] = e; }); });
 
-var GRPINFO = {
-  upper:{
-    A:{t:"Para główna — naprzemiennie", d:"Seria pierwszego ćwiczenia, przerwa, seria drugiego, przerwa i wracasz do pierwszego. Do tej samej sztangi wracasz po około 3 minutach, czyli z pełną przerwą — tyle że zamiast stać, robisz w międzyczasie drugie ćwiczenie."},
-    B:{t:"Para druga — naprzemiennie", d:"Ta sama zasada, trochę krótsza przerwa. To ćwiczenia pomocnicze, nie musisz po nich być świeży jak przed bojem."},
-    C:{t:"Blok końcowy: izolacje i myo-reps", d:"Tu 15 sekund to NIE jest przerwa między seriami, tylko odstęp wewnątrz jednej serii rozciągniętej na dobitki. Robisz serię do upadku, odkładasz ciężar, liczysz 15 s i dobijasz 3-5 powtórzeń. Między różnymi ćwiczeniami bloku robisz normalną przerwę, ile potrzebujesz.", myo:1}
-  },
-  lower:{
-    A:{t:"Para główna — naprzemiennie", d:"Ciężki bój i łydki na zmianę. Do sztangi wracasz po około 3,5 minuty, czyli z pełną przerwą — łydki tylko wypełniają czas, nie zabierają siły."},
-    B:{t:"Para druga — naprzemiennie", d:"Przód i tył uda na zmianę. Antagoniści sobie nie przeszkadzają, więc przerwa jednego jest pracą drugiego."},
-    C:{t:"Blok końcowy: brzuch i dobitka", d:"Ostatni blok dnia. Przerwy krótkie, bo to małe partie i nie ma po czym się zbierać."}
-  }
-};
-function grpInfo(kind, g){ return (GRPINFO[kind] && GRPINFO[kind][g]) || {t:"Blok", d:"", myo:0}; }
+/* Stanowiska są opisane przy każdym dniu w PLAN[...].st.
+   Tryby: solo = jedno ćwiczenie i pełna przerwa, alt = dwa ćwiczenia na zmianę
+   na TYM SAMYM stanowisku, seq = kilka ćwiczeń po kolei bez schodzenia,
+   myo = blok myo-reps. */
+function stInfo(dayKey, g){
+  var st = (PLAN[dayKey] && PLAN[dayKey].st) || [];
+  for(var i = 0; i < st.length; i++){ if(st[i].k === g) return st[i]; }
+  return {k:g, n:"Blok", d:"", mode:"seq", place:""};
+}
+var MODELAB = {solo:"jedno ćwiczenie, pełna przerwa", alt:"na zmianę, to samo stanowisko", seq:"po kolei, bez schodzenia ze stanowiska", myo:"myo-reps"};
+function places(dayKey, quick){
+  var seen = [], list = exList(dayKey, quick);
+  ((PLAN[dayKey] && PLAN[dayKey].st) || []).forEach(function(st){
+    if(!list.some(function(e){ return e.g === st.k; })) return;
+    if(seen.indexOf(st.place) < 0) seen.push(st.place);
+  });
+  return seen;
+}
 var WARM = {
   upper:[
     {n:"Rower albo wiosło", d:"2 min, byle się zagrzać"},
@@ -321,20 +369,21 @@ var WARM = {
   ]
 };
 var RULES = [
-  "Sesja ma 40 minut, nie półtorej godziny. Nie skróciło jej mniejsze obciążenie pracą, tylko wycięte stanie: ćwiczenia chodzą parami, więc czekasz raz zamiast dwa razy.",
-  "Para naprzemienna: seria A, przerwa, seria B, przerwa, znowu A. Do tej samej sztangi wracasz po około 3 minutach, czyli z PEŁNĄ przerwą. Zegar chodzi o połowę krócej, bo w tym czasie zrobiłeś drugie ćwiczenie.",
-  "Liczba w karcie ćwiczenia to przerwa MIĘDZY ćwiczeniami pary, nie cała przerwa dla mięśnia. Minuta na górze i 1,25 min na dole daje 3,5-4 min zanim wrócisz do tej samej sztangi. Apka pisze to wprost przy każdym ćwiczeniu: wracasz tu co ~3 min 25 s.",
-  "Te 15 sekund to nie jest przerwa między seriami. To odstęp w środku myo-reps, czyli jednej serii rozciągniętej na dobitki: seria do upadku, 15 s, 3-5 powtórzeń, 15 s, znowu 3-5. Mięsień jest już zmęczony, więc każda dobitka od pierwszego powtórzenia jest ciężka. Dotyczy tylko izolacji, nigdy boju.",
+  "Blok = jedno stanowisko. Nie biegasz między dipami a wiosłowaniem po dwóch stronach siłowni: wchodzisz w miejsce, robisz wszystko, co się z niego da, i dopiero wtedy idziesz dalej. Na dzień wypadają 3-4 przejścia.",
+  "Na zmianę robisz tylko to, co stoi w tym samym miejscu: podciąganie i wznosy nóg na jednym drążku, wyciskanie i wiosłowanie tą samą parą hantli, wypychanie i łydki na tej samej suwnicy, ściąganie i rozpiętki na tej samej bramie.",
+  "Dzięki temu przerwa dla mięśnia zostaje pełna (3-3,5 min), a zegar chodzi o połowę krócej — i nikt Ci w międzyczasie nie zajmuje stanowiska, bo z niego nie schodzisz.",
+  "Ciężkie boje idą solo, z pełną przerwą: skos w poniedziałek, dipy w czwartek, przysiad i RDL we wtorek. Tego się nie skraca i nie łączy z niczym.",
+  "Te 15 sekund w bloku myo to nie jest przerwa między seriami. To odstęp w środku jednej serii rozciągniętej na dobitki: seria do upadku, 15 s, 3-5 powtórzeń, 15 s, znowu 3-5. Dotyczy tylko izolacji, nigdy boju.",
   "Jak wchodzisz w serię bez powietrza, włącz Spokojne tempo na karcie Planu: +30 s do każdej przerwy. Dwie dobre serie biją trzy odbębnione.",
   "Serie robocze idą na RIR 0-2. Seria z zapasem trzech powtórzeń zajmuje tyle samo czasu, a buduje ułamek tego co seria blisko upadku.",
-  "9-12 twardych serii na partię tygodniowo. Listę masz na karcie Planu, z przedramionami i brzuchem włącznie.",
-  "Przedramiona: uginanie nadgarstków w Górze A (zginacze) i reverse curl w Górze B (prostowniki), do tego młotkowe. W poprzednim planie nie było ich wcale.",
-  "Brzuch: wznosy nóg i Pallof press we wtorek, spięcia na wyciągu i rollout w piątek. Cztery ruchy, dwa kierunki pracy: zwijanie i opieranie się wyprostowi.",
-  "Martwy ciąg klasyczny wypadł. RDL daje to samo dla tyłu uda i pośladka, kosztuje kilka razy mniej zmęczenia i nie zjada 10 minut na rozbieganie.",
+  "9-12 twardych serii na partię tygodniowo. Pełną listę masz na karcie Planu, z przedramionami i brzuchem włącznie.",
+  "Brzuch nie ma osobnego czasu: wznosy nóg jadą w przerwach podciągania na tym samym drążku, spięcia na wyciągu kończą wtorek, rollout kończy piątek.",
+  "Przedramiona: młotkowe w poniedziałek, reverse curl i uginanie nadgarstków w czwartek — wszystko w bloku hantli, bez dodatkowego przejścia.",
+  "Martwy ciąg klasyczny wypadł. RDL daje to samo dla tyłu uda i pośladka, kosztuje kilka razy mniej zmęczenia i robisz go tym samym gryfem, w tym samym stojaku co przysiad.",
   "Progresja: górny zakres powtórzeń we WSZYSTKICH seriach roboczych → apka dokłada realny skok sprzętu (hantle 2 kg, sztanga i stos 2,5 kg, maszyny 5 kg) → wracasz do dolnego zakresu. W myo-reps liczy się seria aktywacyjna.",
   "Jeden ciężar na wszystkie serie robocze. Rozgrzewki nie liczysz.",
   "Rozgrzewka 5 minut i tylko pod pierwszy bój. Rozciąganie po treningu nic nie dodaje do hipertrofii — jak chcesz, rób je w inny dzień.",
-  "Masz mniej czasu niż zwykle: tryb 25 minut na karcie Planu. Zostają duże boje i blok końcowy. Lepszy skrócony trening niż żaden.",
+  "Stanowisko zajęte? Zamień je na to, co masz wolne z tej samej półki: wyciąg za hantle, suwnica za stojak. Plan ma trzymać kolejność bloków, nie konkretne żelastwo.",
   "Deload co 8 tygodni: te same ciężary, połowa serii, jeden tydzień. Apka przypomni sama.",
   "Żółte pola przy nogach to ciężary bez potwierdzenia w logu. Pierwszy raz dobierasz je na czucie i zapisujesz."
 ];
@@ -582,12 +631,13 @@ function vPlan(){
   h += '<div class="card"><div class="row">' +
     '<div style="min-width:0"><div class="mut s13">Następny w kolejce</div>' +
     '<div class="big">'+esc(PLAN[nd].name)+'</div>' +
-    '<div class="exmeta">'+esc(PLAN[nd].focus)+' · ok. '+estMin(nd, q)+' min</div></div>' +
+    '<div class="exmeta">'+esc(PLAN[nd].focus)+' · ok. '+estMin(nd, q)+' min</div>' +
+    '<div class="exmeta" style="color:var(--iron)">'+esc(places(nd, q).join(" → "))+'</div></div>' +
     '<button class="btn primary" data-act="startday" data-k="'+nd+'">Start</button></div></div>';
 
   h += '<div class="card"><div class="row"><div style="min-width:0">' +
     '<div class="exname">Tryb 25 minut</div>' +
-    '<div class="exmeta" style="line-height:1.5">Zostają duże boje i blok końcowy, wypada środkowa para. Włącz, jak dziś masz mało czasu.</div></div>' +
+    '<div class="exmeta" style="line-height:1.5">Wypadają całe stanowiska, nie pojedyncze serie — zostaje 2-3 miejsca i najważniejsze ruchy. Włącz, jak dziś masz mało czasu.</div></div>' +
     '<button class="btn sm '+(q?"aqua":"")+'" data-act="quick">'+(q?"WŁ":"WYŁ")+'</button></div>' +
     '<div class="row" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line)"><div style="min-width:0">' +
     '<div class="exname">Spokojne tempo</div>' +
@@ -607,6 +657,7 @@ function vPlan(){
         '<div class="exname">'+esc(d.name)+' <span class="mut s13">· '+esc(d.day)+'</span></div>' +
         '<div class="exmeta">'+esc(d.focus)+'</div>' +
         '<div class="exmeta">'+list.length+' ćwiczeń · '+sets+' serii · ok. '+estMin(k, q)+' min</div>' +
+        '<div class="exmeta" style="color:var(--iron)">'+places(k, q).length+' stanowiska: '+esc(places(k, q).join(" → "))+'</div>' +
         '<div class="exmeta">'+(last ? "ostatnio " + plDate(last.date) + (last.dur ? " · " + last.dur + " min" : "") : "jeszcze nie robiony")+'</div>' +
       '</div>' +
       ico('<path d="M9 5l7 7-7 7"/>').replace('<svg','<svg style="width:18px;height:18px;stroke:#8A94A0;fill:none;stroke-width:2"') +
@@ -671,8 +722,9 @@ function restOf(e){ return e.myo ? (slowOn() ? 20 : 15) : e.rest + (slowOn() ? 3
 function restFor(e, i){ return restOf(e); }
 /* ile czasu mija, zanim wrócisz do TEGO ćwiczenia (przy parze liczy się cały cykl) */
 function cycleSec(e, dayKey, quick){
+  if(e.myo || stInfo(dayKey, e.g).mode !== "alt") return setSec(e) + restOf(e);
   var same = exList(dayKey, quick).filter(function(x){ return x.g === e.g && !x.myo; });
-  if(e.myo || same.length < 2) return setSec(e) + restOf(e);
+  if(same.length < 2) return setSec(e) + restOf(e);
   return same.reduce(function(a,x){ return a + setSec(x) + restOf(x); }, 0);
 }
 function vSession(){
@@ -689,6 +741,10 @@ function vSession(){
   h += '<div class="clock'+(mins > budget ? " over" : "")+'"><span id="sesst">'+fmtMin(mins)+'</span>' +
     '<span class="mut s13">z ' + budget + ' min</span></div>';
 
+  h += '<div class="card"><div class="exname">Trasa na dziś</div>' +
+    '<div class="exmeta" style="line-height:1.55;margin-top:4px">'+esc(places(a.day, !!a.quick).join("  →  "))+'</div>' +
+    '<div class="hint">Tyle razy zmieniasz miejsce. W bloku zostajesz przy swoim sprzęcie do końca — nie oddajesz stanowiska i nie szukasz go potem drugi raz.</div></div>';
+
   h += fold("warm_"+d.kind, "Rozgrzewka", "5 minut, tylko pod pierwszy bój", warmBlock(d.kind), true);
 
   var openG = null;
@@ -698,9 +754,11 @@ function vSession(){
       if(openG) h += '</div>';
       openG = gk;
       if(openG){
-        var inf = grpInfo(d.kind, openG);
+        var inf = stInfo(a.day, openG);
         var partners = list.filter(function(x){ return x.g === openG; }).map(function(x){ return x.n; });
-        h += '<div class="grp'+(inf.myo?" myo":"")+'"><div class="grphead"><b>'+esc(inf.t)+'</b>' +
+        var cls = inf.mode === "myo" ? " myo" : (inf.mode === "alt" ? "" : " plain");
+        h += '<div class="grp'+cls+'"><div class="grphead"><b>'+esc(inf.n)+'</b>' +
+          '<span class="mode">'+esc(MODELAB[inf.mode] || "")+'</span>' +
           '<span>'+esc(inf.d)+'</span>' +
           (partners.length > 1 ? '<span>Kolejność: '+esc(partners.join(" → "))+'</span>' : '') + '</div>';
       }
@@ -713,7 +771,9 @@ function vSession(){
       ' · RIR '+esc(e.rir)+(e.each?" · na stronę":"")+'</div>' +
       '<div class="exmeta">'+(e.myo
         ? "odstęp na dobitkę " + fmtRest(restOf(e))
-        : "przerwa " + fmtRest(restOf(e)) + " · wracasz tu co ~" + fmtRest(Math.round(cycleSec(e, a.day, !!a.quick)/5)*5))+'</div></div>' +
+        : "przerwa " + fmtRest(restOf(e)) + (stInfo(a.day, e.g).mode === "alt"
+            ? " · wracasz tu co ~" + fmtRest(Math.round(cycleSec(e, a.day, !!a.quick)/5)*5)
+            : ""))+'</div></div>' +
       '<button class="btn sm ghost" data-act="why" data-id="'+e.id+'" aria-label="dlaczego ten ciężar">?</button></div>';
     arr.forEach(function(x,i){
       var cls = x.fail ? " fail" : (x.done ? " done" : "");
@@ -1054,7 +1114,7 @@ document.addEventListener("click", function(ev){
       if(!st.w && !e0.bw) st.w = curWeight(e0);
       var rest = restFor(e0, i);
       var lab = e0.myo ? (i === 0 ? "15 s i pierwsza dobitka · " + e0.n : "15 s i kolejna dobitka · " + e0.n) : "Przerwa · " + e0.n;
-      if(!e0.myo){
+      if(!e0.myo && stInfo(S.active.day, e0.g).mode === "alt"){
         var g = e0.g, sameG = exList(S.active.day, !!S.active.quick).filter(function(x){ return x.g === g; });
         if(sameG.length > 1){
           var idx = sameG.indexOf(e0);
