@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 40 minut**, serie robocze na RIR 0-2.
+Nowa: **4 × 40-43 minuty**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | ~40 min |
-| tydzień | ~300-360 min | ~160 min |
+| czas sesji | 75-90 min | 40-43 min |
+| tydzień | ~300-360 min | ~163 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -82,18 +82,20 @@ przerwy (myo-reps 20 s zamiast 15).
 | brama (dalej) | po kolei | Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 · Prostowanie tricepsu (myo) |
 | hantle | myo-reps | Wznosy bokiem · Uginanie na skosie · Reverse curl |
 
-**Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
+**Piątek — Dół B (~43 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | suwnica | na zmianę | Wypychanie 3×10-15 · Łydki na suwnicy 3×10-15 (ta sama maszyna) |
-| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Uginanie nadgarstków (myo) |
+| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Uginanie nadgarstków (myo) · Wznosy bokiem (myo) |
 | maszyna | solo | Uginanie nóg siedząc 3×10-15 |
 | mata | solo | Rollout 3×8-12 |
 
 Objętość tygodniowa (twarde serie; blok myo liczony jak trzy zwykłe, partie pomocnicze po pół):
 plecy 12,5 · biceps 12 · pośladek 11 · czworogłowe 11 · dwugłowe 10,5 · klatka 9 · triceps 9 ·
-przedramię 9 · brzuch 9 · bark bok 6 · łydki 6 · bark tył 5 · bark przód 4,5.
+przedramię 9 · brzuch 9 · **bark bok 9** · łydki 6 · bark tył 5 · bark przód 4,5.
+Bok barku leci trzy razy w tygodniu (poniedziałek, czwartek, piątek), bo to mała partia z najlepszym
+zwrotem wizualnym i szybką regeneracją.
 Apka pokazuje tę listę na karcie Planu i przelicza ją też dla trybu 25 minut.
 
 ## Funkcje
