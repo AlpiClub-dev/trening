@@ -1,4 +1,4 @@
-# Plan — trening pod hipertrofię w ~40 minut
+# Plan — trening pod hipertrofię w 40 minut
 
 Apka PWA na telefon. Jeden plik `index.html`, bez backendu, bez konta, bez internetu po pierwszym
 wejściu. Wszystko siedzi w pamięci przeglądarki, kopię danych robisz do pliku JSON.
@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 37-40 minut**, serie robocze na RIR 0-2.
+Nowa: **4 × 40 minut**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | 37-40 min |
-| tydzień | ~300-360 min | ~157 min |
+| czas sesji | 75-90 min | ~40 min |
+| tydzień | ~300-360 min | ~160 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -63,7 +63,7 @@ przerwy (myo-reps 20 s zamiast 15).
 | ławka skośna ze sztangą | solo | Wyciskanie skos 3×6-8 RIR1 |
 | drążek | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg w zwisie 3×8-15 |
 | hantle + ławka | na zmianę | OHP hantli 3×8-12 · Wiosłowanie hantlem 3×10-12 (ten sam ciężar) |
-| hantle | myo-reps | Wznosy bokiem · Francuskie hantlem zza głowy · Młotkowe |
+| hantle | myo-reps | Wznosy bokiem · Odwodzenie w opadzie (tył barku) · Uginanie z obrotem (Zottman) |
 
 **Wtorek — Dół A (~40 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
@@ -79,21 +79,21 @@ przerwy (myo-reps 20 s zamiast 15).
 |---|---|---|
 | poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
 | brama | na zmianę | Ściąganie drążka 3×10-12 · Rozpiętki na wyciągu 3×12-15 |
-| brama (dalej) | po kolei | Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 |
-| hantle | myo-reps | Wznosy bokiem · Uginanie na skosie · Reverse curl · Uginanie nadgarstków |
+| brama (dalej) | po kolei | Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 · Prostowanie tricepsu (myo) |
+| hantle | myo-reps | Wznosy bokiem · Uginanie na skosie · Reverse curl |
 
-**Piątek — Dół B (~37 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
+**Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | suwnica | na zmianę | Wypychanie 3×10-15 · Łydki na suwnicy 3×10-15 (ta sama maszyna) |
-| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 |
+| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Uginanie nadgarstków (myo) |
 | maszyna | solo | Uginanie nóg siedząc 3×10-15 |
 | mata | solo | Rollout 3×8-12 |
 
 Objętość tygodniowa (twarde serie; blok myo liczony jak trzy zwykłe, partie pomocnicze po pół):
 plecy 12,5 · biceps 12 · pośladek 11 · czworogłowe 11 · dwugłowe 10,5 · klatka 9 · triceps 9 ·
-przedramię 9 · brzuch 9 · bark bok 6 · łydki 6 · bark przód 4,5 · bark tył 2.
+przedramię 9 · brzuch 9 · bark bok 6 · łydki 6 · bark tył 5 · bark przód 4,5.
 Apka pokazuje tę listę na karcie Planu i przelicza ją też dla trybu 25 minut.
 
 ## Funkcje
