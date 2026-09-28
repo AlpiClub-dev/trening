@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 40-43 minuty**, serie robocze na RIR 0-2.
+Nowa: **4 × 39-40 minut**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | 40-43 min |
-| tydzień | ~300-360 min | ~163 min |
+| czas sesji | 75-90 min | 39-40 min |
+| tydzień | ~300-360 min | ~158 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -41,6 +41,19 @@ Ciężkie boje (skos, dipy, przysiad, RDL) idą solo, z pełną przerwą — teg
 Martwy ciąg klasyczny wypadł, bo RDL daje to samo dla tyłu uda i pośladka przy kilku razy mniejszym
 zmęczeniu, a robi się go tym samym gryfem w tym samym stojaku co przysiad.
 
+## Intensywność: gdzie upadek, a gdzie RIR 1
+
+| sprzęt | ćwiczenia | jak |
+|---|---|---|
+| sztanga, masa ciała | skos, podciąganie, dipy, przysiad, RDL, hip thrust, bułgarskie, łydki ze sztangą | **3 serie, RIR 1** — ostatnie powtórzenie ciężkie, ale nie na siłę |
+| maszyny i wyciągi | suwnica, łydki na suwnicy, prostowanie, uginanie leżąc i siedząc, ściąganie, rozpiętki | **2 serie do upadku + dobitka rest-pause** (20 s przerwy, 3-6 powtórzeń) |
+| izolacje z hantlami | wznosy bokiem, tył barku, uginanie z obrotem, reverse curl, nadgarstki | **myo-reps** (1 do upadku + 3 dobitki po 15 s) |
+
+Logika: upadek jest darmowy tam, gdzie nic Cię nie przygniecie i gdzie zmęczenie nie leje się na
+resztę treningu. Na sztandze kosztuje technikę, bezpieczeństwo i kolejny blok, więc tam zostaje
+zapas jednego powtórzenia. Progresja na ćwiczeniach z dobitką liczy tylko serie robocze — dobitka
+jest objętością, nie sygnałem.
+
 ## O przerwach
 
 W karcie ćwiczenia jest przerwa **między ćwiczeniami na stanowisku**, a nie cała przerwa dla
@@ -65,30 +78,30 @@ przerwy (myo-reps 20 s zamiast 15).
 | hantle + ławka | na zmianę | OHP hantli 3×8-12 · Wiosłowanie hantlem 3×10-12 (ten sam ciężar) |
 | hantle | myo-reps | Wznosy bokiem · Odwodzenie w opadzie (tył barku) · Uginanie z obrotem (Zottman) |
 
-**Wtorek — Dół A (~40 min), 3 stanowiska: stojak → maszyny → wyciąg**
+**Wtorek — Dół A (~39 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | stojak ze sztangą | po kolei | Przysiad 3×5-8 · RDL 3×6-10 · Łydki ze sztangą 3×8-12 (jeden gryf) |
-| maszyny na nogi | na zmianę | Prostowanie nóg 3×12-20 · Uginanie leżąc 3×8-12 |
+| maszyny na nogi | na zmianę | Prostowanie nóg 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~40 min), 3 stanowiska: poręcze → wyciąg → hantle**
+**Czwartek — Góra B (~39 min), 3 stanowiska: poręcze → wyciąg → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
-| brama | na zmianę | Ściąganie drążka 3×10-12 · Rozpiętki na wyciągu 3×12-15 |
+| brama | na zmianę | Ściąganie drążka 2×10-12 + dobitka · Rozpiętki 2×12-15 + dobitka |
 | brama (dalej) | po kolei | Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 · Prostowanie tricepsu (myo) |
 | hantle | myo-reps | Wznosy bokiem · Uginanie na skosie · Reverse curl |
 
-**Piątek — Dół B (~43 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
+**Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| suwnica | na zmianę | Wypychanie 3×10-15 · Łydki na suwnicy 3×10-15 (ta sama maszyna) |
+| suwnica | na zmianę | Wypychanie 2×10-15 + dobitka · Łydki na suwnicy 2×10-15 + dobitka |
 | hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Uginanie nadgarstków (myo) · Wznosy bokiem (myo) |
-| maszyna | solo | Uginanie nóg siedząc 3×10-15 |
+| maszyna | solo | Uginanie nóg siedząc 2×10-15 + dobitka |
 | mata | solo | Rollout 3×8-12 |
 
 Objętość tygodniowa (twarde serie; blok myo liczony jak trzy zwykłe, partie pomocnicze po pół):
