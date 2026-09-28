@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 39-40 minut**, serie robocze na RIR 0-2.
+Nowa: **4 × 39-41 minut**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | 39-40 min |
-| tydzień | ~300-360 min | ~158 min |
+| czas sesji | 75-90 min | 39-41 min |
+| tydzień | ~300-360 min | ~160 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -49,6 +49,10 @@ zmęczeniu, a robi się go tym samym gryfem w tym samym stojaku co przysiad.
 | maszyny i wyciągi | suwnica, łydki na suwnicy, prostowanie, uginanie leżąc i siedząc, ściąganie, rozpiętki | **2 serie do upadku + dobitka rest-pause** (20 s przerwy, 3-6 powtórzeń) |
 | izolacje z hantlami | wznosy bokiem, tył barku, uginanie z obrotem, reverse curl, nadgarstki | **myo-reps** (1 do upadku + 3 dobitki po 15 s) |
 
+W blokach myo ćwiczenia na tę samą partię nigdy nie stoją obok siebie — między uginaniem na skosie
+a reverse curlem leci blok wznosów bokiem, a w poniedziałek uginanie z obrotem rozdziela dwa
+ćwiczenia na bark.
+
 Logika: upadek jest darmowy tam, gdzie nic Cię nie przygniecie i gdzie zmęczenie nie leje się na
 resztę treningu. Na sztandze kosztuje technikę, bezpieczeństwo i kolejny blok, więc tam zostaje
 zapas jednego powtórzenia. Progresja na ćwiczeniach z dobitką liczy tylko serie robocze — dobitka
@@ -74,37 +78,37 @@ przerwy (myo-reps 20 s zamiast 15).
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | ławka skośna ze sztangą | solo | Wyciskanie skos 3×6-8 RIR1 |
-| drążek | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg w zwisie 3×8-15 |
-| hantle + ławka | na zmianę | OHP hantli 3×8-12 · Wiosłowanie hantlem 3×10-12 (ten sam ciężar) |
-| hantle | myo-reps | Wznosy bokiem · Odwodzenie w opadzie (tył barku) · Uginanie z obrotem (Zottman) |
+| drążek + podłoga pod nim | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg leżąc 3×10-20 |
+| hantle + ławka płaska | na zmianę | OHP hantli **stojąc** 3×8-12 · Wiosłowanie hantlem 3×10-12 (ten sam ciężar) |
+| hantle | myo-reps | Wznosy bokiem · Uginanie z obrotem · Rozpiętki tyłu barku na ławce |
 
 **Wtorek — Dół A (~39 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| stojak ze sztangą | po kolei | Przysiad 3×5-8 · RDL 3×6-10 · Łydki ze sztangą 3×8-12 (jeden gryf) |
-| maszyny na nogi | na zmianę | Prostowanie nóg 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
+| stojak ze sztangą | po kolei | Przysiad 3×5-8 · RDL 3×6-10 · Łydki ze sztangą 3×8-12 (jeden gryf, 60 kg) |
+| maszyny na nogi | na zmianę | Prostowanie 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~39 min), 3 stanowiska: poręcze → wyciąg → hantle**
+**Czwartek — Góra B (~41 min), 4 stanowiska: poręcze → wyciąg → brama → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
-| brama | na zmianę | Ściąganie drążka 2×10-12 + dobitka · Rozpiętki 2×12-15 + dobitka |
-| brama (dalej) | po kolei | Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 · Prostowanie tricepsu (myo) |
-| hantle | myo-reps | Wznosy bokiem · Uginanie na skosie · Reverse curl |
+| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 |
+| brama | po kolei | Rozpiętki 2×12-15 + dobitka · Face pull 2×15-20 · Triceps (myo) |
+| hantle | myo-reps | Uginanie na skosie · Wznosy bokiem · Reverse curl |
 
 **Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | suwnica | na zmianę | Wypychanie 2×10-15 + dobitka · Łydki na suwnicy 2×10-15 + dobitka |
-| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Uginanie nadgarstków (myo) · Wznosy bokiem (myo) |
+| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Wznosy bokiem (myo) · Nadgarstki (myo) |
 | maszyna | solo | Uginanie nóg siedząc 2×10-15 + dobitka |
 | mata | solo | Rollout 3×8-12 |
 
-**Sobota — Góra C (~31 min), dzień DODATKOWY, 2 stanowiska: drążek → hantle**
+**Sobota — Góra C (~32 min), dzień DODATKOWY, 2 stanowiska: drążek → hantle**
 
 Plan stoi na czterech treningach. Piąty jest dla tygodni, w których jest czas — dokłada objętość
 tam, gdzie w planie podstawowym jest jej najmniej. W apce siedzi pod czwórką, oznaczony jako
@@ -112,10 +116,12 @@ dodatkowy, i wlicza się do tygodnia dopiero po przełączeniu „Robię piąty 
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| drążek | solo | Podciąganie podchwytem +10 kg 3×6-10 |
-| hantle + ławka płaska | na zmianę | Wyciskanie hantli płasko 3×8-12 · Wiosłowanie z podparciem klatką 3×10-12 |
-| ta sama ławka | solo | Rozpiętki z hantlami na skosie 2×12-15 |
-| hantle | myo-reps | Wznosy bokiem · Odwodzenie w opadzie |
+| drążek | solo | Podciąganie **podchwytem** +10 kg 3×6-10 |
+| ławka płaska + hantle | solo | Wyciskanie hantli płasko 3×8-12 |
+| ta sama ławka, na skos | na zmianę | Wiosłowanie z podparciem klatką 3×10-12 · Rozpiętki na skosie 2×12-15 |
+| ta sama ławka | myo-reps | Rozpiętki tyłu barku · Wznosy bokiem |
+
+Ławkę ustawiasz raz: płasko na wyciskanie, potem na skos i już tak zostaje do końca.
 
 Z piątym dniem: klatka 9 → **14**, plecy 12,5 → **18,5**, bark bok 9 → **12**, bark tył 5 → **8**.
 
