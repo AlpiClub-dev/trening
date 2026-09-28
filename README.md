@@ -104,6 +104,21 @@ przerwy (myo-reps 20 s zamiast 15).
 | maszyna | solo | Uginanie nóg siedząc 2×10-15 + dobitka |
 | mata | solo | Rollout 3×8-12 |
 
+**Sobota — Góra C (~31 min), dzień DODATKOWY, 2 stanowiska: drążek → hantle**
+
+Plan stoi na czterech treningach. Piąty jest dla tygodni, w których jest czas — dokłada objętość
+tam, gdzie w planie podstawowym jest jej najmniej. W apce siedzi pod czwórką, oznaczony jako
+dodatkowy, i wlicza się do tygodnia dopiero po przełączeniu „Robię piąty trening".
+
+| stanowisko | tryb | ćwiczenia |
+|---|---|---|
+| drążek | solo | Podciąganie podchwytem +10 kg 3×6-10 |
+| hantle + ławka płaska | na zmianę | Wyciskanie hantli płasko 3×8-12 · Wiosłowanie z podparciem klatką 3×10-12 |
+| ta sama ławka | solo | Rozpiętki z hantlami na skosie 2×12-15 |
+| hantle | myo-reps | Wznosy bokiem · Odwodzenie w opadzie |
+
+Z piątym dniem: klatka 9 → **14**, plecy 12,5 → **18,5**, bark bok 9 → **12**, bark tył 5 → **8**.
+
 Objętość tygodniowa (twarde serie; blok myo liczony jak trzy zwykłe, partie pomocnicze po pół):
 plecy 12,5 · biceps 12 · pośladek 11 · czworogłowe 11 · dwugłowe 10,5 · klatka 9 · triceps 9 ·
 przedramię 9 · brzuch 9 · **bark bok 9** · łydki 6 · bark tył 5 · bark przód 4,5.
@@ -116,6 +131,8 @@ Apka pokazuje tę listę na karcie Planu i przelicza ją też dla trybu 25 minut
 - **Tryb 25 minut** — wypadają całe stanowiska, nie pojedyncze serie: zostają 2-3 miejsca
   i najważniejsze ruchy (24-26 min). Na dni, w których wybór jest między krótkim treningiem a żadnym.
 - **Trasa na dziś** — lista stanowisk w kolejności, pokazywana na starcie sesji.
+- **Piąty dzień opcjonalny** — Góra C pod listą czterech, z przełącznikiem, czy liczyć go do
+  tygodniowej objętości.
 - **Spokojne tempo** — +30 s do każdej przerwy, myo-reps 20 s zamiast 15.
 - **Objętość tygodniowa** — ile twardych serii dostaje każda partia, z przedramionami i brzuchem.
 - **Progresja automatyczna** — górny zakres powtórzeń we wszystkich seriach → apka podnosi ciężar

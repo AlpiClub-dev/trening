@@ -90,6 +90,8 @@ nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width
 nav button.on{color:var(--iron)}
 /* lista dni */
 .daycard{display:flex;align-items:center;gap:13px}
+.daycard.opt{border-style:dashed}
+.daycard.opt .daytag{background:transparent;border:1px dashed var(--line)}
 .daytag{width:54px;height:54px;flex:0 0 54px;border-radius:13px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
 .daytag b{font-size:16px;font-weight:700}
 .daytag span{font-size:10px;color:var(--mut);margin-top:3px}
@@ -338,11 +340,44 @@ var PLAN = {
     {id:"ab_roll", n:"Rollout kółkiem (albo ze sztangą)", g:"S4", q:1, s:3, r:"8-12", rir:"1", rest:60, w:0, bw:1, m:["brzuch"],
       why:"Brzuch w pracy antywyprostnej, czyli w rozciągnięciu — tego nie daje żadne spięcie. Progresja wariantem: z kolan → z kolan dalej → ze stóp.",
       cue:"Miednica podwinięta przez cały ruch, krzyż nie opada. Wracasz brzuchem, nie rękami."}
+  ]},
+  upperC:{name:"Góra C", short:"Góra", tag:"C", day:"sobota", kind:"upper", opt:1, focus:"klatka · plecy · bark — dzień dodatkowy",
+    st:[
+      {k:"S1", n:"Drążek", place:"drążek", mode:"solo",
+        d:"Podchwyt zamiast nachwytu, czyli inny kąt niż w poniedziałek i więcej bicepsa. Idzie pierwszy, na świeżo."},
+      {k:"S2", n:"Hantle i ławka płaska", place:"hantle", mode:"alt",
+        d:"Jedna ławka, jedna para hantli, dwa ćwiczenia na zmianę. Wyciskanie płasko i wiosłowanie z podparciem klatką o tę samą ławkę ustawioną na skos."},
+      {k:"S3", n:"Ta sama ławka — rozpiętki", place:"hantle", mode:"solo",
+        d:"Nie wstajesz. Ławka zostaje na skosie, bierzesz lżejsze hantle."},
+      {k:"S4", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
+        d:"Dwa bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki."}
+    ], ex:[
+    {id:"chin", n:"Podciąganie podchwytem (+ ciężar)", g:"S1", q:1, s:3, inc:2.5, r:"6-10", rir:"1", rest:90, w:10, plus:1, m:["plecy"], sec:["biceps"],
+      why:"Podchwyt zmienia kąt pracy najszerszego i dokłada bicepsa, więc nie dubluje poniedziałkowego nachwytu. Start +10 kg, czyli dwa kilo mniej niż nachwytem, bo tu idziesz na wyższy zakres powtórzeń.",
+      cue:"Pełny zwis na dole, klatka do drążka, bez wymachu bioder."},
+    {id:"bench_db", n:"Wyciskanie hantli na ławce płaskiej", g:"S2", q:1, s:3, inc:2, r:"8-12", rir:"1", rest:45, w:20, test:1, m:["klatka"], sec:["triceps","bark przód"],
+      why:"Klatka pod innym kątem niż skos i z większym zakresem niż sztanga — hantle schodzą niżej. Szacunek z logu: skos 50 kg na sztandze to mniej więcej 2 × 20 kg w hantlach na płaskiej.",
+      cue:"Hantle schodzą do linii sutków, łokcie ~45°, w górze nie stukasz nimi o siebie."},
+    {id:"row_chest", n:"Wiosłowanie z podparciem klatką", g:"S2", q:1, s:3, inc:2, r:"10-12", rir:"1", rest:45, w:18, m:["plecy"], sec:["biceps"],
+      why:"Ta sama ławka postawiona na skos, kładziesz się na niej klatką. Krzyż nie pracuje w ogóle, więc plecy dostają czystą robotę bez dokładania zmęczenia do RDL-a z piątku.",
+      cue:"Klatka dociśnięta do ławki, ciągniesz łokciami do bioder, łopatki schodzą do siebie."},
+    {id:"fly_db", n:"Rozpiętki z hantlami na skosie", g:"S3", s:2, inc:2, r:"12-15", rir:"0-1", rest:45, w:8, m:["klatka"],
+      why:"Klatka w pełnym rozciągnięciu, czyli w pozycji, w której rośnie najlepiej. Dwie serie wystarczą, bo to dodatek do dwóch wyciskań, które już zrobiłeś w tygodniu.",
+      cue:"Łokcie lekko ugięte i stałe przez cały ruch. Schodzisz tak nisko, jak pozwala bark, i ani centymetra dalej."},
+    {id:"lat_raise_d", n:"Wznosy bokiem", g:"S4", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
+      why:"Czwarty raz w tygodniu. Bok barku znosi taką częstotliwość i to on daje szerokość, czyli rzecz, która przy 185 cm robi największą różnicę wizualną.",
+      cue:"Prowadzisz łokciem, nie dłonią. Lekko, bez zamachu."},
+    {id:"rear_delt_b", n:"Odwodzenie w opadzie (tył barku)", g:"S4", myo:1, s:4, inc:2, r:"12-20", rir:"0", rest:15, w:6, m:["bark tył"],
+      why:"Drugi raz w tygodniu dla partii, która w planie podstawowym ma najmniej. Tył barku domyka sylwetkę z profilu i trzyma bark w kupie przy tylu wyciskaniach.",
+      cue:"Tułów w opadzie, hantle prowadzisz łokciami na boki, bez zarzucania."}
   ]}
 };
 var DAYKEYS = ["upperA","lowerA","upperB","lowerB"];
+var OPTDAYS = ["upperC"];
+var ALLDAYS = DAYKEYS.concat(OPTDAYS);
+function weekDays(){ return (S.ui && S.ui.day5) ? ALLDAYS : DAYKEYS; }
 var EXBYID = {};
-DAYKEYS.forEach(function(k){ PLAN[k].ex.forEach(function(e){ e.day = k; EXBYID[e.id] = e; }); });
+ALLDAYS.forEach(function(k){ PLAN[k].ex.forEach(function(e){ e.day = k; EXBYID[e.id] = e; }); });
 
 /* Stanowiska są opisane przy każdym dniu w PLAN[...].st.
    Tryby: solo = jedno ćwiczenie i pełna przerwa, alt = dwa ćwiczenia na zmianę
@@ -485,7 +520,7 @@ var MUSCLE_ORDER = ["klatka","plecy","bark bok","bark przód","bark tył","bicep
 function weekVolume(quick){
   var v = {};
   function add(mus, n){ v[mus] = (v[mus] || 0) + n; }
-  DAYKEYS.forEach(function(k){
+  weekDays().forEach(function(k){
     exList(k, quick).forEach(function(e){
       var eff = e.myo ? 3 : e.s;
       (e.m || []).forEach(function(mm){ add(mm, eff); });
@@ -653,31 +688,25 @@ function vPlan(){
     '<div class="exmeta" style="line-height:1.5">+30 s do każdej przerwy, w myo-reps 20 s zamiast 15. Włącz, jeśli wchodzisz w serię bez powietrza — lepsza seria jest warta tych minut.</div></div>' +
     '<button class="btn sm '+(slowOn()?"aqua":"")+'" data-act="slow">'+(slowOn()?"WŁ":"WYŁ")+'</button></div></div>';
 
-  var weekMin = DAYKEYS.reduce(function(a,k){ return a + estMin(k, q); }, 0);
-  h += '<h2>Tydzień · 4 sesje · ok. '+weekMin+' min razem</h2>';
-  DAYKEYS.forEach(function(k){
-    var d = PLAN[k];
-    var list = exList(k, q);
-    var sets = list.reduce(function(a,e){ return a + setsOf(e); }, 0);
-    var last = lastSessionOf(k);
-    h += '<div class="card tap daycard" data-act="startday" data-k="'+k+'">' +
-      '<div class="daytag"><b>'+esc(d.short)+'</b><span>'+esc(d.tag)+'</span></div>' +
-      '<div style="flex:1;min-width:0">' +
-        '<div class="exname">'+esc(d.name)+' <span class="mut s13">· '+esc(d.day)+'</span></div>' +
-        '<div class="exmeta">'+esc(d.focus)+'</div>' +
-        '<div class="exmeta">'+list.length+' ćwiczeń · '+sets+' serii · ok. '+estMin(k, q)+' min</div>' +
-        '<div class="exmeta" style="color:var(--iron)">'+places(k, q).length+' stanowiska: '+esc(places(k, q).join(" → "))+'</div>' +
-        '<div class="exmeta">'+(last ? "ostatnio " + plDate(last.date) + (last.dur ? " · " + last.dur + " min" : "") : "jeszcze nie robiony")+'</div>' +
-      '</div>' +
-      ico('<path d="M9 5l7 7-7 7"/>').replace('<svg','<svg style="width:18px;height:18px;stroke:#8A94A0;fill:none;stroke-width:2"') +
-    '</div>';
-  });
+  var weekMin = weekDays().reduce(function(a,k){ return a + estMin(k, q); }, 0);
+  h += '<h2>Tydzień · '+weekDays().length+' sesje · ok. '+weekMin+' min razem</h2>';
+  DAYKEYS.forEach(function(k){ h += dayCard(k, q); });
+
+  h += '<h2>Dodatkowy dzień</h2>';
+  h += '<div class="card"><div class="s13 mut" style="line-height:1.6">' +
+    'Plan stoi na czterech treningach i cztery w zupełności wystarczą. Ten piąty jest dla tygodni, w których masz czas — dokłada objętość tam, gdzie w planie podstawowym jest jej najmniej: klatka, plecy i bark. Trwa 30 minut, nie 40. Opuszczenie go nie psuje niczego, więc nie rób z niego obowiązku.' +
+    '</div>' +
+    '<div class="row" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line)"><div style="min-width:0">' +
+      '<div class="exname">Robię piąty trening</div>' +
+      '<div class="exmeta" style="line-height:1.5">Włączony wlicza się do tygodnia i do listy objętości niżej.</div></div>' +
+      '<button class="btn sm '+(S.ui.day5?"aqua":"")+'" data-act="day5">'+(S.ui.day5?"WŁ":"WYŁ")+'</button></div></div>';
+  OPTDAYS.forEach(function(k){ h += dayCard(k, q); });
 
   h += '<h2>Ile czego w tygodniu</h2><div class="card">';
   weekVolume(q).forEach(function(r){
     h += '<div class="kv"><span class="mut">'+esc(r.m)+'</span><b>'+String(r.n).replace(".",",")+' serii</b></div>';
   });
-  h += '<div class="hint">Twarde serie na partię, licząc blok myo-reps jak trzy zwykłe serie, a partie pomocnicze po pół. Docelowo 9-12 na partię: poniżej 8 rośnie wolniej, powyżej 15 przy RIR 0-1 zaczyna się kumulować zmęczenie zamiast mięśnia.</div></div>';
+  h += '<div class="hint">'+(S.ui.day5 ? "Z piątym treningiem. " : "Z czterech podstawowych sesji. ")+'Twarde serie na partię, licząc blok myo-reps jak trzy zwykłe serie, a partie pomocnicze po pół. Docelowo 9-12 na partię: poniżej 8 rośnie wolniej, powyżej 15 przy RIR 0-1 zaczyna się kumulować zmęczenie zamiast mięśnia.</div></div>';
 
   h += '<h2>Dlaczego ten plan jest krótszy</h2><div class="card"><div class="s13 mut" style="line-height:1.65">';
   RULES.forEach(function(r,i){ h += (i+1) + ". " + esc(r) + "<br>"; });
@@ -686,6 +715,23 @@ function vPlan(){
 }
 
 /* ---------- SESJA ---------- */
+function dayCard(k, q){
+  var d = PLAN[k];
+  var list = exList(k, q);
+  var sets = list.reduce(function(a,e){ return a + setsOf(e); }, 0);
+  var last = lastSessionOf(k);
+  return '<div class="card tap daycard'+(d.opt?" opt":"")+'" data-act="startday" data-k="'+k+'">' +
+    '<div class="daytag"><b>'+esc(d.short)+'</b><span>'+esc(d.tag)+'</span></div>' +
+    '<div style="flex:1;min-width:0">' +
+      '<div class="exname">'+esc(d.name)+' <span class="mut s13">· '+esc(d.day)+'</span>'+(d.opt?' <span class="pill">dodatkowy</span>':'')+'</div>' +
+      '<div class="exmeta">'+esc(d.focus)+'</div>' +
+      '<div class="exmeta">'+list.length+' ćwiczeń · '+sets+' serii · ok. '+estMin(k, q)+' min</div>' +
+      '<div class="exmeta" style="color:var(--iron)">'+places(k, q).length+' stanowiska: '+esc(places(k, q).join(" → "))+'</div>' +
+      '<div class="exmeta">'+(last ? "ostatnio " + plDate(last.date) + (last.dur ? " · " + last.dur + " min" : "") : "jeszcze nie robiony")+'</div>' +
+    '</div>' +
+    ico('<path d="M9 5l7 7-7 7"/>').replace('<svg','<svg style="width:18px;height:18px;stroke:#8A94A0;fill:none;stroke-width:2"') +
+  '</div>';
+}
 function ensureActive(k){
   var q = !!S.ui.quick;
   var sets = {}, order = [];
@@ -889,9 +935,9 @@ function vProgres(){
 /* ---------- WIDOK: CIĘŻARY ---------- */
 function vCiezary(){
   var h = '<div class="card"><div class="s13 mut" style="line-height:1.6">Ciężary startowe pochodzą z Twojego starego logu. Po każdym treningu apka sama je przestawia; tutaj możesz je poprawić ręcznie, np. po zmianie siłowni albo maszyny.</div></div>';
-  DAYKEYS.forEach(function(k){
+  ALLDAYS.forEach(function(k){
     var d = PLAN[k];
-    h += '<h2>'+esc(d.name)+'</h2><div class="card">';
+    h += '<h2>'+esc(d.name)+(d.opt ? ' <span class="pill">dodatkowy</span>' : '')+'</h2><div class="card">';
     d.ex.forEach(function(e){
       var cur = curWeight(e);
       var changed = S.weights[e.id] !== undefined && nOr(S.weights[e.id], e.w) !== e.w;
@@ -1102,6 +1148,7 @@ document.addEventListener("click", function(ev){
   if(a === "closesheet"){ closeSheet(); return; }
 
   if(a === "quick"){ S.ui.quick = !S.ui.quick; save(); render(); toast(S.ui.quick ? "Tryb 25 minut włączony" : "Pełny plan"); return; }
+  if(a === "day5"){ S.ui.day5 = !S.ui.day5; save(); render(); toast(S.ui.day5 ? "Piąty trening wliczony do tygodnia" : "Tydzień liczony z czterech sesji"); return; }
   if(a === "slow"){ S.ui.slow = !S.ui.slow; save(); render(); toast(S.ui.slow ? "Przerwy dłuższe o 30 s" : "Przerwy standardowe"); return; }
   if(a === "startday"){
     if(S.active && !confirm("Masz niezapisany trening. Zacząć nowy i porzucić tamten?")) return;
