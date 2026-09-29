@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 39-41 minut**, serie robocze na RIR 0-2.
+Nowa: **4 × 39-42 minuty**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | 39-41 min |
-| tydzień | ~300-360 min | ~160 min |
+| czas sesji | 75-90 min | 39-42 min |
+| tydzień | ~300-360 min | ~162 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -73,14 +73,14 @@ przerwy (myo-reps 20 s zamiast 15).
 
 ## Plan
 
-**Poniedziałek — Góra A (~40 min), 3 stanowiska: ławka skośna → drążek → hantle**
+**Poniedziałek — Góra A (~42 min), 4 stanowiska: ławka skośna → drążek → maszyna barkowa → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | ławka skośna ze sztangą | solo | Wyciskanie skos 3×6-8 RIR1 |
 | drążek + podłoga pod nim | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg leżąc 3×10-20 |
-| hantle + ławka płaska | na zmianę | OHP hantli **stojąc** 3×8-12 · Wiosłowanie hantlem 3×10-12 (ten sam ciężar) |
-| hantle | myo-reps | Wznosy bokiem · Uginanie z obrotem · Rozpiętki tyłu barku na ławce |
+| maszyna barkowa | solo | Wyciskanie nad głowę na maszynie 3×8-12 |
+| hantle + ławka | po kolei | Wiosłowanie hantlem 3×10-12 · myo: Wznosy bokiem, Uginanie z obrotem, Rozpiętki tyłu barku |
 
 **Wtorek — Dół A (~39 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
@@ -90,13 +90,13 @@ przerwy (myo-reps 20 s zamiast 15).
 | maszyny na nogi | na zmianę | Prostowanie 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~41 min), 4 stanowiska: poręcze → wyciąg → brama → hantle**
+**Czwartek — Góra B (~41 min), 4 stanowiska: poręcze → wyciąg → maszyna motylek → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
-| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 |
-| brama | po kolei | Rozpiętki 2×12-15 + dobitka · Face pull 2×15-20 · Triceps (myo) |
+| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 · Triceps (myo) |
+| maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 2×12-20 (ta sama maszyna) |
 | hantle | myo-reps | Uginanie na skosie · Wznosy bokiem · Reverse curl |
 
 **Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
