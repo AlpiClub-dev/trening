@@ -210,8 +210,10 @@ var PLAN = {
         d:"Podciągasz się, schodzisz, robisz brzuch NA PODŁODZE pod drążkiem, wracasz. Brzuch leży, a nie wisi, bo wznosy w zwisie zjadałyby chwyt przed kolejną serią podciągania z ciężarem."},
       {k:"S3", n:"Maszyna do wyciskania barków", place:"maszyna barkowa", mode:"solo",
         d:"Siadasz, ustawiasz siedzisko i wyciskasz. Żadnej stabilizacji, żadnego balansowania — cały wysiłek idzie w bark, nie w trzymanie się w pionie."},
-      {k:"S4", n:"Hantle i ławka", place:"hantle", mode:"seq",
-        d:"Jeden stojak z hantlami i jedna ławka płasko. Najpierw wiosłowanie, potem trzy bloki myo po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki po 3-5 powtórzeń. Te 15 s to odstęp w środku serii, nie przerwa między seriami."}
+      {k:"S4", n:"Hantle i ławka — wiosłowanie", place:"hantle", mode:"solo",
+        d:"Kolano i ręka na ławce ustawionej płasko. Zwykłe serie robocze z pełną przerwą, obie strony w jednej serii."},
+      {k:"S5", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
+        d:"To samo miejsce, nie ruszasz się. Trzy bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki po 3-5 powtórzeń. Te 15 s to odstęp w środku serii, nie przerwa między seriami."}
     ], ex:[
     {id:"inc_bench", n:"Wyciskanie skos (sztanga)", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:90, w:50, m:["klatka"], sec:["triceps","bark przód"],
       why:"Twój wynik z logu: 60 kg × 3. Na 6-8 powtórzeń z RIR 1 wychodzi ~50 kg. Jedyne ćwiczenie dnia z pełną przerwą, bo tu powstaje największy kawałek bodźca.",
@@ -228,13 +230,13 @@ var PLAN = {
     {id:"row_db", n:"Wiosłowanie hantlem", g:"S4", s:3, inc:2, r:"10-12", rir:"1", rest:60, w:18, each:1, m:["plecy"], sec:["biceps"],
       why:"Kolano i ręka na ławce ustawionej płasko. Z logu: 21 kg × 10 jako ostatnia seria piramidy, więc 18 kg na wszystkie trzy. Robisz obie strony w jednej serii, dlatego zajmuje więcej czasu niż zwykłe ćwiczenie — apka ma to już policzone.",
       cue:"Hantel ciągniesz do biodra, łopatka pracuje, tułów nie rotuje."},
-    {id:"lat_raise", n:"Wznosy bokiem", g:"S4", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
+    {id:"lat_raise", n:"Wznosy bokiem", g:"S5", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Z logu: 9 kg × 8. Sześć kilo na wyższy zakres. Myo-reps: w dwie minuty dostajesz tyle, co wcześniej z czterech osobnych serii.",
       cue:"Prowadzisz łokciem, nie dłonią. Bez zamachu z bioder."},
-    {id:"curl_twist", n:"Uginanie z obrotem (Zottman)", g:"S4", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
+    {id:"curl_twist", n:"Uginanie z obrotem (Zottman)", g:"S5", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
       why:"Twój sposób: w górę podchwytem normalnie, w górze obracasz nadgarstki, w dół młotkowo albo nachwytem, na dole obrót z powrotem. To stary wariant zwany uginaniem Zottmana — faza w górę robi biceps, faza w dół w obróconym chwycie dokłada ramienno-promieniowy i prostowniki przedramienia. Stoi w środku bloku, żeby rozdzielić dwa ćwiczenia na bark.",
       cue:"Obrót robisz w górze i na dole, nigdy w trakcie ruchu. W dół wolniej niż w górę, bo tam pracuje przedramię."},
-    {id:"rear_delt", n:"Rozpiętki tyłu barku na ławce", g:"S4", myo:1, s:4, inc:2, r:"12-20", rir:"0", rest:15, w:6, m:["bark tył"],
+    {id:"rear_delt", n:"Rozpiętki tyłu barku na ławce", g:"S5", myo:1, s:4, inc:2, r:"12-20", rir:"0", rest:15, w:6, m:["bark tył"],
       why:"Kładziesz się klatką na ławce ustawionej na skos, hantle wiszą pod Tobą, unosisz je na boki. Tułów jest podparty, więc nie ma balansowania w opadzie ani pracy krzyża — to jest ta sama robota co face pull, tylko z hantlami i bez ustawiania bramy. Tył barku to najsłabiej obsłużona partia w planie, dlatego w ogóle tu jest.",
       cue:"Klatka dociśnięta do ławki, ramiona prawie proste, prowadzisz łokciami na boki. Lekko — jak musisz zarzucać, ciężar jest za duży."}
   ]},
@@ -272,6 +274,8 @@ var PLAN = {
         d:"Jedno miejsce, ciężar w pasie, pełna przerwa. Najcięższy ruch dnia idzie pierwszy."},
       {k:"S2", n:"Wyciąg górny i dolny", place:"wyciąg", mode:"seq",
         d:"Ściąganie, wiosłowanie siedząc i triceps — wszystko z tego samego wyciągu, tylko zmieniasz uchwyt. Po kolei, bo dwa pierwsze robią plecy."},
+      {k:"S2B", n:"Wyciąg — triceps", place:"wyciąg", mode:"myo",
+        d:"Dalej ten sam wyciąg, tylko prosty drążek zamiast uchwytu do ściągania. Jeden blok myo: seria do upadku, 15 s, trzy dobitki."},
       {k:"S3", n:"Maszyna motylek", place:"maszyna motylek", mode:"alt",
         d:"Rozpiętki normalne i odwrotne na TEJ SAMEJ maszynie: klatka plecami do oparcia, tył barku przodem do oparcia. Przekładasz uchwyty, obracasz się i tyle — na zmianę, bez chodzenia."},
       {k:"S4", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
@@ -292,7 +296,7 @@ var PLAN = {
     {id:"rear_delt_mach", n:"Odwrotne rozpiętki na maszynie", g:"S3", s:2, inc:5, r:"12-20", rir:"1", rest:45, w:20, test:1, m:["bark tył"],
       why:"Ta sama maszyna, tylko siadasz przodem do oparcia. Weszło w miejsce face pulla, który wisiał na bramie — teraz tył barku i klatka jadą z jednego stanowiska, na zmianę. Tył barku dostaje przez to dwa razy w tygodniu.",
       cue:"Ramiona prawie proste, prowadzisz łokciami do tyłu, ściągasz łopatki. Lekko, bez szarpania."},
-    {id:"tri_cable", n:"Prostowanie tricepsu na wyciągu", g:"S2", myo:1, s:4, inc:2.5, r:"10-15", rir:"0", rest:15, w:20, m:["triceps"],
+    {id:"tri_cable", n:"Prostowanie tricepsu na wyciągu", g:"S2B", myo:1, s:4, inc:2.5, r:"10-15", rir:"0", rest:15, w:20, m:["triceps"],
       why:"Z logu: 25 kg × 8 → 20 kg na 10-15. Całe bezpośrednie obciążenie tricepsu w tygodniu siedzi tutaj, na tym samym wyciągu, przy którym już stoisz — wystarczy prosty drążek zamiast uchwytu do ściągania. W poniedziałek triceps ma wolne.",
       cue:"Łokcie przy tułowiu i nieruchome, w górze nie zwalniasz, powrót kontrolowany."},
     {id:"curl_incline", n:"Uginanie bicepsa na skosie", g:"S4", q:1, myo:1, s:4, inc:2, r:"8-12", rir:"0-1", rest:15, w:8, m:["biceps"],
@@ -310,7 +314,9 @@ var PLAN = {
       {k:"S1", n:"Suwnica", place:"suwnica", mode:"alt",
         d:"Wypychanie i łydki na TEJ SAMEJ maszynie: po serii wypychania przesuwasz stopy na dół platformy i robisz łydki. Nie wstajesz. Oba do upadku plus dobitka rest-pause."},
       {k:"S2", n:"Hantle i ławka", place:"hantle", mode:"seq",
-        d:"Jedna ławka płaska i hantle, cztery ćwiczenia bez ruszania się: bułgarskie (noga na ławce), hip thrust (plecy o ławkę), wznosy bokiem, na koniec nadgarstki (przedramiona o ławkę)."},
+        d:"Jedna ławka płaska i hantle: bułgarskie (noga na ławce), potem hip thrust (plecy o ławkę). Zwykłe serie robocze."},
+      {k:"S2B", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
+        d:"To samo miejsce. Dwa bloki po dwie i pół minuty, wznosy bokiem przed nadgarstkami — po nadgarstkach chwyt jest zmęczony."},
       {k:"S3", n:"Maszyna: uginanie siedząc", place:"maszyny na nogi", mode:"solo",
         d:"Jedno stanowisko, dwie serie do upadku plus dobitka."},
       {k:"S4", n:"Mata: rollout", place:"mata", mode:"solo",
@@ -328,10 +334,10 @@ var PLAN = {
     {id:"hip_thrust", n:"Hip thrust (sztanga albo hantel)", g:"S2", s:3, inc:5, r:"8-12", rir:"1", rest:75, w:60, test:1, m:["pośladek"], sec:["dwugłowe"],
       why:"Pośladek w skurczu, czyli w pozycji, której nie daje ani RDL, ani przysiad. O tę samą ławkę, przy której robisz bułgarskie.",
       cue:"Plecy o ławkę pod łopatkami, w górze pełne wypchnięcie bioder i sekunda zatrzymania, żebra nie uciekają."},
-    {id:"lat_raise_c", n:"Wznosy bokiem", g:"S2", myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
+    {id:"lat_raise_c", n:"Wznosy bokiem", g:"S2B", myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Trzeci raz w tygodniu, w dniu nóg. Bok barku to najmniejsza partia z najlepszym zwrotem wizualnym przy Twoim wzroście. Idzie PRZED nadgarstkami, bo po uginaniu nadgarstków chwyt jest zmęczony i hantle uciekają z rąk.",
       cue:"Prowadzisz łokciem, nie dłonią. Lekko, bez zamachu."},
-    {id:"wrist_curl", n:"Uginanie nadgarstków", g:"S2", myo:1, s:4, inc:2.5, r:"12-20", rir:"0", rest:15, w:20, m:["przedramię"],
+    {id:"wrist_curl", n:"Uginanie nadgarstków", g:"S2B", myo:1, s:4, inc:2.5, r:"12-20", rir:"0", rest:15, w:20, m:["przedramię"],
       why:"Zginacze przedramienia, czyli ta część, która robi obwód. W dniu nóg, bo dni góry były najdłuższe, a nadgarstkom jest wszystko jedno kiedy je zrobisz. Ostatnie z bloku hantli.",
       cue:"Przedramiona oparte o ławkę albo uda, ciężar zjeżdża do palców, potem pełne zwinięcie nadgarstka."},
     {id:"leg_curl_sit", n:"Uginanie nóg siedząc", g:"S3", q:1, s:3, rp:1, inc:5, r:"10-15", rir:"0", rest:60, w:30, test:1, m:["dwugłowe"],
@@ -341,39 +347,34 @@ var PLAN = {
       why:"Brzuch w pracy antywyprostnej, czyli w rozciągnięciu — tego nie daje żadne spięcie. Progresja wariantem: z kolan → z kolan dalej → ze stóp.",
       cue:"Miednica podwinięta przez cały ruch, krzyż nie opada. Wracasz brzuchem, nie rękami."}
   ]},
-  upperC:{name:"Góra C", short:"Góra", tag:"C", day:"sobota", kind:"upper", opt:1, focus:"klatka · plecy · bark — dzień dodatkowy",
+  extra:{name:"Dobitka", short:"Extra", tag:"+", day:"sobota", kind:"upper", opt:1, focus:"klatka · tył barku · łydki · ramiona — dzień dodatkowy",
     st:[
-      {k:"S1", n:"Drążek", place:"drążek", mode:"solo",
-        d:"Podchwyt zamiast nachwytu, czyli inny kąt niż w poniedziałek i więcej bicepsa. Idzie pierwszy, na świeżo."},
-      {k:"S2", n:"Ławka płaska i hantle", place:"hantle", mode:"solo",
-        d:"Ławka ustawiona płasko, wyciskasz wszystkie serie i dopiero potem przestawiasz ją na skos. Jedna zmiana ustawienia na cały dzień."},
-      {k:"S3", n:"Ta sama ławka, na skos", place:"hantle", mode:"alt",
-        d:"Ławka raz ustawiona na skos zostaje do końca treningu. Wiosłowanie leżysz na niej klatką, rozpiętki leżysz plecami — ten sam kąt, na zmianę, plecy i klatka sobie nie przeszkadzają."},
-      {k:"S4", n:"Ta sama ławka — blok myo", place:"hantle", mode:"myo",
-        d:"Tył barku robisz dalej leżąc na tej skośnej ławce, wznosy bokiem stojąc obok. Seria do upadku, 15 s, trzy dobitki."}
+      {k:"S1", n:"Maszyna motylek", place:"maszyna motylek", mode:"alt",
+        d:"Rozpiętki normalne i odwrotne na tej samej maszynie, na zmianę. Klatka i tył barku to dwie partie, które w planie podstawowym mają najmniej — tu dostają po trzy serie i nic więcej się nie dzieje."},
+      {k:"S2", n:"Łydki: maszyna albo suwnica", place:"łydki", mode:"solo",
+        d:"Jedno stanowisko, dwie serie do upadku plus dobitka rest-pause."},
+      {k:"S3", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
+        d:"Dwa bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki."}
     ], ex:[
-    {id:"chin", n:"Podciąganie podchwytem (+ ciężar)", g:"S1", q:1, s:3, inc:2.5, r:"6-10", rir:"1", rest:90, w:10, plus:1, m:["plecy"], sec:["biceps"],
-      why:"Podchwyt zmienia kąt pracy najszerszego i dokłada bicepsa, więc nie dubluje poniedziałkowego nachwytu. Start +10 kg, dwa kilo mniej niż nachwytem, bo tu idziesz na wyższy zakres.",
-      cue:"Pełny zwis na dole, klatka do drążka, bez wymachu bioder."},
-    {id:"bench_db", n:"Wyciskanie hantli na ławce płaskiej", g:"S2", q:1, s:3, inc:2, r:"8-12", rir:"1", rest:75, w:20, test:1, m:["klatka"], sec:["triceps","bark przód"],
-      why:"Klatka pod innym kątem niż skos i z większym zakresem niż sztanga — hantle schodzą niżej. Szacunek z logu: skos 50 kg na sztandze to mniej więcej 2 × 20 kg w hantlach na płaskiej.",
-      cue:"Hantle schodzą do linii sutków, łokcie ~45°, w górze nie stukasz nimi o siebie."},
-    {id:"row_chest", n:"Wiosłowanie z podparciem klatką", g:"S3", q:1, s:3, inc:2, r:"10-12", rir:"1", rest:45, w:18, m:["plecy"], sec:["biceps"],
-      why:"Leżysz klatką na skośnej ławce. Krzyż nie pracuje w ogóle, więc plecy dostają czystą robotę bez dokładania zmęczenia do piątkowego RDL-a.",
-      cue:"Klatka dociśnięta do ławki, ciągniesz łokciami do bioder, łopatki schodzą do siebie."},
-    {id:"fly_db", n:"Rozpiętki z hantlami na skosie", g:"S3", q:1, s:2, inc:2, r:"12-15", rir:"0-1", rest:45, w:8, m:["klatka"],
-      why:"Odwracasz się na tej samej ławce i robisz klatkę w pełnym rozciągnięciu. Na zmianę z wiosłowaniem: antagoniści, jeden kąt ławki, zero chodzenia.",
-      cue:"Łokcie lekko ugięte i stałe. Schodzisz tak nisko, jak pozwala bark, i ani centymetra dalej."},
-    {id:"rear_delt_b", n:"Rozpiętki tyłu barku na ławce", g:"S4", myo:1, s:4, inc:2, r:"12-20", rir:"0", rest:15, w:6, m:["bark tył"],
-      why:"Dalej ta sama skośna ławka, dalej leżysz na niej klatką — zmieniasz tylko kierunek ruchu z ciągnięcia na odwodzenie. Tył barku dostaje drugi raz w tygodniu.",
-      cue:"Ramiona prawie proste, prowadzisz łokciami na boki, bez zarzucania."},
-    {id:"lat_raise_d", n:"Wznosy bokiem", g:"S4", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
+    {id:"fly_mach_x", n:"Rozpiętki na maszynie (motylek)", g:"S1", q:1, s:3, rp:1, inc:5, r:"12-15", rir:"0", rest:60, w:30, test:1, m:["klatka"],
+      why:"Klatka bez wyciskania. To jest cały pomysł tego dnia: dokładasz objętość tam, gdzie jej brakuje, ale samymi izolacjami — nic tu nie męczy na tyle, żeby zepsuć poniedziałek czy czwartek.",
+      cue:"Łokcie lekko ugięte i stałe, łopatki ściągnięte. Szukasz rozciągnięcia, nie ciężaru."},
+    {id:"rear_delt_x", n:"Odwrotne rozpiętki na maszynie", g:"S1", q:1, s:3, inc:5, r:"12-20", rir:"1", rest:60, w:20, test:1, m:["bark tył"],
+      why:"Ta sama maszyna, siadasz przodem do oparcia. Tył barku z 5 serii tygodniowo robi się 8 — a to partia, która domyka sylwetkę z profilu i trzyma bark w kupie przy tylu wyciskaniach.",
+      cue:"Ramiona prawie proste, prowadzisz łokciami do tyłu, ściągasz łopatki."},
+    {id:"calf_x", n:"Łydki (maszyna albo suwnica)", g:"S2", q:1, s:3, rp:1, inc:5, r:"10-15", rir:"0", rest:60, w:60, test:1, m:["łydki"],
+      why:"Łydki miały 6 serii tygodniowo, czyli najmniej z dużych partii, a regenerują się szybciej niż cokolwiek innego. Trzeci raz w tygodniu nic nie kosztuje.",
+      cue:"Pełne rozciągnięcie na dole, sekunda zatrzymania w górze, bez sprężynowania."},
+    {id:"lat_raise_x", n:"Wznosy bokiem", g:"S3", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Czwarty raz w tygodniu. Bok barku znosi taką częstotliwość i to on daje szerokość, czyli rzecz, która przy 185 cm robi największą różnicę.",
-      cue:"Prowadzisz łokciem, nie dłonią. Lekko, bez zamachu."}
+      cue:"Prowadzisz łokciem, nie dłonią. Lekko, bez zamachu."},
+    {id:"curl_twist_x", n:"Uginanie z obrotem (Zottman)", g:"S3", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
+      why:"Ten sam ruch co w poniedziałek: w górę podchwytem, w górze obrót, w dół młotkowo. Biceps i przedramię jednym ćwiczeniem, na koniec dnia, w którym nic Cię wcześniej nie zmęczyło.",
+      cue:"Obrót w górze i na dole, nigdy w trakcie ruchu. W dół wolniej niż w górę."}
   ]}
 };
 var DAYKEYS = ["upperA","lowerA","upperB","lowerB"];
-var OPTDAYS = ["upperC"];
+var OPTDAYS = ["extra"];
 var ALLDAYS = DAYKEYS.concat(OPTDAYS);
 function weekDays(){ return (S.ui && S.ui.day5) ? ALLDAYS : DAYKEYS; }
 var EXBYID = {};

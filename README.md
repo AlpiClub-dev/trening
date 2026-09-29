@@ -80,7 +80,8 @@ przerwy (myo-reps 20 s zamiast 15).
 | ławka skośna ze sztangą | solo | Wyciskanie skos 3×6-8 RIR1 |
 | drążek + podłoga pod nim | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg leżąc 3×10-20 |
 | maszyna barkowa | solo | Wyciskanie nad głowę na maszynie 3×8-12 |
-| hantle + ławka | po kolei | Wiosłowanie hantlem 3×10-12 · myo: Wznosy bokiem, Uginanie z obrotem, Rozpiętki tyłu barku |
+| hantle + ławka | solo | Wiosłowanie hantlem 3×10-12 (na stronę) |
+| to samo miejsce | myo-reps | Wznosy bokiem · Uginanie z obrotem · Rozpiętki tyłu barku |
 
 **Wtorek — Dół A (~39 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
@@ -95,7 +96,8 @@ przerwy (myo-reps 20 s zamiast 15).
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
-| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 · Triceps (myo) |
+| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 |
+| ten sam wyciąg | myo-reps | Prostowanie tricepsu (prosty drążek) |
 | maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 2×12-20 (ta sama maszyna) |
 | hantle | myo-reps | Uginanie na skosie · Wznosy bokiem · Reverse curl |
 
@@ -104,26 +106,26 @@ przerwy (myo-reps 20 s zamiast 15).
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | suwnica | na zmianę | Wypychanie 2×10-15 + dobitka · Łydki na suwnicy 2×10-15 + dobitka |
-| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 · Wznosy bokiem (myo) · Nadgarstki (myo) |
+| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 |
+| to samo miejsce | myo-reps | Wznosy bokiem · Uginanie nadgarstków |
 | maszyna | solo | Uginanie nóg siedząc 2×10-15 + dobitka |
 | mata | solo | Rollout 3×8-12 |
 
-**Sobota — Góra C (~32 min), dzień DODATKOWY, 2 stanowiska: drążek → hantle**
+**Sobota — Dobitka (~25 min), dzień DODATKOWY, 3 stanowiska: motylek → łydki → hantle**
 
-Plan stoi na czterech treningach. Piąty jest dla tygodni, w których jest czas — dokłada objętość
-tam, gdzie w planie podstawowym jest jej najmniej. W apce siedzi pod czwórką, oznaczony jako
-dodatkowy, i wlicza się do tygodnia dopiero po przełączeniu „Robię piąty trening".
+Plan stoi na czterech treningach. Piąty to same izolacje — dokłada objętość partiom, które w planie
+podstawowym mają najmniej, i nie męczy niczego na tyle, żeby zepsuć poniedziałek albo czwartek.
+W apce siedzi pod czwórką, oznaczony jako dodatkowy, i wlicza się do tygodnia dopiero po
+przełączeniu „Robię piąty trening".
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| drążek | solo | Podciąganie **podchwytem** +10 kg 3×6-10 |
-| ławka płaska + hantle | solo | Wyciskanie hantli płasko 3×8-12 |
-| ta sama ławka, na skos | na zmianę | Wiosłowanie z podparciem klatką 3×10-12 · Rozpiętki na skosie 2×12-15 |
-| ta sama ławka | myo-reps | Rozpiętki tyłu barku · Wznosy bokiem |
+| maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 3×12-20 |
+| łydki (maszyna albo suwnica) | solo | Łydki 2×10-15 + dobitka |
+| hantle | myo-reps | Wznosy bokiem · Uginanie z obrotem |
 
-Ławkę ustawiasz raz: płasko na wyciskanie, potem na skos i już tak zostaje do końca.
-
-Z piątym dniem: klatka 9 → **14**, plecy 12,5 → **18,5**, bark bok 9 → **12**, bark tył 5 → **8**.
+Z piątym dniem: klatka 9 → **12**, bark tył 5 → **8**, łydki 6 → **9**, bark bok 9 → **12**,
+przedramię 9 → **12**.
 
 Objętość tygodniowa (twarde serie; blok myo liczony jak trzy zwykłe, partie pomocnicze po pół):
 plecy 12,5 · biceps 12 · pośladek 11 · czworogłowe 11 · dwugłowe 10,5 · klatka 9 · triceps 9 ·
