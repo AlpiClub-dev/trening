@@ -215,7 +215,7 @@ var PLAN = {
       {k:"S5", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
         d:"To samo miejsce, nie ruszasz się. Trzy bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki po 3-5 powtórzeń. Te 15 s to odstęp w środku serii, nie przerwa między seriami."}
     ], ex:[
-    {id:"inc_bench", n:"Wyciskanie skos (sztanga)", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:90, w:50, m:["klatka"], sec:["triceps","bark przód"],
+    {id:"inc_bench", n:"Wyciskanie skos (sztanga)", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:150, w:50, m:["klatka"], sec:["triceps","bark przód"],
       why:"Twój wynik z logu: 60 kg × 3. Na 6-8 powtórzeń z RIR 1 wychodzi ~50 kg. Jedyne ćwiczenie dnia z pełną przerwą, bo tu powstaje największy kawałek bodźca.",
       cue:"Łopatki ściągnięte, sztanga schodzi do dołu klatki, łokcie ~45° od tułowia."},
     {id:"pullup", n:"Podciąganie nachwytem (+ ciężar)", g:"S2", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:45, w:12, plus:1, m:["plecy"], sec:["biceps"],
@@ -224,10 +224,10 @@ var PLAN = {
     {id:"leg_raise", n:"Wznosy nóg leżąc", g:"S2", q:1, s:3, r:"10-20", rir:"1", rest:45, w:0, bw:1, m:["brzuch"],
       why:"Leżysz na podłodze pod drążkiem, ręce pod pośladkami, nogi idą w górę i miednica podwija się do żeber. Prosto, zero sprzętu, zero chwytu — dlatego mieści się w przerwie między seriami podciągania. Progresja wariantem: nogi ugięte → proste → hantel między stopami.",
       cue:"Krzyż dociśnięty do podłogi przez cały ruch. W dole nie odkładasz nóg, zatrzymujesz je tuż nad ziemią."},
-    {id:"ohp_mach", n:"Wyciskanie nad głowę na maszynie", g:"S3", s:3, inc:5, r:"8-12", rir:"0-1", rest:60, w:35, test:1, m:["bark przód"], sec:["triceps"],
+    {id:"ohp_mach", n:"Wyciskanie nad głowę na maszynie", g:"S3", s:3, inc:5, r:"8-12", rir:"0-1", rest:105, w:35, test:1, m:["bark przód"], sec:["triceps"],
       why:"Weszło zamiast wyciskania hantli stojąc — i słusznie, bo stojąc limituje Cię stabilizacja tułowia, a nie bark. Na maszynie siedzisz w oparciu, więc możesz iść na RIR 0-1 i faktycznie zmęczyć mięsień, a nie równowagę. Start 35 kg to szacunek (~2 × 18 kg w hantlach), tydzień 1 to kalibracja. Nie ma maszyny? Wyciskanie hantli SIEDZĄC, oparcie prawie pionowo, wszystkie serie pod rząd i dopiero potem kładziesz ławkę płasko do wiosłowania.",
       cue:"Plecy dociśnięte do oparcia, żeber nie wypychasz, uchwyty schodzą do linii brody. Nie blokujesz łokci w górze."},
-    {id:"row_db", n:"Wiosłowanie hantlem", g:"S4", s:3, inc:2, r:"10-12", rir:"1", rest:60, w:18, each:1, m:["plecy"], sec:["biceps"],
+    {id:"row_db", n:"Wiosłowanie hantlem", g:"S4", s:3, inc:2, r:"10-12", rir:"1", rest:105, w:18, each:1, m:["plecy"], sec:["biceps"],
       why:"Kolano i ręka na ławce ustawionej płasko. Z logu: 21 kg × 10 jako ostatnia seria piramidy, więc 18 kg na wszystkie trzy. Robisz obie strony w jednej serii, dlatego zajmuje więcej czasu niż zwykłe ćwiczenie — apka ma to już policzone.",
       cue:"Hantel ciągniesz do biodra, łopatka pracuje, tułów nie rotuje."},
     {id:"lat_raise", n:"Wznosy bokiem", g:"S5", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
@@ -249,10 +249,10 @@ var PLAN = {
       {k:"S3", n:"Wyciąg — brzuch", place:"wyciąg", mode:"solo",
         d:"Ostatnie cztery minuty dnia, jedno stanowisko po drodze do wyjścia."}
     ], ex:[
-    {id:"squat", n:"Przysiad ze sztangą", g:"S1", q:1, s:3, inc:5, r:"5-8", rir:"1-2", rest:105, w:60, test:1, m:["czworogłowe"], sec:["pośladek"],
+    {id:"squat", n:"Przysiad ze sztangą", g:"S1", q:1, s:3, inc:5, r:"5-8", rir:"1-2", rest:165, w:60, test:1, m:["czworogłowe"], sec:["pośladek"],
       why:"Brak danych o nogach, 60 kg to punkt wyjścia. Tydzień 1 jest testem: dobierz ciężar i zapisz go w zakładce Ciężary.",
       cue:"Pełny zakres, kolana wychodzą za palce, tempo w dół kontrolowane."},
-    {id:"rdl", n:"RDL (martwy ciąg na prostych)", g:"S1", q:1, s:3, inc:5, r:"6-10", rir:"2", rest:90, w:60, test:1, m:["dwugłowe","pośladek"], sec:["plecy"],
+    {id:"rdl", n:"RDL (martwy ciąg na prostych)", g:"S1", q:1, s:3, inc:5, r:"6-10", rir:"2", rest:135, w:60, test:1, m:["dwugłowe","pośladek"], sec:["plecy"],
       why:"Twój hinge zamiast klasycznego martwego ciągu: ten sam bodziec na tył uda i pośladek, kilka razy mniej zmęczenia i bez osobnego rozbiegania. Tym samym gryfem, w tym samym stojaku, zaraz po przysiadzie.",
       cue:"Biodra w tył, sztanga sunie po udzie, plecy płaskie. Schodzisz tak nisko, jak pozwala rozciągnięcie."},
     {id:"calf_stand", n:"Łydki ze sztangą (w stojaku)", g:"S1", s:3, inc:5, r:"8-12", rir:"0-1", rest:60, w:60, test:1, m:["łydki"],
@@ -281,10 +281,10 @@ var PLAN = {
       {k:"S4", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
         d:"Ostatnie przejście, do stojaka z hantlami. Trzy bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki."}
     ], ex:[
-    {id:"dips", n:"Dipy z ciężarem", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:90, w:15, plus:1, m:["klatka","triceps"],
+    {id:"dips", n:"Dipy z ciężarem", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:150, w:15, plus:1, m:["klatka","triceps"],
       why:"Z logu: +20 kg × 6. Przy trzech seriach zostaje +15 kg. Klatka dolna i triceps w jednym ruchu, dlatego nie ma tu osobnego wyciskania płaskiego.",
       cue:"Lekki skłon tułowia do przodu, zejście do kąta prostego w łokciu."},
-    {id:"pulldown", n:"Ściąganie drążka szeroko", g:"S2", q:1, s:3, rp:1, inc:2.5, r:"10-12", rir:"0", rest:75, w:55, m:["plecy"], sec:["biceps"],
+    {id:"pulldown", n:"Ściąganie drążka szeroko", g:"S2", q:1, s:3, rp:1, inc:2.5, r:"10-12", rir:"0", rest:105, w:55, m:["plecy"], sec:["biceps"],
       why:"Szacunek z podciągania +12 kg. Druga dawka pleców w tygodniu, w kontrolowanym zakresie zamiast na ciężar. Dwie serie do upadku plus dobitka — na maszynie to bezpieczne.",
       cue:"Drążek do góry klatki, łokcie w dół, bez odchylania się całym ciałem."},
     {id:"row_cable", n:"Wiosłowanie na wyciągu siedząc", g:"S2", s:2, inc:2.5, r:"10-12", rir:"1", rest:75, w:55, m:["plecy"],
@@ -682,8 +682,8 @@ function vPlan(){
     '<button class="btn primary" data-act="startday" data-k="'+nd+'">Start</button></div></div>';
 
   h += '<div class="card"><div class="row"><div style="min-width:0">' +
-    '<div class="exname">Tryb 25 minut</div>' +
-    '<div class="exmeta" style="line-height:1.5">Wypadają całe stanowiska, nie pojedyncze serie — zostaje 2-3 miejsca i najważniejsze ruchy. Włącz, jak dziś masz mało czasu.</div></div>' +
+    '<div class="exname">Tryb krótki <span class="mut s13">· ok. '+Math.round(DAYKEYS.reduce(function(a,k){ return a + estMin(k, true); }, 0)/DAYKEYS.length)+' min na sesję</span></div>' +
+    '<div class="exmeta" style="line-height:1.5">Wypadają całe stanowiska, nie pojedyncze serie — zostają 2-3 miejsca i najważniejsze ruchy. Przerwy zostają pełne: skracamy trening, nie regenerację.</div></div>' +
     '<button class="btn sm '+(q?"aqua":"")+'" data-act="quick">'+(q?"WŁ":"WYŁ")+'</button></div>' +
     '<div class="row" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line)"><div style="min-width:0">' +
     '<div class="exname">Spokojne tempo</div>' +
@@ -893,7 +893,7 @@ function vProgres(){
     var avg = Math.round(s28.reduce(function(a,s){ return a + (s.dur || 0); }, 0) / s28.filter(function(s){ return s.dur; }).length || 0);
     h += '<div class="card"><div class="row"><div><div class="mut s13">Średnia długość sesji, 4 tygodnie</div>' +
       '<div class="big num">'+(avg ? avg + " min" : "—")+'</div></div>' +
-      '<div class="mut s13" style="max-width:50%;text-align:right">Cel to 35-45 min. Jak regularnie wychodzi ponad 55, skracasz przerwy albo włączasz tryb 25 minut.</div></div></div>';
+      '<div class="mut s13" style="max-width:50%;text-align:right">Cel to 35-45 min. Jak regularnie wychodzi dużo ponad 55, włącz tryb krótki — przerw na bojach nie skracaj.</div></div></div>';
   }
 
   h += '<h2>Progres w ćwiczeniu</h2>';
@@ -1149,7 +1149,7 @@ document.addEventListener("click", function(ev){
   if(a === "tab"){ S.tab = b.dataset.k; save(); render(); window.scrollTo(0,0); return; }
   if(a === "closesheet"){ closeSheet(); return; }
 
-  if(a === "quick"){ S.ui.quick = !S.ui.quick; save(); render(); toast(S.ui.quick ? "Tryb 25 minut włączony" : "Pełny plan"); return; }
+  if(a === "quick"){ S.ui.quick = !S.ui.quick; save(); render(); toast(S.ui.quick ? "Tryb krótki włączony" : "Pełny plan"); return; }
   if(a === "day5"){ S.ui.day5 = !S.ui.day5; save(); render(); toast(S.ui.day5 ? "Piąty trening wliczony do tygodnia" : "Tydzień liczony z czterech sesji"); return; }
   if(a === "slow"){ S.ui.slow = !S.ui.slow; save(); render(); toast(S.ui.slow ? "Przerwy dłuższe o 30 s" : "Przerwy standardowe"); return; }
   if(a === "startday"){

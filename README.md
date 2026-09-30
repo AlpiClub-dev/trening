@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 39-42 minuty**, serie robocze na RIR 0-2.
+Nowa: **4 × 40-50 minut**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | 39-42 min |
-| tydzień | ~300-360 min | ~162 min |
+| czas sesji | 75-90 min | 40-50 min |
+| tydzień | ~300-360 min | ~179 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -68,12 +68,16 @@ Osobna sprawa to **15 sekund w bloku myo**: to nie jest przerwa między seriami,
 w środku jednej serii rozciągniętej na dobitki. Seria do upadku → 15 s → 3-5 powtórzeń → 15 s →
 3-5. Dotyczy wyłącznie izolacji, nigdy boju.
 
+Ciężkie boje (skos, dipy, przysiad, RDL, maszyna barkowa, wiosłowanie, ściąganie) mają **2,5-3,5 min**
+i to nie jest miejsce na oszczędzanie czasu — przy krótszej przerwie druga i trzecia seria tracą
+powtórzenia, czyli cały trening ma mniej twardej roboty. Czas oszczędzamy na parach i myo-repsach.
+
 Jeśli i tak jest za krótko: przełącznik **Spokojne tempo** na karcie Planu dokłada 30 s do każdej
 przerwy (myo-reps 20 s zamiast 15).
 
 ## Plan
 
-**Poniedziałek — Góra A (~42 min), 4 stanowiska: ławka skośna → drążek → maszyna barkowa → hantle**
+**Poniedziałek — Góra A (~50 min), 4 stanowiska: ławka skośna → drążek → maszyna barkowa → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
@@ -83,7 +87,7 @@ przerwy (myo-reps 20 s zamiast 15).
 | hantle + ławka | solo | Wiosłowanie hantlem 3×10-12 (na stronę) |
 | to samo miejsce | myo-reps | Wznosy bokiem · Uginanie z obrotem · Rozpiętki tyłu barku |
 
-**Wtorek — Dół A (~39 min), 3 stanowiska: stojak → maszyny → wyciąg**
+**Wtorek — Dół A (~44 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
@@ -91,7 +95,7 @@ przerwy (myo-reps 20 s zamiast 15).
 | maszyny na nogi | na zmianę | Prostowanie 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~41 min), 4 stanowiska: poręcze → wyciąg → maszyna motylek → hantle**
+**Czwartek — Góra B (~45 min), 4 stanowiska: poręcze → wyciąg → maszyna motylek → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
@@ -136,8 +140,9 @@ Apka pokazuje tę listę na karcie Planu i przelicza ją też dla trybu 25 minut
 
 ## Funkcje
 
-- **Tryb 25 minut** — wypadają całe stanowiska, nie pojedyncze serie: zostają 2-3 miejsca
-  i najważniejsze ruchy (24-26 min). Na dni, w których wybór jest między krótkim treningiem a żadnym.
+- **Tryb krótki** — wypadają całe stanowiska, nie pojedyncze serie: zostają 2-3 miejsca
+  i najważniejsze ruchy (~28 min). Przerwy zostają pełne. Na dni, w których wybór jest między
+  krótkim treningiem a żadnym.
 - **Trasa na dziś** — lista stanowisk w kolejności, pokazywana na starcie sesji.
 - **Piąty dzień opcjonalny** — Góra C pod listą czterech, z przełącznikiem, czy liczyć go do
   tygodniowej objętości.
