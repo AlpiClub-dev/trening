@@ -9,12 +9,12 @@ treningowy**. Liczenie jedzenia, wody i pomiarów wyleciało.
 ## Co się zmieniło w samym planie
 
 Stara wersja: 4 × 75 minut w planie, w praktyce schodziło po półtorej godziny.
-Nowa: **4 × 40-50 minut**, serie robocze na RIR 0-2.
+Nowa: **4 × 40-52 minuty**, serie robocze na RIR 0-2.
 
 | | stare | nowe |
 |---|---|---|
-| czas sesji | 75-90 min | 40-50 min |
-| tydzień | ~300-360 min | ~179 min |
+| czas sesji | 75-90 min | 40-52 min |
+| tydzień | ~300-360 min | ~186 min |
 | martwy ciąg klasyczny | tak | nie, został RDL |
 | przerwy | pojedynczo, 2,5-3 min stania | bloki na jednym stanowisku |
 | chodzenie po siłowni | ćwiczenie = nowe miejsce | 3-4 przejścia na cały trening |
@@ -77,65 +77,65 @@ przerwy (myo-reps 20 s zamiast 15).
 
 ## Plan
 
-**Poniedziałek — Góra A (~47 min), 4 stanowiska: ławka skośna → drążek → maszyna barkowa → hantle**
+**Poniedziałek — Góra A (~50 min) · ławka skośna → drążek → maszyna barkowa → hantle → wyciąg**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | ławka skośna ze sztangą | solo | Wyciskanie skos 3×6-8 RIR1 |
 | drążek + podłoga pod nim | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg leżąc 3×10-20 |
-| maszyna barkowa | solo | Wyciskanie nad głowę na maszynie 3×8-12 |
-| hantle | solo | Wiosłowanie hantlem 3×10-12 (ręka o stojak, na stronę) |
-| to samo miejsce | myo-reps | Wznosy bokiem · Uginanie z obrotem |
+| maszyna barkowa | solo | Wyciskanie nad głowę 3×8-12 |
+| hantle | solo | Wiosłowanie hantlem 3×10-12 (na stronę) |
+| to samo miejsce | myo-reps | Wznosy bokiem · Uginanie z obrotem (Zottman) |
+| wyciąg po drodze do wyjścia | myo-reps | Prostowanie tricepsu (albo pompki diamentowe) |
 
-**Wtorek — Dół A (~44 min), 3 stanowiska: stojak → maszyny → wyciąg**
+**Wtorek — Dół A (~44 min) · stojak → maszyny → wyciąg**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| stojak ze sztangą | po kolei | Przysiad 3×5-8 · RDL 3×6-10 · Łydki ze sztangą 3×8-12 (jeden gryf, 60 kg) |
+| stojak ze sztangą | po kolei | Przysiad 3×5-8 · RDL 3×6-10 · Łydki ze sztangą 3×8-12 |
 | maszyny na nogi | na zmianę | Prostowanie 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~50 min), 4 stanowiska: ławka płaska → wyciąg → motylek → hantle**
+**Czwartek — Góra B (~52 min) · ławka płaska → poręcze → wyciąg → motylek → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| ławka płaska ze sztangą | solo | Wyciskanie płaskie 3×6-8 RIR1 (dipy jako zamiennik) |
+| ławka płaska ze sztangą | solo | Wyciskanie płaskie 3×6-8 RIR1 |
+| poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
 | wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 |
-| ten sam wyciąg | myo-reps | Prostowanie tricepsu (prosty drążek) |
-| maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 3×12-20 (ta sama maszyna) |
-| hantle | myo-reps | Uginanie na skosie · Wznosy bokiem · Reverse curl |
+| maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 3×12-20 |
+| hantle | myo-reps | Uginanie na skosie · Wznosy bokiem |
 
-**Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
+**Piątek — Dół B (~40 min) · suwnica → hantle → maszyna → mata**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | suwnica | na zmianę | Wypychanie 2×10-15 + dobitka · Łydki na suwnicy 2×10-15 + dobitka |
-| hantle + ławka | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 |
+| hantle + podparcie | po kolei | Bułgarskie 2×8-12 na nogę · Hip thrust 3×8-12 |
 | to samo miejsce | myo-reps | Wznosy bokiem · Uginanie nadgarstków |
 | maszyna | solo | Uginanie nóg siedząc 2×10-15 + dobitka |
 | mata | solo | Rollout 3×8-12 |
 
-**Sobota — Dobitka (~25 min), dzień DODATKOWY, 3 stanowiska: motylek → łydki → hantle**
+**Sobota — Dobitka (~25 min), DODATKOWA · motylek → łydki → hantle**
 
-Plan stoi na czterech treningach. Piąty to same izolacje — dokłada objętość partiom, które w planie
-podstawowym mają najmniej, i nie męczy niczego na tyle, żeby zepsuć poniedziałek albo czwartek.
-W apce siedzi pod czwórką, oznaczony jako dodatkowy, i wlicza się do tygodnia dopiero po
-przełączeniu „Robię piąty trening".
+Same izolacje, nic nie męczy na tyle, żeby zepsuć poniedziałek czy czwartek. W apce pod czwórką,
+wlicza się do tygodnia dopiero po przełączeniu „Robię piąty trening".
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 3×12-20 |
-| łydki (maszyna albo suwnica) | solo | Łydki 2×10-15 + dobitka |
-| hantle | myo-reps | Wznosy bokiem · Uginanie z obrotem |
-
-Z piątym dniem: klatka 9 → **12**, bark tył 5 → **8**, łydki 6 → **9**, bark bok 9 → **12**,
-przedramię 9 → **12**.
+| łydki | solo | Łydki 2×10-15 + dobitka |
+| hantle | myo-reps | Wznosy bokiem · Reverse curl |
 
 Objętość tygodniowa (twarde serie; blok myo liczony jak trzy zwykłe, partie pomocnicze po pół):
-plecy 12,5 · biceps 12 · pośladek 11 · czworogłowe 11 · dwugłowe 10,5 · klatka 9 · triceps 9 ·
-przedramię 9 · brzuch 9 · **bark bok 9** · łydki 6 · bark tył 5 · bark przód 4,5.
-Bok barku leci trzy razy w tygodniu (poniedziałek, czwartek, piątek), bo to mała partia z najlepszym
-zwrotem wizualnym i szybką regeneracją.
+**klatka 12** · plecy 12,5 · czworogłowe 11 · pośladek 11 · dwugłowe 10,5 · biceps 10,5 ·
+triceps 10,5 · bark bok 9 · brzuch 9 · bark przód 6 · łydki 6 · przedramię 6 · bark tył 5.
+
+Z Dobitką: klatka 15 · bark bok 12 · biceps 12 · przedramię 9 · bark tył 8 · łydki 9.
+
+Priorytety są ustawione pod sylwetkę: klatka i plecy najwyżej, bok barku trzy razy w tygodniu
+(szerokość robi większe wrażenie niż obwód), brzuch bez ciężkich skłonów bocznych, żeby talia
+została wąska.
 Apka pokazuje tę listę na karcie Planu i przelicza ją też dla trybu 25 minut.
 
 ## Zamienniki

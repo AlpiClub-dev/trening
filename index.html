@@ -225,7 +225,7 @@ svg.spark{width:100%;height:130px;display:block}
    Ciężary startowe (pole w) to Twoje wyniki z poprzedniej apki.
    ========================================================================= */
 var PLAN = {
-  upperA:{name:"Góra A", short:"Góra", tag:"A", day:"poniedziałek", kind:"upper", focus:"klatka skos · plecy · bark · przedramiona",
+  upperA:{name:"Góra A", short:"Góra", tag:"A", day:"poniedziałek", kind:"upper", focus:"klatka skos · plecy · bark · triceps",
     st:[
       {k:"S1", n:"Ławka skośna ze sztangą", place:"ławka skośna", mode:"solo",
         d:"Zajmujesz ławkę i nie oddajesz jej do końca bloku. Rozbiegówki i serie robocze z jednego gryfu."},
@@ -235,6 +235,8 @@ var PLAN = {
         d:"Siadasz, ustawiasz siedzisko i wyciskasz. Żadnej stabilizacji, żadnego balansowania — cały wysiłek idzie w bark, nie w trzymanie się w pionie."},
       {k:"S4", n:"Hantle i ławka — wiosłowanie", place:"hantle", mode:"solo",
         d:"Ręka oparta o stojak, maszynę albo brzeg ławki skośnej — płaska ławka nie jest do niczego potrzebna. Zwykłe serie robocze z pełną przerwą, obie strony w jednej serii."},
+      {k:"S6", n:"Wyciąg — triceps (albo mata)", place:"wyciąg", mode:"myo",
+        d:"Ostatnie dwie i pół minuty, po drodze do wyjścia. Prosty drążek na wyciągu — albo pompki diamentowe na macie, jeśli nie chcesz nadkładać drogi (zamiennik na rewersie)."},
       {k:"S5", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
         d:"To samo miejsce, nie ruszasz się. Trzy bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki po 3-5 powtórzeń. Te 15 s to odstęp w środku serii, nie przerwa między seriami."}
     ], ex:[
@@ -259,6 +261,9 @@ var PLAN = {
     {id:"curl_twist", n:"Uginanie z obrotem (Zottman)", g:"S5", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
       why:"Twój sposób: w górę podchwytem normalnie, w górze obracasz nadgarstki, w dół młotkowo albo nachwytem, na dole obrót z powrotem. To stary wariant zwany uginaniem Zottmana — faza w górę robi biceps, faza w dół w obróconym chwycie dokłada ramienno-promieniowy i prostowniki przedramienia. Stoi w środku bloku, żeby rozdzielić dwa ćwiczenia na bark.",
       cue:"Obrót robisz w górze i na dole, nigdy w trakcie ruchu. W dół wolniej niż w górę, bo tam pracuje przedramię."},
+    {id:"tri_cable", n:"Prostowanie tricepsu na wyciągu", g:"S6", myo:1, s:4, inc:2.5, r:"10-15", rir:"0", rest:15, w:20, m:["triceps"],
+      why:"Z logu: 25 kg × 8 → 20 kg na 10-15. Triceps to dwie trzecie obwodu ramienia, więc dostaje bezpośrednią robotę, a nie tylko odpadki z wyciskań. W poniedziałek, bo czwartek ma już dwa ciężkie wyciskania i dipy.",
+      cue:"Łokcie przy tułowiu i nieruchome, w górze nie zwalniasz, powrót kontrolowany."}
   ]},
   lowerA:{name:"Dół A", short:"Dół", tag:"A", day:"wtorek", kind:"lower", focus:"przysiad · RDL · łydki · brzuch",
     st:[
@@ -288,14 +293,14 @@ var PLAN = {
       why:"Jedyne ćwiczenie brzucha, w którym dokładasz kilogramy. Brzuch rośnie od obciążenia tak samo jak reszta.",
       cue:"Zwijasz kręgosłup, biodra stoją w miejscu."}
   ]},
-  upperB:{name:"Góra B", short:"Góra", tag:"B", day:"czwartek", kind:"upper", focus:"klatka płasko · plecy · bark · ramiona",
+  upperB:{name:"Góra B", short:"Góra", tag:"B", day:"czwartek", kind:"upper", focus:"klatka płasko + dipy · plecy · tył barku · biceps",
     st:[
       {k:"S1", n:"Ławka płaska ze sztangą", place:"ławka płaska", mode:"solo",
         d:"Zajmujesz ławkę i nie oddajesz jej do końca bloku. Najcięższy ruch dnia idzie pierwszy, z pełną przerwą."},
+      {k:"S1B", n:"Poręcze", place:"poręcze", mode:"solo",
+        d:"Drugie wyciskanie dnia, tym razem własnym ciężarem i w większym zakresie. Przerwa krótsza niż przy sztandze, bo to już nie jest najcięższy bój."},
       {k:"S2", n:"Wyciąg górny i dolny", place:"wyciąg", mode:"seq",
         d:"Ściąganie, wiosłowanie siedząc i face pull — wszystko z tego samego wyciągu, zmieniasz tylko uchwyt i wysokość bloczka. Po kolei."},
-      {k:"S2B", n:"Wyciąg — triceps", place:"wyciąg", mode:"myo",
-        d:"Dalej ten sam wyciąg, tylko prosty drążek zamiast uchwytu do ściągania. Jeden blok myo: seria do upadku, 15 s, trzy dobitki."},
       {k:"S3", n:"Maszyna motylek", place:"maszyna motylek", mode:"alt",
         d:"Rozpiętki normalne i odwrotne na TEJ SAMEJ maszynie: klatka plecami do oparcia, tył barku przodem do oparcia. Przekładasz uchwyty, obracasz się i tyle — na zmianę, bez chodzenia."},
       {k:"S4", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
@@ -304,6 +309,9 @@ var PLAN = {
     {id:"bench", n:"Wyciskanie na ławce płaskiej (sztanga)", g:"S1", q:1, s:3, inc:2.5, r:"6-8", rir:"1", rest:150, w:55, test:1, m:["klatka"], sec:["triceps","bark przód"],
       why:"Płaskie wyciskanie, którego wcześniej w planie nie było — i słusznie Cię to wkurzało, bo to najprostszy sposób mierzenia siły górnej połowy ciała i najwygodniejsze ćwiczenie do progresji o 2,5 kg. Szacunek z logu: skos 60 kg × 3, płaskie jest zwykle 5-10% mocniejsze, więc 55 kg na 6-8 z RIR 1. Tydzień 1 to kalibracja. Dipy nie zniknęły — siedzą na rewersie kafelka jako zamiennik, z Twoim startem +15 kg.",
       cue:"Łopatki ściągnięte i wbite w ławkę, stopy mocno na podłodze, sztanga schodzi do dołu klatki, łokcie ~45° od tułowia. Nie odbijasz od klatki."},
+    {id:"dips", n:"Dipy z ciężarem", g:"S1B", s:3, inc:2.5, r:"6-8", rir:"1", rest:120, w:15, plus:1, m:["klatka","triceps"],
+      why:"Z logu: +20 kg × 6, więc start +15 kg przy trzech seriach. Zostają w planie razem z płaską, bo to dwa różne kąty na tę samą partię: sztanga daje ciężar i prostą progresję, dipy większy zakres i dolną klatkę. Klatka dostaje przez to 12 serii tygodniowo, czyli tyle, ile potrzeba, żeby urosła.",
+      cue:"Lekki skłon tułowia do przodu, zejście do kąta prostego w łokciu, ciężar w pasie albo w plecaku."},
     {id:"pulldown", n:"Ściąganie drążka szeroko", g:"S2", q:1, s:3, rp:1, inc:2.5, r:"10-12", rir:"0", rest:105, w:55, m:["plecy"], sec:["biceps"],
       why:"Szacunek z podciągania +12 kg. Druga dawka pleców w tygodniu, w kontrolowanym zakresie zamiast na ciężar. Dwie serie do upadku plus dobitka — na maszynie to bezpieczne.",
       cue:"Drążek do góry klatki, łokcie w dół, bez odchylania się całym ciałem."},
@@ -319,18 +327,12 @@ var PLAN = {
     {id:"face_pull", n:"Face pull", g:"S2", s:2, inc:2.5, r:"15-20", rir:"1", rest:45, w:12.5, m:["bark tył"],
       why:"Wraca na swoje miejsce. Z logu: 15 kg × 12 → 12,5 kg na wyższy zakres. Tył barku plus zdrowie stawu przy takiej liczbie wyciskań — a robisz go na tym samym wyciągu, przy którym już stoisz, tylko bloczek idzie w górę.",
       cue:"Linka do czoła, na końcu ruchu rotacja zewnętrzna, łokcie wysoko."},
-    {id:"tri_cable", n:"Prostowanie tricepsu na wyciągu", g:"S2B", myo:1, s:4, inc:2.5, r:"10-15", rir:"0", rest:15, w:20, m:["triceps"],
-      why:"Z logu: 25 kg × 8 → 20 kg na 10-15. Całe bezpośrednie obciążenie tricepsu w tygodniu siedzi tutaj, na tym samym wyciągu, przy którym już stoisz — wystarczy prosty drążek zamiast uchwytu do ściągania. W poniedziałek triceps ma wolne.",
-      cue:"Łokcie przy tułowiu i nieruchome, w górze nie zwalniasz, powrót kontrolowany."},
     {id:"curl_incline", n:"Uginanie bicepsa na skosie", g:"S4", q:1, myo:1, s:4, inc:2, r:"8-12", rir:"0-1", rest:15, w:8, m:["biceps"],
       why:"Biceps w rozciągnięciu, wariant przyjazny dla łokcia. Idzie PIERWSZY w bloku, na świeże ramię.",
       cue:"Ramiona zostają za tułowiem, nie kołyszesz hantlami."},
     {id:"lat_raise_b", n:"Wznosy bokiem", g:"S4", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Bok barku dostaje bodziec trzy razy w tygodniu, bo to mała partia, która znosi dużo objętości. Stoi w środku bloku, żeby rozdzielić dwa uginania — po bicepsie ramię ma dwie i pół minuty na oddech.",
-      cue:"Ten sam ruch co w Górze A. Jak wchodzi 15 powtórzeń w serii aktywacyjnej, dokładasz kilo."},
-    {id:"rev_curl", n:"Uginanie podchwytem odwrotnym (reverse curl)", g:"S4", myo:1, s:4, inc:2, r:"10-15", rir:"0", rest:15, w:15, m:["przedramię"], sec:["biceps"],
-      why:"Prostowniki i ramienno-promieniowy. Idzie na końcu i po przerwie na wznosy, bo zaraz po uginaniu na skosie ramię było już zmęczone i ciężar leciał w dół.",
-      cue:"Chwyt nachwytem, nadgarstki sztywne i lekko w górę. Ciężar dużo mniejszy niż w zwykłym uginaniu, to normalne."}
+      cue:"Ten sam ruch co w Górze A. Jak wchodzi 15 powtórzeń w serii aktywacyjnej, dokładasz kilo."}
   ]},
   lowerB:{name:"Dół B", short:"Dół", tag:"B", day:"piątek", kind:"lower", focus:"suwnica · pośladki · dwugłowe · bark",
     st:[
@@ -370,7 +372,7 @@ var PLAN = {
       why:"Brzuch w pracy antywyprostnej, czyli w rozciągnięciu — tego nie daje żadne spięcie. Progresja wariantem: z kolan → z kolan dalej → ze stóp.",
       cue:"Miednica podwinięta przez cały ruch, krzyż nie opada. Wracasz brzuchem, nie rękami."}
   ]},
-  extra:{name:"Dobitka", short:"Extra", tag:"+", day:"sobota", kind:"upper", opt:1, focus:"klatka · tył barku · łydki · ramiona — dzień dodatkowy",
+  extra:{name:"Dobitka", short:"Extra", tag:"+", day:"sobota", kind:"upper", opt:1, focus:"klatka · tył barku · łydki · przedramiona — dzień dodatkowy",
     st:[
       {k:"S1", n:"Maszyna motylek", place:"maszyna motylek", mode:"alt",
         d:"Rozpiętki normalne i odwrotne na tej samej maszynie, na zmianę. Klatka i tył barku to dwie partie, które w planie podstawowym mają najmniej — tu dostają po trzy serie i nic więcej się nie dzieje."},
@@ -391,9 +393,9 @@ var PLAN = {
     {id:"lat_raise_x", n:"Wznosy bokiem", g:"S3", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Czwarty raz w tygodniu. Bok barku znosi taką częstotliwość i to on daje szerokość, czyli rzecz, która przy 185 cm robi największą różnicę.",
       cue:"Prowadzisz łokciem, nie dłonią. Lekko, bez zamachu."},
-    {id:"curl_twist_x", n:"Uginanie z obrotem (Zottman)", g:"S3", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
-      why:"Ten sam ruch co w poniedziałek: w górę podchwytem, w górze obrót, w dół młotkowo. Biceps i przedramię jednym ćwiczeniem, na koniec dnia, w którym nic Cię wcześniej nie zmęczyło.",
-      cue:"Obrót w górze i na dole, nigdy w trakcie ruchu. W dół wolniej niż w górę."}
+    {id:"rev_curl", n:"Uginanie podchwytem odwrotnym (reverse curl)", g:"S3", q:1, myo:1, s:4, inc:2, r:"10-15", rir:"0", rest:15, w:15, m:["przedramię"], sec:["biceps"],
+      why:"Prostowniki przedramienia i ramienno-promieniowy. Wylądował tutaj, bo w czwartek po dwóch wyciskaniach i dipach ramię jest już zmęczone, a w sobotę nic go wcześniej nie rusza.",
+      cue:"Chwyt nachwytem, nadgarstki sztywne i lekko w górę. Ciężar dużo mniejszy niż w zwykłym uginaniu, to normalne."}
   ]}
 };
 var DAYKEYS = ["upperA","lowerA","upperB","lowerB"];
@@ -426,9 +428,12 @@ var ALT = {
   curl_twist:{n:"Uginanie młotkowe", w:10, inc:2,
     why:"Prostsza wersja bez obracania nadgarstka. Mniej dla prostowników przedramienia, ale ramienno-promieniowy dostaje swoje.",
     cue:"Chwyt neutralny przez cały ruch, bez odchylania tułowia."},
-  bench:{n:"Dipy z ciężarem", w:15, inc:2.5, plus:1,
-    why:"Twój stary bój: z logu +20 kg × 6, więc start +15 kg przy trzech seriach. Klatka dolna i triceps w jednym ruchu, większy zakres niż sztanga. Bierz, gdy ławka jest zajęta albo po prostu masz ochotę — to równorzędne ćwiczenie, nie gorsze.",
-    cue:"Lekki skłon tułowia do przodu, zejście do kąta prostego w łokciu, ciężar w pasie albo w plecaku."},
+  bench:{n:"Wyciskanie hantli na ławce płaskiej", w:22, inc:2, test:1,
+    why:"Gdy ławka ze sztangą jest zajęta. Hantle schodzą niżej niż gryf, więc klatka pracuje w większym zakresie, kosztem ciężaru.",
+    cue:"Hantle do linii sutków, łokcie ~45°, w górze nie stukasz nimi o siebie."},
+  dips:{n:"Pompki na poręczach bez ciężaru", w:0, bw:1, plus:0,
+    why:"Gdy nie masz pasa ani plecaka. Robisz na masę ciała i progresujesz powtórzeniami aż do górnego zakresu, potem dokładasz ciężar.",
+    cue:"Lekki skłon do przodu, zejście do kąta prostego w łokciu."},
   pulldown:{n:"Podciąganie podchwytem", w:0, plus:1, inc:2.5,
     why:"Gdy wyciąg górny jest zajęty. Podchwyt daje inny kąt najszerszego i więcej bicepsa niż nachwyt z poniedziałku.",
     cue:"Pełny zwis na dole, klatka do drążka, bez wymachu."},
@@ -452,9 +457,6 @@ var ALT = {
     cue:"Łokcie przy tułowiu i nieruchome, bez bujania."},
   lat_raise_b:{n:"Wznosy bokiem na wyciągu (jednorącz)", w:7.5, inc:2.5,
     why:"To samo co w poniedziałek: stałe napięcie w całym zakresie.", cue:"Linka z dolnego bloczka, zza pleców, prowadzisz łokciem."},
-  rev_curl:{n:"Uginanie nadgarstków nachwytem", w:10, inc:2.5,
-    why:"Gdy łokieć marudzi przy reverse curlu. Bierze te same prostowniki przedramienia, ale bez obciążania stawu łokciowego.",
-    cue:"Przedramiona na udach, grzbiety dłoni do góry, ruch tylko w nadgarstku."},
   squat:{n:"Przysiad w suwnicy Smitha", w:50, inc:5, test:1,
     why:"Gdy stojak zajęty albo nie masz asekuracji. Tor prowadzony, więc można zejść niżej i bliżej upadku bez ryzyka.",
     cue:"Stopy lekko przed sobą, pełny zakres, zabezpieczenia ustawione."},
@@ -501,8 +503,9 @@ var ALT = {
     why:"Stałe napięcie w całym zakresie.", cue:"Linka z dolnego bloczka, zza pleców."},
   lat_raise_x:{n:"Wznosy bokiem na wyciągu (jednorącz)", w:7.5, inc:2.5,
     why:"Stałe napięcie w całym zakresie.", cue:"Linka z dolnego bloczka, zza pleców."},
-  curl_twist_x:{n:"Uginanie młotkowe", w:10, inc:2,
-    why:"Prostsza wersja bez obracania nadgarstka.", cue:"Chwyt neutralny przez cały ruch."}
+  rev_curl:{n:"Uginanie nadgarstków nachwytem", w:10, inc:2.5,
+    why:"Gdy łokieć marudzi przy reverse curlu. Te same prostowniki przedramienia, bez obciążania stawu łokciowego.",
+    cue:"Przedramiona na udach, grzbiety dłoni do góry, ruch tylko w nadgarstku."}
 };
 ALLDAYS.forEach(function(k){ PLAN[k].ex.forEach(function(e){ if(ALT[e.id]) e.alt = ALT[e.id]; }); });
 
