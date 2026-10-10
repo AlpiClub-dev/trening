@@ -77,15 +77,15 @@ przerwy (myo-reps 20 s zamiast 15).
 
 ## Plan
 
-**Poniedziałek — Góra A (~50 min), 4 stanowiska: ławka skośna → drążek → maszyna barkowa → hantle**
+**Poniedziałek — Góra A (~47 min), 4 stanowiska: ławka skośna → drążek → maszyna barkowa → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | ławka skośna ze sztangą | solo | Wyciskanie skos 3×6-8 RIR1 |
 | drążek + podłoga pod nim | na zmianę | Podciąganie +ciężar 3×6-8 · Wznosy nóg leżąc 3×10-20 |
 | maszyna barkowa | solo | Wyciskanie nad głowę na maszynie 3×8-12 |
-| hantle + ławka | solo | Wiosłowanie hantlem 3×10-12 (na stronę) |
-| to samo miejsce | myo-reps | Wznosy bokiem · Uginanie z obrotem · Rozpiętki tyłu barku |
+| hantle | solo | Wiosłowanie hantlem 3×10-12 (ręka o stojak, na stronę) |
+| to samo miejsce | myo-reps | Wznosy bokiem · Uginanie z obrotem |
 
 **Wtorek — Dół A (~44 min), 3 stanowiska: stojak → maszyny → wyciąg**
 
@@ -95,14 +95,14 @@ przerwy (myo-reps 20 s zamiast 15).
 | maszyny na nogi | na zmianę | Prostowanie 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~45 min), 4 stanowiska: poręcze → wyciąg → maszyna motylek → hantle**
+**Czwartek — Góra B (~50 min), 4 stanowiska: poręcze → wyciąg → maszyna motylek → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
 | poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
-| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 |
+| wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 |
 | ten sam wyciąg | myo-reps | Prostowanie tricepsu (prosty drążek) |
-| maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 2×12-20 (ta sama maszyna) |
+| maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 3×12-20 (ta sama maszyna) |
 | hantle | myo-reps | Uginanie na skosie · Wznosy bokiem · Reverse curl |
 
 **Piątek — Dół B (~40 min), 4 stanowiska: suwnica → hantle → maszyna → mata**
@@ -138,12 +138,48 @@ Bok barku leci trzy razy w tygodniu (poniedziałek, czwartek, piątek), bo to ma
 zwrotem wizualnym i szybką regeneracją.
 Apka pokazuje tę listę na karcie Planu i przelicza ją też dla trybu 25 minut.
 
+## Zamienniki
+
+Każde ćwiczenie zależne od sprzętu ma **drugi wariant na rewersie kafelka**. Stukasz strzałki przy
+„?", kafelek obraca się i pokazuje zamiennik: nazwę, po co jest i technikę. Przycisk przełącza go
+na stałe.
+
+Zamiennik ma **własny slot ciężaru** (klucz `id@alt`), więc progresja wariantu podstawowego zostaje
+nietknięta, nawet jeśli skaczesz między siłowniami. Historia zapisuje, którego wariantu użyłeś.
+
+Plan nie zakłada **żadnej płaskiej ławki**: wiosłowanie opierasz ręką o stojak albo maszynę,
+bułgarskie i hip thrust o ławkę skośną, skrzynię albo stopień, nadgarstki robisz siedząc
+z przedramionami na udach.
+
+Przykłady: maszyna barkowa → hantle siedząc · wiosłowanie hantlem → oburącz w opadzie ·
+motylek → rozpiętki na wyciągu · odwrotne rozpiętki → odwodzenie na wyciągu · face pull → guma ·
+triceps na wyciągu → pompki diamentowe · przysiad → Smith · RDL → hantle · suwnica → hack ·
+hip thrust → glute bridge z podłogi · rollout → deska z obciążeniem.
+
+## Rozciąganie
+
+- **Po treningu góry (5 min)** — zwijany blok na końcu Góry A i Góry B, z odhaczaniem.
+- **Całe ciało (14 min)** — osobna pozycja na ekranie Planu, dwanaście pozycji od karku po łydki.
+  Zapisuje się do kalendarza jako osobny typ wpisu.
+
+Rozciąganie nie dokłada nic do hipertrofii. Jest tu dla mobilności i samopoczucia.
+
+## Rok
+
+Czwarta zakładka: **371 kwadracików** (53 tygodnie × 7 dni), jeden na dzień, kolor według tego, co
+było — góra, dół, dobitka, samo rozciąganie. Pod spodem: treningi w tym roku, średnia na tydzień,
+seria tygodni z min. trzema treningami, najdłuższa przerwa. Stuknięcie kwadratu otwiera ten trening.
+
 ## Funkcje
 
 - **Tryb krótki** — wypadają całe stanowiska, nie pojedyncze serie: zostają 2-3 miejsca
   i najważniejsze ruchy (~28 min). Przerwy zostają pełne. Na dni, w których wybór jest między
   krótkim treningiem a żadnym.
 - **Trasa na dziś** — lista stanowisk w kolejności, pokazywana na starcie sesji.
+- **Licznik dni** przy każdym dniu planu: „4 dni temu · gotowy" (zielone), „2 dni temu · jeszcze
+  świeże" (szare), „12 dni temu · zaległe" (czerwone). Ta sama sesja optymalnie co 7 dni.
+- **Rekordy** — gdy seria bije najlepszy szacowany maks w ćwiczeniu z całej historii, apka mówi
+  o tym po treningu i oznacza gwiazdką w szczegółach sesji.
 - **Piąty dzień opcjonalny** — Góra C pod listą czterech, z przełącznikiem, czy liczyć go do
   tygodniowej objętości.
 - **Spokojne tempo** — +30 s do każdej przerwy, myo-reps 20 s zamiast 15.

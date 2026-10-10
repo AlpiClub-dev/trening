@@ -52,6 +52,11 @@ h3{font-size:18px;margin:0 0 4px;letter-spacing:-.01em}
 .card.tap{cursor:pointer}
 .card.tap:active{background:var(--surface2)}
 .card.alert{border-color:var(--iron);background:rgba(255,176,32,.06)}
+.card.back{border-color:var(--myo);background:rgba(71,180,198,.05)}
+.flipout{animation:flipout .15s ease-in forwards}
+.flipin{animation:flipin .24s ease-out}
+@keyframes flipout{from{transform:perspective(900px) rotateY(0)}to{transform:perspective(900px) rotateY(88deg)}}
+@keyframes flipin{from{transform:perspective(900px) rotateY(-88deg)}to{transform:perspective(900px) rotateY(0)}}
 .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .big{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
 .mut{color:var(--mut)}
@@ -81,7 +86,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--iron);outline-of
 select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);background-position:calc(100% - 18px) 21px,calc(100% - 13px) 21px;background-size:5px 5px;background-repeat:no-repeat}
 label.f{display:block;font-size:13px;color:var(--mut);margin:0 0 5px}
 nav{
-  position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(3,1fr);
+  position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);
   background:rgba(16,20,25,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);
 }
@@ -162,6 +167,24 @@ nav button.on{color:var(--iron)}
 .tickbox.on{background:var(--iron);border-color:var(--iron)}
 .tickbox.on svg{stroke:#17140C}
 .dot{width:8px;height:8px;border-radius:50%;flex:0 0 8px;margin-right:9px}
+.cal{display:flex;gap:2px;width:100%}
+.calcol{display:flex;flex-direction:column;gap:2px;flex:1 1 0;min-width:0}
+.cal i{display:block;width:100%;aspect-ratio:1;border-radius:1.5px;background:var(--surface2)}
+.cal i.on.upper{background:var(--iron)}
+.cal i.on.lower{background:#5B8DEF}
+.cal i.on.extra{background:var(--myo)}
+.cal i.on.str{background:#4a5560}
+.cal i.today{box-shadow:0 0 0 1.5px var(--txt)}
+.cal i.future{opacity:.35}
+.monrow{display:flex;gap:2px;width:100%;margin-bottom:5px}
+.monrow span{flex:1 1 0;min-width:0;font-size:8.5px;color:var(--mut);white-space:nowrap}
+.callegend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--mut)}
+.callegend span{display:flex;align-items:center;gap:5px}
+.callegend i{width:9px;height:9px;border-radius:2px;display:block;background:var(--surface2)}
+.callegend i.upper{background:var(--iron)}
+.callegend i.lower{background:#5B8DEF}
+.callegend i.extra{background:var(--myo)}
+.callegend i.str{background:#4a5560}
 /* zwijane */
 .fold .foldhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .fold .chev svg{width:19px;height:19px;stroke:var(--mut);fill:none;stroke-width:2;transition:transform .15s}
@@ -211,7 +234,7 @@ var PLAN = {
       {k:"S3", n:"Maszyna do wyciskania barków", place:"maszyna barkowa", mode:"solo",
         d:"Siadasz, ustawiasz siedzisko i wyciskasz. Żadnej stabilizacji, żadnego balansowania — cały wysiłek idzie w bark, nie w trzymanie się w pionie."},
       {k:"S4", n:"Hantle i ławka — wiosłowanie", place:"hantle", mode:"solo",
-        d:"Kolano i ręka na ławce ustawionej płasko. Zwykłe serie robocze z pełną przerwą, obie strony w jednej serii."},
+        d:"Ręka oparta o stojak, maszynę albo brzeg ławki skośnej — płaska ławka nie jest do niczego potrzebna. Zwykłe serie robocze z pełną przerwą, obie strony w jednej serii."},
       {k:"S5", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
         d:"To samo miejsce, nie ruszasz się. Trzy bloki po dwie i pół minuty: seria do upadku, 15 s, trzy dobitki po 3-5 powtórzeń. Te 15 s to odstęp w środku serii, nie przerwa między seriami."}
     ], ex:[
@@ -225,10 +248,10 @@ var PLAN = {
       why:"Leżysz na podłodze pod drążkiem, ręce pod pośladkami, nogi idą w górę i miednica podwija się do żeber. Prosto, zero sprzętu, zero chwytu — dlatego mieści się w przerwie między seriami podciągania. Progresja wariantem: nogi ugięte → proste → hantel między stopami.",
       cue:"Krzyż dociśnięty do podłogi przez cały ruch. W dole nie odkładasz nóg, zatrzymujesz je tuż nad ziemią."},
     {id:"ohp_mach", n:"Wyciskanie nad głowę na maszynie", g:"S3", s:3, inc:5, r:"8-12", rir:"0-1", rest:105, w:35, test:1, m:["bark przód"], sec:["triceps"],
-      why:"Weszło zamiast wyciskania hantli stojąc — i słusznie, bo stojąc limituje Cię stabilizacja tułowia, a nie bark. Na maszynie siedzisz w oparciu, więc możesz iść na RIR 0-1 i faktycznie zmęczyć mięsień, a nie równowagę. Start 35 kg to szacunek (~2 × 18 kg w hantlach), tydzień 1 to kalibracja. Nie ma maszyny? Wyciskanie hantli SIEDZĄC, oparcie prawie pionowo, wszystkie serie pod rząd i dopiero potem kładziesz ławkę płasko do wiosłowania.",
+      why:"Weszło zamiast wyciskania hantli stojąc — i słusznie, bo stojąc limituje Cię stabilizacja tułowia, a nie bark. Na maszynie siedzisz w oparciu, więc możesz iść na RIR 0-1 i faktycznie zmęczyć mięsień, a nie równowagę. Start 35 kg to szacunek (~2 × 18 kg w hantlach), tydzień 1 to kalibracja. Nie ma maszyny? Masz zamiennik na rewersie kafelka.",
       cue:"Plecy dociśnięte do oparcia, żeber nie wypychasz, uchwyty schodzą do linii brody. Nie blokujesz łokci w górze."},
     {id:"row_db", n:"Wiosłowanie hantlem", g:"S4", s:3, inc:2, r:"10-12", rir:"1", rest:105, w:18, each:1, m:["plecy"], sec:["biceps"],
-      why:"Kolano i ręka na ławce ustawionej płasko. Z logu: 21 kg × 10 jako ostatnia seria piramidy, więc 18 kg na wszystkie trzy. Robisz obie strony w jednej serii, dlatego zajmuje więcej czasu niż zwykłe ćwiczenie — apka ma to już policzone.",
+      why:"Rękę opierasz o cokolwiek stabilnego na wysokości bioder: stojak, maszynę, brzeg ławki skośnej. Z logu: 21 kg × 10 jako ostatnia seria piramidy, więc 18 kg na wszystkie trzy. Robisz obie strony w jednej serii, dlatego zajmuje więcej czasu niż zwykłe ćwiczenie — apka ma to już policzone.",
       cue:"Hantel ciągniesz do biodra, łopatka pracuje, tułów nie rotuje."},
     {id:"lat_raise", n:"Wznosy bokiem", g:"S5", q:1, myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Z logu: 9 kg × 8. Sześć kilo na wyższy zakres. Myo-reps: w dwie minuty dostajesz tyle, co wcześniej z czterech osobnych serii.",
@@ -236,9 +259,6 @@ var PLAN = {
     {id:"curl_twist", n:"Uginanie z obrotem (Zottman)", g:"S5", q:1, myo:1, s:4, inc:2, r:"10-12", rir:"0-1", rest:15, w:10, m:["biceps","przedramię"],
       why:"Twój sposób: w górę podchwytem normalnie, w górze obracasz nadgarstki, w dół młotkowo albo nachwytem, na dole obrót z powrotem. To stary wariant zwany uginaniem Zottmana — faza w górę robi biceps, faza w dół w obróconym chwycie dokłada ramienno-promieniowy i prostowniki przedramienia. Stoi w środku bloku, żeby rozdzielić dwa ćwiczenia na bark.",
       cue:"Obrót robisz w górze i na dole, nigdy w trakcie ruchu. W dół wolniej niż w górę, bo tam pracuje przedramię."},
-    {id:"rear_delt", n:"Rozpiętki tyłu barku na ławce", g:"S5", myo:1, s:4, inc:2, r:"12-20", rir:"0", rest:15, w:6, m:["bark tył"],
-      why:"Kładziesz się klatką na ławce ustawionej na skos, hantle wiszą pod Tobą, unosisz je na boki. Tułów jest podparty, więc nie ma balansowania w opadzie ani pracy krzyża — to jest ta sama robota co face pull, tylko z hantlami i bez ustawiania bramy. Tył barku to najsłabiej obsłużona partia w planie, dlatego w ogóle tu jest.",
-      cue:"Klatka dociśnięta do ławki, ramiona prawie proste, prowadzisz łokciami na boki. Lekko — jak musisz zarzucać, ciężar jest za duży."}
   ]},
   lowerA:{name:"Dół A", short:"Dół", tag:"A", day:"wtorek", kind:"lower", focus:"przysiad · RDL · łydki · brzuch",
     st:[
@@ -273,7 +293,7 @@ var PLAN = {
       {k:"S1", n:"Poręcze", place:"poręcze", mode:"solo",
         d:"Jedno miejsce, ciężar w pasie, pełna przerwa. Najcięższy ruch dnia idzie pierwszy."},
       {k:"S2", n:"Wyciąg górny i dolny", place:"wyciąg", mode:"seq",
-        d:"Ściąganie, wiosłowanie siedząc i triceps — wszystko z tego samego wyciągu, tylko zmieniasz uchwyt. Po kolei, bo dwa pierwsze robią plecy."},
+        d:"Ściąganie, wiosłowanie siedząc i face pull — wszystko z tego samego wyciągu, zmieniasz tylko uchwyt i wysokość bloczka. Po kolei."},
       {k:"S2B", n:"Wyciąg — triceps", place:"wyciąg", mode:"myo",
         d:"Dalej ten sam wyciąg, tylko prosty drążek zamiast uchwytu do ściągania. Jeden blok myo: seria do upadku, 15 s, trzy dobitki."},
       {k:"S3", n:"Maszyna motylek", place:"maszyna motylek", mode:"alt",
@@ -293,9 +313,12 @@ var PLAN = {
     {id:"fly_machine", n:"Rozpiętki na maszynie (motylek)", g:"S3", q:1, s:3, rp:1, inc:5, r:"12-15", rir:"0", rest:60, w:30, test:1, m:["klatka"],
       why:"Maszyna zamiast bramy, bo tak wolisz i bo brama stoi u Ciebie po drugiej stronie siłowni. Dla klatki wychodzi na to samo: rozciągnięcie w pozycji, której nie daje żadne wyciskanie, tylko z ustawionym torem ruchu. Start 30 kg to szacunek, tydzień 1 to kalibracja. Dwie serie do upadku plus dobitka rest-pause.",
       cue:"Łokcie lekko ugięte i stałe, łopatki ściągnięte i nieruchome. Szukasz rozciągnięcia, nie ciężaru."},
-    {id:"rear_delt_mach", n:"Odwrotne rozpiętki na maszynie", g:"S3", s:2, inc:5, r:"12-20", rir:"1", rest:45, w:20, test:1, m:["bark tył"],
+    {id:"rear_delt_mach", n:"Odwrotne rozpiętki na maszynie", g:"S3", s:3, inc:5, r:"12-20", rir:"1", rest:45, w:20, test:1, m:["bark tył"],
       why:"Ta sama maszyna, tylko siadasz przodem do oparcia. Weszło w miejsce face pulla, który wisiał na bramie — teraz tył barku i klatka jadą z jednego stanowiska, na zmianę. Tył barku dostaje przez to dwa razy w tygodniu.",
       cue:"Ramiona prawie proste, prowadzisz łokciami do tyłu, ściągasz łopatki. Lekko, bez szarpania."},
+    {id:"face_pull", n:"Face pull", g:"S2", s:2, inc:2.5, r:"15-20", rir:"1", rest:45, w:12.5, m:["bark tył"],
+      why:"Wraca na swoje miejsce. Z logu: 15 kg × 12 → 12,5 kg na wyższy zakres. Tył barku plus zdrowie stawu przy takiej liczbie wyciskań — a robisz go na tym samym wyciągu, przy którym już stoisz, tylko bloczek idzie w górę.",
+      cue:"Linka do czoła, na końcu ruchu rotacja zewnętrzna, łokcie wysoko."},
     {id:"tri_cable", n:"Prostowanie tricepsu na wyciągu", g:"S2B", myo:1, s:4, inc:2.5, r:"10-15", rir:"0", rest:15, w:20, m:["triceps"],
       why:"Z logu: 25 kg × 8 → 20 kg na 10-15. Całe bezpośrednie obciążenie tricepsu w tygodniu siedzi tutaj, na tym samym wyciągu, przy którym już stoisz — wystarczy prosty drążek zamiast uchwytu do ściągania. W poniedziałek triceps ma wolne.",
       cue:"Łokcie przy tułowiu i nieruchome, w górze nie zwalniasz, powrót kontrolowany."},
@@ -314,7 +337,7 @@ var PLAN = {
       {k:"S1", n:"Suwnica", place:"suwnica", mode:"alt",
         d:"Wypychanie i łydki na TEJ SAMEJ maszynie: po serii wypychania przesuwasz stopy na dół platformy i robisz łydki. Nie wstajesz. Oba do upadku plus dobitka rest-pause."},
       {k:"S2", n:"Hantle i ławka", place:"hantle", mode:"seq",
-        d:"Jedna ławka płaska i hantle: bułgarskie (noga na ławce), potem hip thrust (plecy o ławkę). Zwykłe serie robocze."},
+        d:"Hantle plus cokolwiek stabilnego na wysokości kolana: ławka skośna, skrzynia, stopień. Bułgarskie (tylna noga na podparciu), potem hip thrust (plecy o to samo podparcie)."},
       {k:"S2B", n:"Hantle — blok myo-reps", place:"hantle", mode:"myo",
         d:"To samo miejsce. Dwa bloki po dwie i pół minuty, wznosy bokiem przed nadgarstkami — po nadgarstkach chwyt jest zmęczony."},
       {k:"S3", n:"Maszyna: uginanie siedząc", place:"maszyny na nogi", mode:"solo",
@@ -330,16 +353,16 @@ var PLAN = {
       cue:"Pełne rozciągnięcie na dole, bez sprężynowania. Zabezpieczenie suwnicy ZAŁOŻONE."},
     {id:"bulgarian", n:"Przysiady bułgarskie", g:"S2", s:2, inc:2, r:"8-12", rir:"1", rest:75, w:10, each:1, test:1, m:["pośladek","czworogłowe"],
       why:"Jedna noga naraz: mniej ciężaru na kręgosłupie, więcej roboty dla pośladka. Dwie serie wystarczą, bo każda to dwa podejścia.",
-      cue:"Ciężar na przedniej nodze, tułów lekko do przodu, tylna noga tylko podpiera."},
+      cue:"Tylna noga na ławce, skrzyni albo stojaku. Ciężar na przedniej nodze, tułów lekko do przodu, tylna noga tylko podpiera."},
     {id:"hip_thrust", n:"Hip thrust (sztanga albo hantel)", g:"S2", s:3, inc:5, r:"8-12", rir:"1", rest:75, w:60, test:1, m:["pośladek"], sec:["dwugłowe"],
-      why:"Pośladek w skurczu, czyli w pozycji, której nie daje ani RDL, ani przysiad. O tę samą ławkę, przy której robisz bułgarskie.",
-      cue:"Plecy o ławkę pod łopatkami, w górze pełne wypchnięcie bioder i sekunda zatrzymania, żebra nie uciekają."},
+      why:"Pośladek w skurczu, czyli w pozycji, której nie daje ani RDL, ani przysiad. O to samo podparcie, przy którym robisz bułgarskie — ławka, skrzynia, stopień, cokolwiek na wysokości kolana.",
+      cue:"Plecy o ławkę, skrzynię albo stopień pod łopatkami, w górze pełne wypchnięcie bioder i sekunda zatrzymania, żebra nie uciekają."},
     {id:"lat_raise_c", n:"Wznosy bokiem", g:"S2B", myo:1, s:4, inc:2, r:"12-15", rir:"0", rest:15, w:6, m:["bark bok"],
       why:"Trzeci raz w tygodniu, w dniu nóg. Bok barku to najmniejsza partia z najlepszym zwrotem wizualnym przy Twoim wzroście. Idzie PRZED nadgarstkami, bo po uginaniu nadgarstków chwyt jest zmęczony i hantle uciekają z rąk.",
       cue:"Prowadzisz łokciem, nie dłonią. Lekko, bez zamachu."},
     {id:"wrist_curl", n:"Uginanie nadgarstków", g:"S2B", myo:1, s:4, inc:2.5, r:"12-20", rir:"0", rest:15, w:20, m:["przedramię"],
       why:"Zginacze przedramienia, czyli ta część, która robi obwód. W dniu nóg, bo dni góry były najdłuższe, a nadgarstkom jest wszystko jedno kiedy je zrobisz. Ostatnie z bloku hantli.",
-      cue:"Przedramiona oparte o ławkę albo uda, ciężar zjeżdża do palców, potem pełne zwinięcie nadgarstka."},
+      cue:"Siedzisz, przedramiona na udach, dłonie zwisają za kolanami. Ciężar zjeżdża do palców, potem pełne zwinięcie nadgarstka. Żadna ławka nie jest potrzebna."},
     {id:"leg_curl_sit", n:"Uginanie nóg siedząc", g:"S3", q:1, s:3, rp:1, inc:5, r:"10-15", rir:"0", rest:60, w:30, test:1, m:["dwugłowe"],
       why:"Dwugłowe w zgięciu biodra, czyli w innej długości mięśnia niż RDL i niż uginanie leżąc. Dlatego oba warianty zostają, tylko w różne dni.",
       cue:"Nie odrywasz pleców od oparcia, tempo równe."},
@@ -380,6 +403,122 @@ function weekDays(){ return (S.ui && S.ui.day5) ? ALLDAYS : DAYKEYS; }
 var EXBYID = {};
 ALLDAYS.forEach(function(k){ PLAN[k].ex.forEach(function(e){ e.day = k; EXBYID[e.id] = e; }); });
 
+/* ---------- ZAMIENNIKI ----------
+   Każdy wpis to pełnoprawny wariant ćwiczenia: własna nazwa, ciężar startowy,
+   skok progresji i technika. Przełączony w apce dostaje OSOBNY slot ciężaru
+   (klucz "id@alt"), więc progresja wariantu podstawowego zostaje nietknięta. */
+var ALT = {
+  inc_bench:{n:"Wyciskanie hantli na skosie", w:20, inc:2, test:1,
+    why:"Gdy ławka ze sztangą jest zajęta albo nie ma na niej miejsca. Hantle schodzą niżej niż gryf, więc klatka pracuje w większym zakresie — kosztem ciężaru, który będzie dużo mniejszy.",
+    cue:"Ławka na 30°, hantle schodzą do linii obojczyków, w górze nie stukasz nimi o siebie."},
+  pullup:{n:"Ściąganie drążka wąsko (uchwyt V)", w:55, inc:2.5, plus:0,
+    why:"Gdy nie masz jak się dociążyć albo drążek jest zajęty. Ten sam ruch ciągnący, tylko z kontrolowanym obciążeniem ze stosu.",
+    cue:"Uchwyt wąski, drążek do góry klatki, łokcie w dół, tułów prawie pionowo."},
+  ohp_mach:{n:"Wyciskanie hantli siedząc", w:18, inc:2,
+    why:"Gdy nie ma maszyny barkowej. Ławka ustawiona prawie pionowo daje to samo oparcie — ważne, żeby plecy miały o co się oprzeć, bo o to w tym ćwiczeniu chodzi.",
+    cue:"Oparcie na 80-90°, plecy dociśnięte, hantle schodzą do linii brody."},
+  row_db:{n:"Wiosłowanie oburącz hantlami w opadzie", w:14, inc:2, each:0,
+    why:"Gdy nie ma o co oprzeć ręki. Oba hantle naraz, tułów w opadzie — krzyż pracuje, więc ciężar na rękę będzie mniejszy, ale robisz to wszędzie, nawet na środku sali.",
+    cue:"Tułów ~45°, plecy płaskie, ciągniesz łokciami do bioder."},
+  lat_raise:{n:"Wznosy bokiem na wyciągu (jednorącz)", w:7.5, inc:2.5,
+    why:"Gdy hantli brak albo chcesz stałego napięcia w całym zakresie — wyciąg ciągnie tak samo mocno na dole, gdzie hantel prawie nic nie waży.",
+    cue:"Linka z dolnego bloczka, zza pleców, prowadzisz łokciem. Jedna ręka naraz."},
+  curl_twist:{n:"Uginanie młotkowe", w:10, inc:2,
+    why:"Prostsza wersja bez obracania nadgarstka. Mniej dla prostowników przedramienia, ale ramienno-promieniowy dostaje swoje.",
+    cue:"Chwyt neutralny przez cały ruch, bez odchylania tułowia."},
+  dips:{n:"Pompki na poręczach bez ciężaru", w:0, bw:1, plus:0,
+    why:"Gdy nie masz pasa albo plecaka. Robisz na masę ciała i progresujesz powtórzeniami aż do górnego zakresu.",
+    cue:"Lekki skłon do przodu, zejście do kąta prostego w łokciu."},
+  pulldown:{n:"Podciąganie podchwytem", w:0, plus:1, inc:2.5,
+    why:"Gdy wyciąg górny jest zajęty. Podchwyt daje inny kąt najszerszego i więcej bicepsa niż nachwyt z poniedziałku.",
+    cue:"Pełny zwis na dole, klatka do drążka, bez wymachu."},
+  row_cable:{n:"Wiosłowanie hantlem z podparciem", w:18, inc:2, each:1,
+    why:"Gdy wyciągu dolnego nie ma albo jest zajęty. Ręka oparta o stojak, jeden hantel, obie strony w jednej serii.",
+    cue:"Hantel do biodra, łopatka pracuje, tułów nie rotuje."},
+  fly_machine:{n:"Rozpiętki na wyciągu", w:10, inc:2.5,
+    why:"Gdy nie ma motylka. Z bramy, z górnych bloczków, krzyżowo przed sobą — ten sam ruch, tylko tor wyznaczasz sam.",
+    cue:"Łokcie lekko ugięte i stałe, krok do przodu, ruch kończysz z rękami przed klatką."},
+  rear_delt_mach:{n:"Odwodzenie na wyciągu krzyżowo", w:7.5, inc:2.5,
+    why:"Gdy motylek nie ma opcji odwrotnej. Stajesz w bramie, chwytasz linki na krzyż i rozciągasz ramiona na boki.",
+    cue:"Ramiona prawie proste, prowadzisz łokciami do tyłu, bez szarpania."},
+  face_pull:{n:"Odwodzenie z gumą (band pull-apart)", w:0, bw:1,
+    why:"Gdy wyciąg zajęty. Guma w dłoniach, ramiona rozchodzą się na boki — progresja grubością gumy, nie kilogramami.",
+    cue:"Ramiona na wysokości barków, łopatki schodzą do siebie, bez wzruszania barkami."},
+  tri_cable:{n:"Pompki diamentowe", w:0, bw:1,
+    why:"Gdy wyciąg zajęty. Dłonie blisko siebie pod klatką — triceps dostaje najwięcej z całego ruchu.",
+    cue:"Łokcie przy tułowiu, ciało w jednej linii. Za łatwe? Nogi wyżej."},
+  curl_incline:{n:"Uginanie hantlami stojąc", w:10, inc:2,
+    why:"Gdy nie ma ławki skośnej. Tracisz rozciągnięcie bicepsa na dole, zyskujesz możliwość użycia większego ciężaru.",
+    cue:"Łokcie przy tułowiu i nieruchome, bez bujania."},
+  lat_raise_b:{n:"Wznosy bokiem na wyciągu (jednorącz)", w:7.5, inc:2.5,
+    why:"To samo co w poniedziałek: stałe napięcie w całym zakresie.", cue:"Linka z dolnego bloczka, zza pleców, prowadzisz łokciem."},
+  rev_curl:{n:"Uginanie nadgarstków nachwytem", w:10, inc:2.5,
+    why:"Gdy łokieć marudzi przy reverse curlu. Bierze te same prostowniki przedramienia, ale bez obciążania stawu łokciowego.",
+    cue:"Przedramiona na udach, grzbiety dłoni do góry, ruch tylko w nadgarstku."},
+  squat:{n:"Przysiad w suwnicy Smitha", w:50, inc:5, test:1,
+    why:"Gdy stojak zajęty albo nie masz asekuracji. Tor prowadzony, więc można zejść niżej i bliżej upadku bez ryzyka.",
+    cue:"Stopy lekko przed sobą, pełny zakres, zabezpieczenia ustawione."},
+  rdl:{n:"RDL z hantlami", w:22, inc:2, each:0, test:1,
+    why:"Gdy nie ma wolnego gryfu. Hantle po bokach, ten sam hinge. Ciężar liczony na jeden hantel.",
+    cue:"Biodra w tył, hantle suną po udzie, plecy płaskie."},
+  calf_stand:{n:"Łydki na suwnicy", w:60, inc:5, test:1,
+    why:"Gdy nie chcesz trzymać sztangi na plecach albo stojak jest zajęty.",
+    cue:"Stopy na krawędzi platformy, pełne rozciągnięcie, zabezpieczenie ZAŁOŻONE."},
+  leg_curl_lie:{n:"Uginanie nóg siedząc", w:30, inc:5, test:1,
+    why:"Gdy maszyny leżącej nie ma. Inna długość mięśnia, ta sama robota dla dwugłowej.",
+    cue:"Plecy dociśnięte do oparcia, tempo równe."},
+  cable_crunch:{n:"Brzuszki z obciążeniem na klatce", w:10, inc:2.5,
+    why:"Gdy wyciąg zajęty. Talerz albo hantel trzymany na klatce, zwijasz tułów. Ta sama zasada: brzuch progresuje ciężarem.",
+    cue:"Zwijasz kręgosłup odcinek po odcinku, nie ciągniesz się za kark."},
+  leg_press:{n:"Hack przysiad albo przysiad w Smithie", w:40, inc:5, test:1,
+    why:"Gdy suwnica zajęta. Ten sam akcent na czworogłowy, bez obciążania kręgosłupa jak w wolnym przysiadzie.",
+    cue:"Kolana nie uciekają do środka, pełny zakres."},
+  calf_press:{n:"Łydki stojąc (maszyna albo sztanga)", w:60, inc:5, test:1,
+    why:"Gdy suwnica zajęta. Kolano wyprostowane, więc akcent idzie na brzuchaty zamiast na płaszczkowaty.",
+    cue:"Pełne rozciągnięcie na dole, sekunda w górze."},
+  bulgarian:{n:"Wykroki chodzone z hantlami", w:10, inc:2, each:1, test:1,
+    why:"Gdy nie ma o co oprzeć tylnej nogi. Mniej rozciągnięcia pośladka, za to zero kombinowania ze sprzętem.",
+    cue:"Długi krok, kolano tylnej nogi nisko, tułów pionowo."},
+  hip_thrust:{n:"Glute bridge z podłogi", w:40, inc:5, test:1,
+    why:"Gdy nie ma o co oprzeć pleców. Krótszy zakres niż hip thrust, ale pośladek dalej pracuje w skurczu i robisz to na macie.",
+    cue:"Łopatki na podłodze, sztanga albo hantel na biodrach, w górze sekunda zatrzymania."},
+  wrist_curl:{n:"Uginanie nadgarstków za plecami (sztanga)", w:20, inc:2.5,
+    why:"Wariant stojący: sztanga za plecami, zwijasz nadgarstki. Czasem wygodniejszy dla nadgarstka niż wersja siedząca.",
+    cue:"Sztanga w opuszkach palców za pośladkami, ruch tylko w nadgarstku."},
+  leg_curl_sit:{n:"Uginanie nóg leżąc", w:30, inc:5, test:1,
+    why:"Gdy maszyny siedzącej nie ma. Biodro wyprostowane, więc inna długość mięśnia, ale dwugłowa dostaje swoje.",
+    cue:"Biodra dociśnięte do ławki, powrót wolniejszy niż ciąg."},
+  ab_roll:{n:"Deska z obciążeniem na plecach", w:10, inc:2.5,
+    why:"Gdy nie masz kółka ani sztangi do rolloutu. Ta sama praca antywyprostna, tylko statyczna. Zakres powtórzeń czytaj jako sekundy.",
+    cue:"Miednica podwinięta, krzyż nie opada, talerz na krzyżu."},
+  fly_mach_x:{n:"Rozpiętki na wyciągu", w:10, inc:2.5,
+    why:"Gdy nie ma motylka.", cue:"Łokcie lekko ugięte i stałe, ruch kończysz z rękami przed klatką."},
+  rear_delt_x:{n:"Odwodzenie na wyciągu krzyżowo", w:7.5, inc:2.5,
+    why:"Gdy motylek nie ma opcji odwrotnej.", cue:"Ramiona prawie proste, prowadzisz łokciami do tyłu."},
+  calf_x:{n:"Łydki stojąc ze sztangą", w:60, inc:5, test:1,
+    why:"Gdy maszyny do łydek nie ma.", cue:"Palce na podeście, pełne rozciągnięcie na dole."},
+  lat_raise_c:{n:"Wznosy bokiem na wyciągu (jednorącz)", w:7.5, inc:2.5,
+    why:"Stałe napięcie w całym zakresie.", cue:"Linka z dolnego bloczka, zza pleców."},
+  lat_raise_x:{n:"Wznosy bokiem na wyciągu (jednorącz)", w:7.5, inc:2.5,
+    why:"Stałe napięcie w całym zakresie.", cue:"Linka z dolnego bloczka, zza pleców."},
+  curl_twist_x:{n:"Uginanie młotkowe", w:10, inc:2,
+    why:"Prostsza wersja bez obracania nadgarstka.", cue:"Chwyt neutralny przez cały ruch."}
+};
+ALLDAYS.forEach(function(k){ PLAN[k].ex.forEach(function(e){ if(ALT[e.id]) e.alt = ALT[e.id]; }); });
+
+/* wariant aktywny: podstawowy albo zamiennik (osobny slot ciężaru) */
+function subOn(e){ return !!(S.ui && S.ui.sub && S.ui.sub[e.id] && e.alt); }
+function V(e){
+  if(!subOn(e)) return e;
+  var v = {};
+  Object.keys(e).forEach(function(k){ v[k] = e[k]; });
+  Object.keys(e.alt).forEach(function(k){ v[k] = e.alt[k]; });
+  v.id = e.id; v.alt = e.alt; v.isAlt = 1;
+  return v;
+}
+function wKey(e){ return subOn(e) ? e.id + "@alt" : e.id; }
+
+
 /* Stanowiska są opisane przy każdym dniu w PLAN[...].st.
    Tryby: solo = jedno ćwiczenie i pełna przerwa, alt = dwa ćwiczenia na zmianę
    na TYM SAMYM stanowisku, seq = kilka ćwiczeń po kolei bez schodzenia,
@@ -410,6 +549,27 @@ var WARM = {
     {n:"Serie rozbiegowe przysiadu / RDL-a", d:"50% × 8, 75% × 3, 90% × 1"}
   ]
 };
+var STRETCH_UPPER = [
+  {n:"Klatka w futrynie albo na bramie", d:"30 s na stronę, łokieć na wysokości barku"},
+  {n:"Najszerszy — zwis na drążku", d:"2 × 20 s, rozluźnij bark i daj się rozciągnąć"},
+  {n:"Triceps za głowę", d:"30 s na rękę, łokieć ciągniesz drugą ręką"},
+  {n:"Kark i kaptur, ucho do barku", d:"30 s na stronę, druga ręka za plecami"},
+  {n:"Nadgarstki i przedramiona", d:"po 20 s w obie strony — przy tej ilości chwytu to ma sens"}
+];
+var STRETCH_FULL = [
+  {n:"Kot-krowa", d:"10 powolnych powtórzeń, rozbudzenie kręgosłupa"},
+  {n:"Pozycja dziecka z wyciągniętymi rękami", d:"45 s, oddychaj w żebra"},
+  {n:"Zginacz biodra w wykroku", d:"45 s na nogę, miednica podwinięta"},
+  {n:"Dwugłowe uda, noga na podwyższeniu", d:"45 s na nogę, plecy proste"},
+  {n:"Czworogłowy, pięta do pośladka", d:"30 s na nogę"},
+  {n:"Pośladek — figura 4 leżąc", d:"45 s na stronę"},
+  {n:"Przywodziciele — siad motyla", d:"45 s"},
+  {n:"Łydka o ścianę", d:"30 s na nogę, kolano raz proste raz ugięte"},
+  {n:"Rotacja piersiowa leżąc na boku", d:"45 s na stronę"},
+  {n:"Klatka w futrynie", d:"30 s na stronę"},
+  {n:"Najszerszy — zwis albo skłon o drążek", d:"2 × 20 s"},
+  {n:"Kark, triceps, nadgarstki", d:"po 20 s, domknięcie"}
+];
 var RULES = [
   "Blok = jedno stanowisko. Nie biegasz między dipami a wiosłowaniem po dwóch stronach siłowni: wchodzisz w miejsce, robisz wszystko, co się z niego da, i dopiero wtedy idziesz dalej. Na dzień wypadają 3-4 przejścia.",
   "Na zmianę robisz tylko to, co stoi w tym samym miejscu: podciąganie i wznosy nóg na jednym drążku, wyciskanie i wiosłowanie tą samą parą hantli, wypychanie i łydki na tej samej suwnicy, ściąganie i rozpiętki na tej samej bramie.",
@@ -436,7 +596,7 @@ var RULES = [
 /* ---------- STORAGE ---------- */
 var KEY = "plan.v1";
 var hasWS = (typeof window.storage === "object" && window.storage && typeof window.storage.get === "function");
-var DEF = {tab:"plan", active:null, timer:null, weights:{}, fails:{}, sessions:[], ui:{}, deloadWeek:0, lastDeload:null};
+var DEF = {tab:"plan", active:null, timer:null, weights:{}, fails:{}, sessions:[], stretch:{}, ui:{}, deloadWeek:0, lastDeload:null};
 var S = JSON.parse(JSON.stringify(DEF));
 var saveT = null, lastFlush = 0;
 function flush(){
@@ -531,6 +691,17 @@ function weekVolume(quick){
   });
   return MUSCLE_ORDER.filter(function(mm){ return v[mm]; }).map(function(mm){ return {m:mm, n:v[mm]}; });
 }
+/* najlepszy szacowany maks w ćwiczeniu z historii (pomijając wskazaną sesję) */
+function bestE1rm(exId, beforeId){
+  var best = 0;
+  S.sessions.forEach(function(ss){
+    if(beforeId && ss.id === beforeId) return;
+    var arr = ss.sets && ss.sets[exId];
+    if(!arr) return;
+    arr.forEach(function(x){ if(x.done){ var v = e1rm(nOr(x.w,0), nOr(x.r,0)); if(v > best) best = v; } });
+  });
+  return best;
+}
 function lastSetsFor(exId, beforeId){
   for(var i = S.sessions.length-1; i >= 0; i--){
     var s = S.sessions[i];
@@ -571,20 +742,22 @@ function nextDay(){
 
 /* ---------- PROGRESJA ---------- */
 function curWeight(e){
-  var w = S.weights[e.id];
-  return (w === undefined || w === null || w === "") ? e.w : nOr(w, e.w);
+  var v = V(e), w = S.weights[wKey(e)];
+  return (w === undefined || w === null || w === "") ? v.w : nOr(w, v.w);
 }
 /* najmniejszy realny skok obciążenia dla tego sprzętu: hantle co 2 kg,
    sztanga i stos co 2,5 kg, maszyny na nogi co 5 kg */
 function stepFor(e){
-  if(e.bw) return 0;
-  if(e.inc) return e.inc;
+  var v = V(e);
+  if(v.bw) return 0;
+  if(v.inc) return v.inc;
   return PLAN[e.day] && PLAN[e.day].kind === "upper" ? 2.5 : 5;
 }
 function roundStep(v, st){ return Math.max(st, Math.round(v/st)*st); }
 /* ocena ćwiczenia po treningu: co zrobić z ciężarem.
    W myo-reps liczy się seria aktywacyjna (pierwsza), dobitki są tylko objętością. */
-function judge(e, arr){
+function judge(e0, arr){
+  var e = V(e0);
   var scope = e.myo ? arr.slice(0,1) : (e.rp ? arr.slice(0, Math.max(1, arr.length-1)) : arr);
   var perf = scope.filter(did);
   if(!perf.length) return null;
@@ -592,7 +765,7 @@ function judge(e, arr){
   if(e.bw){
     var allTopBW = perf.length === scope.length && scope.every(function(x){ return !x.fail; }) &&
       perf.every(function(x){ return nOr(x.r,0) >= topReps(e.r); });
-    return {id:e.id, n:e.n, from:0, to:0, dir:"bw", reset:true,
+    return {id:e.id, key:wKey(e0), n:e.n, from:0, to:0, dir:"bw", reset:true,
       why: allTopBW ? "Górny zakres trafiony. Następnym razem trudniejszy wariant, nie więcej powtórzeń." : "Zostajesz na tym wariancie, dokładasz powtórzenia."};
   }
   var cur = curWeight(e);
@@ -601,14 +774,14 @@ function judge(e, arr){
   var allSets = perf.length === scope.length;
   var allTop = allSets && fails === 0 && perf.every(function(x){ return nOr(x.r,0) >= topReps(e.r); });
   var streak = S.fails[e.id] || 0;
-  if(allTop) return {id:e.id, n:e.n, from:cur, to:cur + st, dir:"up", reset:true,
+  if(allTop) return {id:e.id, key:wKey(e0), n:e.n, from:cur, to:cur + st, dir:"up", reset:true,
     why: e.myo ? "seria aktywacyjna w górnym zakresie" : "górny zakres we wszystkich seriach"};
   if(fails >= 2 || (fails >= 1 && streak >= 1)){
-    return {id:e.id, n:e.n, from:cur, to:roundStep(cur*0.9, st), dir:"down", reset:true,
+    return {id:e.id, key:wKey(e0), n:e.n, from:cur, to:roundStep(cur*0.9, st), dir:"down", reset:true,
       why: fails >= 2 ? fails + " nieudane serie, zjeżdżamy o 10%" : "drugi trening z nieudaną serią, zjeżdżamy o 10%"};
   }
-  if(fails === 1) return {id:e.id, n:e.n, from:cur, to:cur, dir:"hold", bump:true, why:"jedna nieudana seria, ciężar zostaje"};
-  return {id:e.id, n:e.n, from:cur, to:cur, dir:"hold", reset:true, why:"zakres trafiony, jeszcze nie górna granica"};
+  if(fails === 1) return {id:e.id, key:wKey(e0), n:e.n, from:cur, to:cur, dir:"hold", bump:true, why:"jedna nieudana seria, ciężar zostaje"};
+  return {id:e.id, key:wKey(e0), n:e.n, from:cur, to:cur, dir:"hold", reset:true, why:"zakres trafiony, jeszcze nie górna granica"};
 }
 
 /* ---------- DELOAD ---------- */
@@ -646,6 +819,7 @@ function spark(vals, color, labels){
 /* ---------- NAWIGACJA ---------- */
 var TABS = [
   {k:"plan", n:"Plan", i:'<path d="M4 9v6M20 9v6M7 6v12M17 6v12M7 12h10"/>'},
+  {k:"rok", n:"Rok", i:'<path d="M3 5h18v16H3zM3 9h18M8 3v4M16 3v4"/>'},
   {k:"progres", n:"Progres", i:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"ciezary", n:"Ciężary", i:'<path d="M12 5v14M5 9h14M7 12h10M9 15h6"/>'}
 ];
@@ -704,6 +878,16 @@ function vPlan(){
       '<button class="btn sm '+(S.ui.day5?"aqua":"")+'" data-act="day5">'+(S.ui.day5?"WŁ":"WYŁ")+'</button></div></div>';
   OPTDAYS.forEach(function(k){ h += dayCard(k, q); });
 
+  var lastFull = Object.keys(S.stretch || {}).filter(function(dt){ return S.stretch[dt] === "full"; }).sort().pop();
+  h += '<h2>Rozciąganie</h2>' +
+    '<div class="card tap" data-act="openstretch">' +
+      '<div class="row"><div style="min-width:0">' +
+      '<div class="exname">Całe ciało · 14 min</div>' +
+      '<div class="exmeta" style="line-height:1.5">Dwanaście pozycji od karku po łydki. Rób kiedy chcesz — dzień wolny, wieczór, po nogach. Do hipertrofii nic nie dokłada, do tego jak się ruszasz i czujesz: sporo.</div>' +
+      '<div class="exmeta" style="margin-top:4px">'+(lastFull ? "ostatnio " + plDate(lastFull) + " · " + daysBetween(lastFull, today()) + " dni temu" : "jeszcze nie robione")+'</div>' +
+      '</div>'+ico('<path d="M9 5l7 7-7 7"/>').replace('<svg','<svg style="width:18px;height:18px;stroke:#8A94A0;fill:none;stroke-width:2"')+'</div></div>' +
+    '<div class="card s13 mut">Krótsze rozciąganie góry (5 min) jest wpięte na końcu każdej sesji Góry A i Góry B — zwijany blok nad notatką.</div>';
+
   h += '<h2>Ile czego w tygodniu</h2><div class="card">';
   weekVolume(q).forEach(function(r){
     h += '<div class="kv"><span class="mut">'+esc(r.m)+'</span><b>'+String(r.n).replace(".",",")+' serii</b></div>';
@@ -717,6 +901,18 @@ function vPlan(){
 }
 
 /* ---------- SESJA ---------- */
+/* ile dni od ostatniego razu i czy to już czas: ta sama sesja optymalnie co 7 dni,
+   minimum 3 dni odstępu, po 10 dniach robi się zaległa */
+function dayStatus(last){
+  if(!last) return '<div class="exmeta">jeszcze nie robiony</div>';
+  var d = daysBetween(last.date, today());
+  var col, txt;
+  if(d <= 0){ col = "var(--ok)"; txt = "zrobiony dzisiaj"; }
+  else if(d < 3){ col = "var(--mut)"; txt = d + (d === 1 ? " dzień temu · jeszcze świeże" : " dni temu · jeszcze świeże"); }
+  else if(d <= 9){ col = "var(--ok)"; txt = d + " dni temu · gotowy"; }
+  else { col = "var(--bad)"; txt = d + " dni temu · zaległe"; }
+  return '<div class="exmeta" style="color:'+col+'">'+txt+(last.dur ? ' <span class="mut">· ostatnio '+last.dur+' min</span>' : '')+'</div>';
+}
 function dayCard(k, q){
   var d = PLAN[k];
   var list = exList(k, q);
@@ -729,7 +925,7 @@ function dayCard(k, q){
       '<div class="exmeta">'+esc(d.focus)+'</div>' +
       '<div class="exmeta">'+list.length+' ćwiczeń · '+sets+' serii · ok. '+estMin(k, q)+' min</div>' +
       '<div class="exmeta" style="color:var(--iron)">'+places(k, q).length+' stanowiska: '+esc(places(k, q).join(" → "))+'</div>' +
-      '<div class="exmeta">'+(last ? "ostatnio " + plDate(last.date) + (last.dur ? " · " + last.dur + " min" : "") : "jeszcze nie robiony")+'</div>' +
+      dayStatus(last) +
     '</div>' +
     ico('<path d="M9 5l7 7-7 7"/>').replace('<svg','<svg style="width:18px;height:18px;stroke:#8A94A0;fill:none;stroke-width:2"') +
   '</div>';
@@ -755,11 +951,20 @@ function fold(id, title, sub, inner, openDefault){
       '<span class="chev">'+ico('<path d="M6 9l6 6 6-6"/>')+'</span></div>' +
     (open ? '<div class="foldbody">'+inner+'</div>' : '') + '</div>';
 }
+function tickList(items, store, prefix){
+  var done = (S.active && S.active[store]) || {};
+  return '<div class="list">' + items.map(function(it,i){
+    var k = prefix+i, on = !!done[k];
+    return '<div class="it tap'+(on?" ok":"")+'" data-act="tick" data-store="'+store+'" data-k="'+k+'">' +
+      '<div style="min-width:0"><div class="nm">'+esc(it.n)+'</div><div class="dt">'+esc(it.d)+'</div></div>' +
+      '<span class="tickbox'+(on?" on":"")+'">'+ico('<path d="M4 12l5 5L20 6"/>')+'</span></div>';
+  }).join("") + '</div>';
+}
 function warmBlock(kind){
   var done = (S.active && S.active.warm) || {};
   return '<div class="list">' + WARM[kind].map(function(it,i){
     var k = "w"+i, on = !!done[k];
-    return '<div class="it tap'+(on?" ok":"")+'" data-act="tick" data-k="'+k+'">' +
+    return '<div class="it tap'+(on?" ok":"")+'" data-act="tick" data-store="warm" data-k="'+k+'">' +
       '<div style="min-width:0"><div class="nm">'+esc(it.n)+'</div><div class="dt">'+esc(it.d)+'</div></div>' +
       '<span class="tickbox'+(on?" on":"")+'">'+ico('<path d="M4 12l5 5L20 6"/>')+'</span></div>';
   }).join("") + '</div>';
@@ -794,6 +999,20 @@ function cycleSec(e, dayKey, quick){
   if(same.length < 2) return setSec(e) + restOf(e);
   return same.reduce(function(a,x){ return a + setSec(x) + restOf(x); }, 0);
 }
+function altCard(e){
+  var on = subOn(e), A = e.alt;
+  var w = A.bw ? "masa ciała" : r1(S.weights[e.id+"@alt"] !== undefined ? nOr(S.weights[e.id+"@alt"], A.w) : A.w) + " kg";
+  return '<div class="card back" data-exid="'+e.id+'">' +
+    '<div class="exhead"><div style="min-width:0">' +
+      '<div class="exmeta">zamiast: '+esc(e.n)+'</div>' +
+      '<div class="exname" style="margin-top:3px">'+esc(A.n)+'</div></div>' +
+      '<button class="btn sm ghost" data-act="flip" data-id="'+e.id+'" aria-label="wróć">'+ico('<path d="M20 8H7l3-3M4 16h13l-3 3"/>')+'</button></div>' +
+    '<div class="s13 mut" style="line-height:1.6;margin-top:4px">'+esc(A.why)+'</div>' +
+    '<div class="hint"><b>Technika:</b> '+esc(A.cue)+'</div>' +
+    '<div class="hint">Start '+w+' · własny slot ciężaru, więc progresja wariantu podstawowego zostaje nietknięta.</div>' +
+    '<button class="btn wide '+(on?"":"aqua")+'" data-act="usealt" data-id="'+e.id+'" style="margin-top:12px">' +
+      (on ? "Wróć do: " + esc(e.n) : "Przełącz na zamiennik") + '</button></div>';
+}
 function vSession(){
   var a = S.active, d = PLAN[a.day];
   var budget = budgetFor(a);
@@ -822,7 +1041,7 @@ function vSession(){
       openG = gk;
       if(openG){
         var inf = stInfo(a.day, openG);
-        var partners = list.filter(function(x){ return x.g === openG; }).map(function(x){ return x.n; });
+        var partners = list.filter(function(x){ return x.g === openG; }).map(function(x){ return V(x).n; });
         var cls = inf.mode === "myo" ? " myo" : (inf.mode === "alt" ? "" : " plain");
         h += '<div class="grp'+cls+'"><div class="grphead"><b>'+esc(inf.n)+'</b>' +
           '<span class="mode">'+esc(MODELAB[inf.mode] || "")+'</span>' +
@@ -832,10 +1051,12 @@ function vSession(){
     }
     var arr = a.sets[e.id];
     var prev = lastSetsFor(e.id, a.id);
-    h += '<div class="card">';
-    h += '<div class="exhead"><div style="min-width:0"><div class="exname">'+esc(e.n)+'</div>' +
+    var vv = V(e);
+    if(e.alt && S.ui.flip && S.ui.flip[e.id]){ h += altCard(e); return; }
+    h += '<div class="card" data-exid="'+e.id+'">';
+    h += '<div class="exhead"><div style="min-width:0"><div class="exname">'+esc(vv.n)+(vv.isAlt?' <span class="pill myo">zamiennik</span>':'')+'</div>' +
       '<div class="exmeta">'+(e.myo ? "myo-reps · 1 + 3" : (e.rp && arr.length > 1 ? (arr.length-1) + " × " + esc(e.r) + " + dobitka" : arr.length + " × " + esc(e.r))) +
-      ' · RIR '+esc(e.rir)+(e.each?" · na stronę":"")+'</div>' +
+      ' · RIR '+esc(e.rir)+(vv.each?" · na stronę":"")+'</div>' +
       '<div class="exmeta">'+(e.myo
         ? "odstęp na dobitkę " + fmtRest(restOf(e))
         : e.rp
@@ -843,13 +1064,15 @@ function vSession(){
         : "przerwa " + fmtRest(restOf(e)) + (stInfo(a.day, e.g).mode === "alt"
             ? " · wracasz tu co ~" + fmtRest(Math.round(cycleSec(e, a.day, !!a.quick)/5)*5)
             : ""))+'</div></div>' +
-      '<button class="btn sm ghost" data-act="why" data-id="'+e.id+'" aria-label="dlaczego ten ciężar">?</button></div>';
+      '<div style="display:flex;gap:6px;flex:0 0 auto">' +
+      (e.alt ? '<button class="btn sm ghost" data-act="flip" data-id="'+e.id+'" aria-label="zamiennik">'+ico('<path d="M4 8h13l-3-3M20 16H7l3 3"/>')+'</button>' : '') +
+      '<button class="btn sm ghost" data-act="why" data-id="'+e.id+'" aria-label="dlaczego ten ciężar">?</button></div></div>';
     arr.forEach(function(x,i){
       var cls = x.fail ? " fail" : (x.done ? " done" : "");
       var icon = x.fail ? '<path d="M6 6l12 12M18 6L6 18"/>' : '<path d="M4 12l5 5L20 6"/>';
       h += '<div class="setrow'+cls+'">' +
         '<div class="n">'+setLabel(e,i,arr.length)+'</div>' +
-        '<input inputmode="decimal" placeholder="'+(e.bw ? "bw" : (e.plus ? "+kg" : "kg"))+'" value="'+esc(x.w)+'" data-f="w" data-ex="'+e.id+'" data-i="'+i+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
+        '<input inputmode="decimal" placeholder="'+(vv.bw ? "bw" : (vv.plus ? "+kg" : "kg"))+'" value="'+esc(x.w)+'" data-f="w" data-ex="'+e.id+'" data-i="'+i+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
         '<input inputmode="numeric" placeholder="'+esc(setTarget(e,i,arr.length))+'" value="'+esc(x.r)+'" data-f="r" data-ex="'+e.id+'" data-i="'+i+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
         '<button class="check" data-act="doneset" data-ex="'+e.id+'" data-i="'+i+'" aria-label="zalicz albo oznacz nieudaną">'+ico(icon)+'</button>' +
       '</div>';
@@ -863,11 +1086,15 @@ function vSession(){
     else if(prev) hint = "Poprzednio: " + prev.filter(did).map(function(x){ return (x.w||"?") + "×" + (x.r||"?"); }).join(", ");
     else if(e.test) hint = "Pierwszy raz: dobierz ciężar tak, żeby ostatnie powtórzenie było ciężkie, i zapisz.";
     if(!j) hint += (hint ? " · " : "") + "kwadrat raz = zaliczona, drugi raz = nieudana";
-    if(e.each) hint += " · ciężar na jedną stronę";
+    if(vv.each) hint += " · ciężar na jedną stronę";
     h += '<div class="hint">' + hint + '</div></div>';
   });
   if(openG) h += '</div>';
 
+  if(d.kind === "upper"){
+    h += fold("str_upper", "Rozciąganie po treningu", "5 minut, na koniec — mobilność, nie mięśnie",
+      tickList(STRETCH_UPPER, "stretch", "s"), false);
+  }
   h += '<div class="card"><label class="f">Notatka z treningu</label>' +
     '<textarea rows="2" data-f="note" placeholder="samopoczucie, łokieć, technika...">'+esc(a.note)+'</textarea></div>';
   h += '<button class="btn primary wide" data-act="finish" style="margin-bottom:24px">Zapisz trening</button>';
@@ -934,6 +1161,79 @@ function vProgres(){
   return h;
 }
 
+/* ---------- WIDOK: ROK ---------- */
+function dayMap(){
+  var m = {};
+  S.sessions.forEach(function(ss){
+    var d = PLAN[ss.day];
+    m[ss.date] = d ? (d.opt ? "extra" : d.kind) : "upper";
+  });
+  Object.keys(S.stretch || {}).forEach(function(dt){ if(!m[dt]) m[dt] = "str"; });
+  return m;
+}
+function vRok(){
+  var m = dayMap(), t = today();
+  var end = new Date(t + "T12:00:00");
+  end.setDate(end.getDate() + (6 - end.getDay() + 7) % 7); /* domknij tydzień do niedzieli */
+  var days = [];
+  for(var i = 370; i >= 0; i--){
+    var dd = new Date(end.getTime()); dd.setDate(dd.getDate() - i);
+    days.push(iso(dd));
+  }
+  var cols = [];
+  for(var c = 0; c < days.length; c += 7) cols.push(days.slice(c, c+7));
+  var MON = ["sty","lut","mar","kwi","maj","cze","lip","sie","wrz","paź","lis","gru"];
+  var labs = cols.map(function(col){
+    var first = col[0], dnum = parseInt(first.slice(8), 10);
+    return dnum <= 7 ? MON[parseInt(first.slice(5,7),10)-1] : "";
+  });
+  var h = '<div class="card"><div class="monrow">' + labs.map(function(l){ return '<span>'+l+'</span>'; }).join("") + '</div>' +
+    '<div class="cal">' + cols.map(function(col){
+      return '<div class="calcol">' + col.map(function(dt){
+        var cls = m[dt] ? " on " + m[dt] : "";
+        if(dt === t) cls += " today";
+        if(dt > t) cls += " future";
+        return '<i class="'+cls.trim()+'" data-act="calday" data-d="'+dt+'"></i>';
+      }).join("") + '</div>';
+    }).join("") + '</div>' +
+    '<div class="callegend">' +
+      '<span><i class="on upper"></i>góra</span>' +
+      '<span><i class="on lower"></i>dół</span>' +
+      '<span><i class="on extra"></i>dobitka</span>' +
+      '<span><i class="on str"></i>rozciąganie</span>' +
+    '</div>' +
+    '<div class="hint">Ostatnie 53 tygodnie. Każdy kwadrat to jeden dzień, kolumna to tydzień od poniedziałku. Stuknij kwadrat, żeby zobaczyć co było.</div></div>';
+
+  /* statystyki */
+  var ses = S.sessions.length;
+  var y = t.slice(0,4);
+  var inYear = S.sessions.filter(function(ss){ return ss.date.slice(0,4) === y; }).length;
+  var last60 = S.sessions.filter(function(ss){ return ss.date >= daysAgo(55); }).length;
+  var perWeek = r1(last60 / 8);
+  /* seria tygodni z min. 3 treningami */
+  var streak = 0;
+  for(var w = 0; w < 60; w++){
+    var from = daysAgo(7*w + 6), to = daysAgo(7*w);
+    var n = S.sessions.filter(function(ss){ return ss.date >= from && ss.date <= to; }).length;
+    if(n >= 3) streak++; else if(w > 0) break; else if(n === 0) break;
+  }
+  /* najdłuższa przerwa */
+  var gap = 0, sorted = S.sessions.map(function(ss){ return ss.date; }).sort();
+  for(var g = 1; g < sorted.length; g++){
+    var dif = daysBetween(sorted[g-1], sorted[g]);
+    if(dif > gap) gap = dif;
+  }
+  if(sorted.length) { var sinceLast = daysBetween(sorted[sorted.length-1], t); if(sinceLast > gap) gap = sinceLast; }
+  h += '<div class="card"><div class="row">' +
+    '<div><div class="mut s13">W tym roku</div><div class="big num">'+inYear+'</div></div>' +
+    '<div><div class="mut s13">Na tydzień</div><div class="big num">'+(perWeek ? String(perWeek).replace(".", ",") : "—")+'</div></div>' +
+    '<div><div class="mut s13">Seria tyg.</div><div class="big num">'+streak+'</div></div>' +
+    '<div style="text-align:right"><div class="mut s13">Max przerwa</div><div class="big num">'+gap+' dni</div></div>' +
+    '</div><div class="hint">Seria tygodni liczy kolejne tygodnie z minimum trzema treningami. Razem zapisanych sesji: '+ses+'.</div></div>';
+  h += '<div style="height:16px"></div>';
+  return h;
+}
+
 /* ---------- WIDOK: CIĘŻARY ---------- */
 function vCiezary(){
   var h = '<div class="card"><div class="s13 mut" style="line-height:1.6">Ciężary startowe pochodzą z Twojego starego logu. Po każdym treningu apka sama je przestawia; tutaj możesz je poprawić ręcznie, np. po zmianie siłowni albo maszyny.</div></div>';
@@ -941,14 +1241,14 @@ function vCiezary(){
     var d = PLAN[k];
     h += '<h2>'+esc(d.name)+(d.opt ? ' <span class="pill">dodatkowy</span>' : '')+'</h2><div class="card">';
     d.ex.forEach(function(e){
-      var cur = curWeight(e);
-      var changed = S.weights[e.id] !== undefined && nOr(S.weights[e.id], e.w) !== e.w;
-      h += '<div class="chg"><div style="min-width:0"><div class="nm">'+esc(e.n)+(e.test?' <span class="pill iron">test</span>':'')+'</div>' +
-        '<div class="rz">'+(e.bw ? "masa ciała, progresja wariantem" : (e.myo ? "myo-reps · " : "") + (e.rp && setsOf(e) > 1 ? (setsOf(e)-1) + " × " + esc(e.r) + " + dobitka" : setsOf(e) + " × " + esc(e.r)) + " · RIR " + esc(e.rir) + (changed ? " · start " + e.w + " kg" : "")) + '</div></div>' +
-        (e.bw ? '<div class="mut s13" style="text-align:right">—</div>' :
+      var cur = curWeight(e), vv = V(e), k = wKey(e);
+      var changed = S.weights[k] !== undefined && nOr(S.weights[k], vv.w) !== vv.w;
+      h += '<div class="chg"><div style="min-width:0"><div class="nm">'+esc(vv.n)+(vv.test?' <span class="pill iron">test</span>':'')+(vv.isAlt?' <span class="pill myo">zamiennik</span>':'')+'</div>' +
+        '<div class="rz">'+(vv.bw ? "masa ciała, progresja wariantem" : (e.myo ? "myo-reps · " : "") + (e.rp && setsOf(e) > 1 ? (setsOf(e)-1) + " × " + esc(e.r) + " + dobitka" : setsOf(e) + " × " + esc(e.r)) + " · RIR " + esc(e.rir) + (changed ? " · start " + vv.w + " kg" : "")) + '</div></div>' +
+        (vv.bw ? '<div class="mut s13" style="text-align:right">—</div>' :
         '<div style="display:flex;gap:4px;align-items:center">' +
           '<button class="btn sm ghost" data-act="setw" data-id="'+e.id+'" data-v="'+(-stepFor(e))+'">−</button>' +
-          '<input inputmode="decimal" data-wid="'+e.id+'" value="'+r1(cur)+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
+          '<input inputmode="decimal" data-wid="'+k+'" value="'+r1(cur)+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
           '<button class="btn sm ghost" data-act="setw" data-id="'+e.id+'" data-v="'+stepFor(e)+'">+</button>' +
         '</div>') + '</div>';
     });
@@ -968,9 +1268,9 @@ function vCiezary(){
 
 /* ---------- RENDER ---------- */
 function render(){
-  var map = {plan:vPlan, progres:vProgres, ciezary:vCiezary};
+  var map = {plan:vPlan, rok:vRok, progres:vProgres, ciezary:vCiezary};
   document.getElementById("view").innerHTML = (map[S.tab] || vPlan)();
-  var names = {plan:"Plan", progres:"Progres", ciezary:"Ciężary"};
+  var names = {plan:"Plan", rok:"Rok", progres:"Progres", ciezary:"Ciężary"};
   document.getElementById("ttl").textContent = S.active ? "W trakcie" : names[S.tab];
   var dow = ["niedziela","poniedziałek","wtorek","środa","czwartek","piątek","sobota"][new Date().getDay()];
   document.getElementById("sub").textContent = S.active
@@ -1036,8 +1336,19 @@ function sheet(html){
   document.getElementById("sheet").innerHTML = '<div class="sheet" data-act="closesheet"><div class="in" data-stop="1">' + html + '</div></div>';
 }
 function closeSheet(){ document.getElementById("sheet").innerHTML = ""; }
-function sheetWhy(e){
-  sheet('<h3>'+esc(e.n)+'</h3>' +
+function daysBetween(a0, b0){ return Math.round((new Date(b0) - new Date(a0)) / 86400000); }
+function sheetStretch(){
+  if(!window._sfull) window._sfull = {};
+  var n = STRETCH_FULL.filter(function(_,i){ return window._sfull["f"+i]; }).length;
+  sheet('<h3>Rozciąganie całego ciała</h3>' +
+    '<div class="mut s13" style="margin-bottom:12px">'+n+' / '+STRETCH_FULL.length+' zrobione · ok. 14 min. Każda pozycja do granicy napięcia, nie do bólu. Oddychasz, nie wstrzymujesz.</div>' +
+    tickList(STRETCH_FULL, "sfull", "f") +
+    '<button class="btn primary wide" data-act="savestretch" style="margin-top:14px">Zapisz rozciąganie</button>' +
+    '<button class="btn wide ghost" data-act="closesheet" style="margin-top:8px">Zamknij</button>');
+}
+function sheetWhy(e0){
+  var e = V(e0);
+  sheet('<h3>'+esc(e.n)+(e.isAlt?' <span class="pill myo">zamiennik</span>':'')+'</h3>' +
     '<div class="mut s13" style="margin-bottom:12px">'+(e.myo ? "myo-reps · 1 seria aktywacyjna + 3 dobitki" : e.s + " × " + esc(e.r)) +
       ' · RIR '+esc(e.rir)+' · '+(e.myo ? "odstęp " + fmtRest(restOf(e)) : "przerwa " + fmtRest(restOf(e)))+'</div>' +
     '<div class="mut s13" style="margin-bottom:12px">Partie: '+esc((e.m||[]).join(", "))+(e.sec && e.sec.length ? ' (pomocniczo '+esc(e.sec.join(", "))+')' : '')+'</div>' +
@@ -1054,8 +1365,15 @@ function sheetProgress(chg){
   var ups = chg.filter(function(j){ return j.dir === "up"; }).length;
   var dns = chg.filter(function(j){ return j.dir === "down"; }).length;
   var top = ups ? (ups + (ups === 1 ? " ciężar w górę" : " ciężary w górę")) : (dns ? dns + " w dół" : "Ciężary bez zmian");
-  var h = '<h3>Ciężary na następny raz</h3>' +
-    '<div class="mut s13" style="margin-bottom:12px">'+esc(top)+'. Możesz poprawić każdą wartość, apka zapamięta Twoją.</div>';
+  var prs = window._prs || [];
+  var h = '<h3>Ciężary na następny raz</h3>';
+  if(prs.length){
+    h += '<div class="card" style="border-color:var(--ok);background:rgba(95,208,138,.07);margin-bottom:12px">' +
+      '<div class="exname" style="color:var(--ok)">'+(prs.length === 1 ? "Rekord!" : prs.length + " rekordy!")+'</div>' +
+      '<div class="s13 mut" style="margin-top:4px">'+prs.map(function(id){ return esc(V(EXBYID[id]).n); }).join(" · ")+'</div>' +
+      '<div class="hint">Najlepszy szacowany maks w tych ćwiczeniach w całej Twojej historii. To jest dowód, że plan działa.</div></div>';
+  }
+  h += '<div class="mut s13" style="margin-bottom:12px">'+esc(top)+'. Możesz poprawić każdą wartość, apka zapamięta Twoją.</div>';
   chg.forEach(function(j){
     var st = stepFor(EXBYID[j.id]) || 2.5;
     var arrow = j.dir === "up" ? '<span class="up">'+r1(j.from)+' → '+r1(j.to)+' kg</span>'
@@ -1064,9 +1382,9 @@ function sheetProgress(chg){
     h += '<div class="chg"><div style="min-width:0"><div class="nm">'+esc(j.n)+'</div>' +
       '<div class="rz">'+arrow+' · '+esc(j.why)+'</div></div>' +
       '<div style="display:flex;gap:4px;align-items:center">' +
-        '<button class="btn sm ghost" data-act="chgw" data-id="'+j.id+'" data-v="'+(-st)+'">−</button>' +
-        '<input inputmode="decimal" data-w="'+j.id+'" value="'+r1(j.to)+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
-        '<button class="btn sm ghost" data-act="chgw" data-id="'+j.id+'" data-v="'+st+'">+</button>' +
+        '<button class="btn sm ghost" data-act="chgw" data-id="'+j.key+'" data-v="'+(-st)+'">−</button>' +
+        '<input inputmode="decimal" data-w="'+j.key+'" value="'+r1(j.to)+'" pattern="[0-9.,]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
+        '<button class="btn sm ghost" data-act="chgw" data-id="'+j.key+'" data-v="'+st+'">+</button>' +
       '</div></div>';
   });
   if(bw.length){
@@ -1086,7 +1404,7 @@ function sheetSession(i){
     var e = EXBYID[id], arr = s.sets[id];
     if(!e || !arr) return;
     var done = arr.filter(did);
-    h += '<div class="kv"><span style="min-width:0">'+esc(e.n)+'</span><b>' +
+    h += '<div class="kv"><span style="min-width:0">'+((s.prs||[]).indexOf(id) >= 0 ? '<span style="color:var(--ok)">★</span> ' : '')+esc(V(e).n)+'</span><b>' +
       (done.length ? done.map(function(x){ return (x.fail ? "✕" : "") + (x.w || "0") + "×" + (x.r || "0"); }).join("  ") : "—") + '</b></div>';
   });
   if(s.note) h += '<div class="hint"><b>Notatka:</b> '+esc(s.note)+'</div>';
@@ -1166,9 +1484,15 @@ document.addEventListener("click", function(ev){
     S.ui.fold[fk] = !cur; save(); render(); return;
   }
   if(a === "tick"){
+    var store = b.dataset.store || "warm";
+    if(store === "sfull"){
+      if(!window._sfull) window._sfull = {};
+      window._sfull[b.dataset.k] = !window._sfull[b.dataset.k];
+      sheetStretch(); return;
+    }
     if(!S.active) return;
-    if(!S.active.warm) S.active.warm = {};
-    S.active.warm[b.dataset.k] = !S.active.warm[b.dataset.k];
+    if(!S.active[store]) S.active[store] = {};
+    S.active[store][b.dataset.k] = !S.active[store][b.dataset.k];
     save(); render(); return;
   }
   if(a === "cancel"){
@@ -1182,30 +1506,65 @@ document.addEventListener("click", function(ev){
     if(!st.done && !st.fail){
       st.done = true; st.fail = false;
       if(!st.r) st.r = String(botReps(setTarget(e0, i, n0)));
-      if(!st.w && !e0.bw) st.w = curWeight(e0);
+      if(!st.w && !V(e0).bw) st.w = curWeight(e0);
       var rest = restFor(e0, i, n0);
       var isRp = !!(e0.rp && n0 > 1 && i === n0 - 2);
-      var lab = e0.myo ? (i === 0 ? "15 s i pierwsza dobitka · " + e0.n : "15 s i kolejna dobitka · " + e0.n)
-        : isRp ? (rpGap() + " s i dobitka · " + e0.n) : "Przerwa · " + e0.n;
+      var vn = V(e0).n;
+      var lab = e0.myo ? (i === 0 ? "15 s i pierwsza dobitka · " + vn : "15 s i kolejna dobitka · " + vn)
+        : isRp ? (rpGap() + " s i dobitka · " + vn) : "Przerwa · " + vn;
       if(!e0.myo && !isRp && stInfo(S.active.day, e0.g).mode === "alt"){
         var g = e0.g, sameG = exList(S.active.day, !!S.active.quick).filter(function(x){ return x.g === g; });
         if(sameG.length > 1){
           var idx = sameG.indexOf(e0);
           var partner = sameG[(idx+1) % sameG.length];
-          lab = "Teraz: " + partner.n;
+          lab = "Teraz: " + V(partner).n;
         }
       }
       startTimer(rest, lab, e0.myo || isRp);
     } else if(st.done){
       st.done = false; st.fail = true;
-      if(!st.w && !e0.bw) st.w = curWeight(e0);
+      if(!st.w && !V(e0).bw) st.w = curWeight(e0);
     } else {
       st.fail = false;
     }
     save(); render();
     return;
   }
+  if(a === "openstretch"){ window._sfull = {}; sheetStretch(); return; }
+  if(a === "savestretch"){
+    S.stretch[today()] = "full";
+    window._sfull = {};
+    save(); closeSheet(); render(); toast("Rozciąganie zapisane");
+    return;
+  }
   if(a === "why"){ sheetWhy(EXBYID[b.dataset.id]); return; }
+  if(a === "flip"){
+    var fid = b.dataset.id, fcard = b.closest(".card");
+    if(!S.ui.flip) S.ui.flip = {};
+    if(fcard) fcard.classList.add("flipout");
+    setTimeout(function(){
+      S.ui.flip[fid] = !S.ui.flip[fid];
+      save(); render();
+      var nc = document.querySelector('.card[data-exid="'+fid+'"]');
+      if(nc){ nc.classList.add("flipin"); setTimeout(function(){ nc.classList.remove("flipin"); }, 280); }
+    }, 150);
+    return;
+  }
+  if(a === "usealt"){
+    var uid = b.dataset.id, ue = EXBYID[uid];
+    if(!S.ui.sub) S.ui.sub = {};
+    S.ui.sub[uid] = !S.ui.sub[uid];
+    if(!S.ui.flip) S.ui.flip = {};
+    S.ui.flip[uid] = false;
+    if(S.active && S.active.sets[uid]){
+      S.active.sets[uid].forEach(function(x){ if(!x.done && !x.fail) x.w = curWeight(ue); });
+      if(!S.active.subs) S.active.subs = {};
+      if(S.ui.sub[uid]) S.active.subs[uid] = 1; else delete S.active.subs[uid];
+    }
+    save(); render();
+    toast(S.ui.sub[uid] ? "Zamiennik włączony" : "Wracasz do podstawowego");
+    return;
+  }
   if(a === "finish"){
     if(!S.active) return;
     if(!doneSets(S.active)){ toast("Nie odhaczyłeś żadnej serii"); return; }
@@ -1219,11 +1578,25 @@ document.addEventListener("click", function(ev){
       S.fails[e.id] = j.reset ? 0 : (j.bump ? (S.fails[e.id]||0) + 1 : (S.fails[e.id]||0));
       chg.push(j);
     });
+    var prs = [];
+    day.ex.forEach(function(e){
+      var arr = S.active.sets[e.id];
+      if(!arr || V(e).bw) return;
+      var now = 0;
+      arr.forEach(function(x){ if(x.done){ var v = e1rm(nOr(x.w,0), nOr(x.r,0)); if(v > now) now = v; } });
+      if(now <= 0) return;
+      var was = bestE1rm(e.id, S.active.id);
+      if(was > 0 && now > was * 1.005) prs.push(e.id);
+    });
+    S.active.prs = prs;
+    window._prs = prs;
     S.active.changes = chg.map(function(j){ return {id:j.id, from:j.from, to:j.to, dir:j.dir}; });
     if(S.active.start) S.active.dur = Math.round((Date.now() - S.active.start)/60000);
+    var sticks = Object.keys(S.active.stretch || {}).filter(function(k){ return S.active.stretch[k]; }).length;
+    if(sticks >= 3 && S.stretch[S.active.date] !== "full") S.stretch[S.active.date] = "upper";
     S.sessions.push(S.active);
     S.active = null; S.timer = null;
-    chg.forEach(function(j){ if(j.dir !== "bw") S.weights[j.id] = j.to; });
+    chg.forEach(function(j){ if(j.dir !== "bw") S.weights[j.key] = j.to; });
     save(); render(); window.scrollTo(0,0);
     sheetProgress(chg);
     return;
@@ -1253,6 +1626,15 @@ document.addEventListener("click", function(ev){
   }
   if(a === "addtime"){ if(S.timer){ S.timer.end += 30000; S.timer.beeped = false; save(); renderTimer(); } return; }
   if(a === "stoptimer"){ S.timer = null; save(); renderTimer(); return; }
+  if(a === "calday"){
+    var cd = b.dataset.d;
+    var idx = -1;
+    S.sessions.forEach(function(ss,ii){ if(ss.date === cd) idx = ii; });
+    if(idx >= 0){ sheetSession(idx); return; }
+    if(S.stretch && S.stretch[cd]){ toast(plDate(cd) + " · rozciąganie " + (S.stretch[cd] === "full" ? "całego ciała" : "po górze")); return; }
+    toast(plDate(cd) + " · nic nie zapisane");
+    return;
+  }
   if(a === "opensess"){ sheetSession(parseInt(b.dataset.i,10)); return; }
   if(a === "delsess"){
     if(!confirm("Usunąć ten trening z historii?")) return;
