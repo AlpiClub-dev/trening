@@ -45,7 +45,7 @@ zmęczeniu, a robi się go tym samym gryfem w tym samym stojaku co przysiad.
 
 | sprzęt | ćwiczenia | jak |
 |---|---|---|
-| sztanga, masa ciała | skos, podciąganie, dipy, przysiad, RDL, hip thrust, bułgarskie, łydki ze sztangą | **3 serie, RIR 1** — ostatnie powtórzenie ciężkie, ale nie na siłę |
+| sztanga, masa ciała | skos, płaskie, podciąganie, przysiad, RDL, hip thrust, bułgarskie, łydki ze sztangą | **3 serie, RIR 1** — ostatnie powtórzenie ciężkie, ale nie na siłę |
 | maszyny i wyciągi | suwnica, łydki na suwnicy, prostowanie, uginanie leżąc i siedząc, ściąganie, rozpiętki | **2 serie do upadku + dobitka rest-pause** (20 s przerwy, 3-6 powtórzeń) |
 | izolacje z hantlami | wznosy bokiem, tył barku, uginanie z obrotem, reverse curl, nadgarstki | **myo-reps** (1 do upadku + 3 dobitki po 15 s) |
 
@@ -68,7 +68,7 @@ Osobna sprawa to **15 sekund w bloku myo**: to nie jest przerwa między seriami,
 w środku jednej serii rozciągniętej na dobitki. Seria do upadku → 15 s → 3-5 powtórzeń → 15 s →
 3-5. Dotyczy wyłącznie izolacji, nigdy boju.
 
-Ciężkie boje (skos, dipy, przysiad, RDL, maszyna barkowa, wiosłowanie, ściąganie) mają **2,5-3,5 min**
+Ciężkie boje (skos, płaskie, przysiad, RDL, maszyna barkowa, wiosłowanie, ściąganie) mają **2,5-3,5 min**
 i to nie jest miejsce na oszczędzanie czasu — przy krótszej przerwie druga i trzecia seria tracą
 powtórzenia, czyli cały trening ma mniej twardej roboty. Czas oszczędzamy na parach i myo-repsach.
 
@@ -95,11 +95,11 @@ przerwy (myo-reps 20 s zamiast 15).
 | maszyny na nogi | na zmianę | Prostowanie 2×12-20 + dobitka · Uginanie leżąc 2×8-12 + dobitka |
 | wyciąg | solo | Spięcia brzucha 3×10-15 |
 
-**Czwartek — Góra B (~50 min), 4 stanowiska: poręcze → wyciąg → maszyna motylek → hantle**
+**Czwartek — Góra B (~50 min), 4 stanowiska: ławka płaska → wyciąg → motylek → hantle**
 
 | stanowisko | tryb | ćwiczenia |
 |---|---|---|
-| poręcze | solo | Dipy +ciężar 3×6-8 RIR1 |
+| ławka płaska ze sztangą | solo | Wyciskanie płaskie 3×6-8 RIR1 (dipy jako zamiennik) |
 | wyciąg górny i dolny | po kolei | Ściąganie 2×10-12 + dobitka · Wiosłowanie siedząc 2×10-12 · Face pull 2×15-20 |
 | ten sam wyciąg | myo-reps | Prostowanie tricepsu (prosty drążek) |
 | maszyna motylek | na zmianę | Rozpiętki 2×12-15 + dobitka · Odwrotne rozpiętki 3×12-20 (ta sama maszyna) |
@@ -147,8 +147,8 @@ na stałe.
 Zamiennik ma **własny slot ciężaru** (klucz `id@alt`), więc progresja wariantu podstawowego zostaje
 nietknięta, nawet jeśli skaczesz między siłowniami. Historia zapisuje, którego wariantu użyłeś.
 
-Plan nie zakłada **żadnej płaskiej ławki**: wiosłowanie opierasz ręką o stojak albo maszynę,
-bułgarskie i hip thrust o ławkę skośną, skrzynię albo stopień, nadgarstki robisz siedząc
+Ćwiczenia pomocnicze nie wymagają konkretnego sprzętu: wiosłowanie opierasz ręką o stojak, maszynę
+albo brzeg ławki, bułgarskie i hip thrust o ławkę, skrzynię albo stopień, nadgarstki robisz siedząc
 z przedramionami na udach.
 
 Przykłady: maszyna barkowa → hantle siedząc · wiosłowanie hantlem → oburącz w opadzie ·
